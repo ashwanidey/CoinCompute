@@ -7,7 +7,13 @@ import Result from './components/Result'
 
 
 function App() {
+  const [FormData, setFormData] = useState([]);
 
+  const handleResultData = (data) => {
+    setFormData(data);
+  };
+
+ 
 
   return (
     <>
@@ -15,8 +21,8 @@ function App() {
       <span class="Heading">Futures Calulator</span>
       <span class="pnl-form-title">Profit and Loss</span>
       <div class="wrapper">
-      <PnlForm/>
-      <Result/>
+      <PnlForm passInput={handleResultData}/>
+      <Result valueArray={FormData}/>
       </div>
       
       

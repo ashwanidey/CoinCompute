@@ -1,21 +1,31 @@
-import { useState } from "react";
-export default function PositionButton(){
+import { useState, useEffect } from "react";
 
-  const [long,setLong] = useState(true);
+export default function PositionButton({ long, handleLong, handleShort }) {
+  const [isLong, setIsLong] = useState(true);
+
+  useEffect(() => {
+    // Update the local state when the prop changes
+    setIsLong(long !== undefined ? long : true);
+  }, [long]);
 
   const longStyle = {
-    backgroundColor : long === true ? 'green' : 'white', color : long === true ? 'white' : "#3B3B3B"
-  }
+    backgroundColor: isLong ? 'green' : 'white',
+    color: isLong ? 'white' : "#3B3B3B"
+  };
+
   const shortStyle = {
-    backgroundColor : long === false ? 'red' : 'white', color : long === false ? 'white' : "#3B3B3B"
-  }
+    backgroundColor: !isLong ? 'red' : 'white',
+    color: !isLong ? 'white' : "#3B3B3B"
+  };
 
   return (
-    <>
-    <div class="container-position-setter">
-        <div id="long-button" style = {longStyle} class="button-28" role="button" onClick={() => (setLong(true))}>LONG</div>
-        <div id="short-button" style = {shortStyle} class="button-28" role="button" onClick={() => (setLong(false))}>SHORT</div>
+    <div className="container-position-setter">
+      <div id="long-button" style={longStyle} className="button-28" role="button" onClick={handleLong}>
+        LONG
+      </div>
+      <div id="short-button" style={shortStyle} className="button-28" role="button" onClick={handleShort}>
+        SHORT
+      </div>
     </div>
-    </>
-  )
+  );
 }
