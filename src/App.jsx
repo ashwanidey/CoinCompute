@@ -6,7 +6,7 @@ import Pnl from "./components/pnl/Pnl"
 import TargetPrice from "./components/target_price/TargetPrice"
 import Liquidation from './components/liquidation price/Liquidation'
 import MaxOpen from './components/max_open/MaxOpen'
-import OpenPrice from './components/Open_Price/OpenPrice'
+import OpenPrice from './components/open-price/OpenPrice'
 
 
 function App() {
