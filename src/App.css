@@ -431,6 +431,7 @@ input{
     .neu-range-slider{
         width: 100%;
     }
+    
 
     .pnl-form-title{
         margin-top: -0.4em;
@@ -465,7 +466,7 @@ input{
     }
     .pnl-form-title{
         padding-bottom: 59px;
-        font-size: 2.5em;
+        font-size: 2.3em;
     }
     .button-81{
         margin-top: 0.5em;

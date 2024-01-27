@@ -14,7 +14,7 @@ export default function Pnl(){
     <>
    <div class="container-pnl " id="pnl-toogle">
       <span class="Heading">Futures Calulator</span>
-      <span class="pnl-form-title">Liquidation Price</span>
+      <span className="pnl-form-title ">Liquidation Price</span>
       <div class="wrapper">
       
       <LiquidationForm passInput={handleResultData}/>
