@@ -1,12 +1,9 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import PnlForm from './components/PnlForm'
-import Result from './components/Result'
 import NavBar from './components/NavBar'
-import Pnl from './components/pnl/Pnl'
-import TargetPrice from './components/target_price/TargetPrice'
+import { Route, Routes } from "react-router-dom"
+import Pnl from "./components/pnl/Pnl"
+import TargetPrice from "./components/target_price/TargetPrice"
 
 
 function App() {
@@ -18,8 +15,17 @@ function App() {
     <>
     <body class="flex sm:flex-row flex-col">
       <NavBar/>
-      {/* <Pnl/> */}
-      <TargetPrice/>
+      
+      <Routes>
+      <Route path="/" element={<Pnl/>} />
+      <Route path="/pnl" element={<Pnl/>} />
+      <Route path="/targetPrice" element={<TargetPrice />} />
+      <Route path="/liquidationPrice" element={<TargetPrice />} />
+      <Route path="/maxOpen" element={<TargetPrice />} />
+      <Route path="/OpenPrice" element={<TargetPrice />} />
+      </Routes>
+    
+      
       
       
     
