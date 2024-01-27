@@ -1,5 +1,5 @@
-import Output from "./Output";
-import { calculateMargin, calculateProfit, calculateQuantity, calculateRoe } from "../functions/calculator";
+import Output from "../Output";
+import { calculateMargin, calculateProfit, calculateQuantity, calculateRoe } from "../../functions/calculator";
 
 import { useState, useEffect } from "react";
 

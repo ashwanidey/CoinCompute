@@ -1,11 +1,9 @@
-import PositionButton from "./PositionButton";
-import Input from "./Input";
+import PositionButton from "../PositionButton";
+import Input from "../Input";
 import { useState } from "react";
-import Leverage from "./Leverage";
+import Leverage from "../Leverage";
 
-export default function PnlForm({passInput}){
-
-
+export default function LiquidationForm({passInput}){
   const [props,setProps] = useState([
     {Label:"Exit Price",Id:"sellingPrice",Placeholder:"Enter Selling or Exit price",Class:"input",inputVal : ""},
     {Label:"Entry Price",Id:"buyingPrice",Placeholder:"Enter Buying or Entry Price",Class:"input",inputVal : ""},
@@ -59,8 +57,6 @@ export default function PnlForm({passInput}){
         </div>
         </div>
      </form>
-
-     
 
     </>
   )

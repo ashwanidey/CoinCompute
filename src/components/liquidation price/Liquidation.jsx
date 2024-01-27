@@ -1,6 +1,6 @@
-import PnlForm from "./PnlForm";
+import LiquidationForm from "./LiquidationForm";
 import { useState } from "react";
-import Result from "./Result";
+import LiquidationResult from "./LiquidationResult";
 
 
 export default function Pnl(){
@@ -14,11 +14,11 @@ export default function Pnl(){
     <>
    <div class="container-pnl " id="pnl-toogle">
       <span class="Heading">Futures Calulator</span>
-      <span class="pnl-form-title">Profit and Loss</span>
+      <span class="pnl-form-title">Liquidation Price</span>
       <div class="wrapper">
       
-      <PnlForm passInput={handleResultData}/>
-      <Result valueArray={FormData}/>
+      <LiquidationForm passInput={handleResultData}/>
+      <LiquidationResult valueArray={FormData}/>
       </div>
 
     </div>

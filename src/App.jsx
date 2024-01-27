@@ -4,6 +4,7 @@ import NavBar from './components/NavBar'
 import { Route, Routes } from "react-router-dom"
 import Pnl from "./components/pnl/Pnl"
 import TargetPrice from "./components/target_price/TargetPrice"
+import Liquidation from './components/liquidation price/Liquidation'
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
       <Route path="/" element={<Pnl/>} />
       <Route path="/pnl" element={<Pnl/>} />
       <Route path="/targetPrice" element={<TargetPrice />} />
-      <Route path="/liquidationPrice" element={<TargetPrice />} />
+      <Route path="/liquidationPrice" element={<Liquidation />} />
       <Route path="/maxOpen" element={<TargetPrice />} />
       <Route path="/OpenPrice" element={<TargetPrice />} />
       </Routes>
