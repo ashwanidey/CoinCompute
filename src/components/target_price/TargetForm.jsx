@@ -1,15 +1,15 @@
-import PositionButton from "./PositionButton";
-import Input from "./Input";
+import PositionButton from "../PositionButton";
+import Input from "../Input";
+import Leverage from "../Leverage";
 import { useState } from "react";
-import Leverage from "./Leverage";
 
-export default function PnlForm({passInput}){
+export default function TargetForm({passInput}){
 
 
   const [props,setProps] = useState([
     {Label:"Exit Price",Id:"sellingPrice",Placeholder:"Enter Selling or Exit price",Class:"input",inputVal : ""},
-    {Label:"Entry Price",Id:"buyingPrice",Placeholder:"Enter Buying or Entry Price",Class:"input",inputVal : ""},
-    {Label:"Amount Invested",Id:"amount",Placeholder:"Enter Amount Invested",Class:"input",inputVal : ""},
+    {Label:"ROE",Id:"roe",Placeholder:"Enter Buying or Entry Price",Class:"input",inputVal : ""},
+    
   ]);
 
   const [lev,setLev] = useState(20);
@@ -17,10 +17,11 @@ export default function PnlForm({passInput}){
   const [isLong,setIsLong] = useState(true);
 
   const handleInput = (id, value) => {
-    if(!isNaN(value) && value >= 0)
+    if(!isNaN(value) && value >= 0){
     setProps((prevProps) =>
       prevProps.map((prop) => (prop.Id === id ? { ...prop, inputVal: value } : prop))
     );
+    }
   };
 
   const handleSubmit = () => {

@@ -6,6 +6,7 @@ import PnlForm from './components/PnlForm'
 import Result from './components/Result'
 import NavBar from './components/NavBar'
 import Pnl from './components/pnl/Pnl'
+import TargetPrice from './components/target_price/TargetPrice'
 
 
 function App() {
@@ -17,7 +18,9 @@ function App() {
     <>
     <body class="flex sm:flex-row flex-col">
       <NavBar/>
-      <Pnl/>
+      {/* <Pnl/> */}
+      <TargetPrice/>
+      
       
     
     </body>
