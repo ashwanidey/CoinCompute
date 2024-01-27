@@ -4,30 +4,24 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import PnlForm from './components/PnlForm'
 import Result from './components/Result'
+import NavBar from './components/NavBar'
+import Pnl from './components/pnl/Pnl'
 
 
 function App() {
-  const [FormData, setFormData] = useState([]);
-
-  const handleResultData = (data) => {
-    setFormData(data);
-  };
+  
 
  
 
   return (
     <>
-    <div class="container-pnl " id="pnl-toogle">
-      <span class="Heading">Futures Calulator</span>
-      <span class="pnl-form-title">Profit and Loss</span>
-      <div class="wrapper">
-      <PnlForm passInput={handleResultData}/>
-      <Result valueArray={FormData}/>
-      </div>
+    <body class="flex sm:flex-row flex-col">
+      <NavBar/>
+      <Pnl/>
       
-      
-
-    </div>
+    
+    </body>
+    
     
         
     </>
