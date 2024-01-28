@@ -3,10 +3,10 @@ export default function NavBar(){
   return (
     <>
     
-        <div className="hidden sm:block m-2 flex flex-col items-center w-[40vh] overflow-hidden text-gray-400 bg-[#040D12] rounded-xl">
+        <div className="hidden md:block m-2 flex flex-col items-center w-[40vh] overflow-hidden text-gray-400 bg-[#040D12] rounded-xl re">
             
-            <div className="w-full px-2">
-                <div className="flex flex-col items-center w-full mt-3 border-t border-[#040D12]">
+            <div className="w-[40vh] px-2">
+                <div className="flex flex-col items-center w-[40vh] mt-3 border-t border-[#040D12]">
                     <NavLink id="pnl-tag" className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" to="/pnl">
                         <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -45,7 +45,7 @@ export default function NavBar(){
         
         
 
-        <div className="m-2 sm:hidden flex flex-row  items-center sm:w-[40vh]  overflow-y-hidden  text-gray-400 bg-[#040D12] rounded-lg pb-2">
+        <div className="m-2 md:hidden flex flex-row  items-center md:w-[40vh]  overflow-y-hidden  text-gray-400 bg-[#040D12] rounded-lg pb-2">
             
             <div className="w-full px-2">
                 <div className="flex sm:flex-col  flex-row items-center w-full  border-t border-[#040D12]">

@@ -1,7 +1,7 @@
 import OpenPriceForm from "./OpenPriceForm";
 import OpenPriceResult from "./OpenPriceResult";
 import { useState } from "react";
-
+import Widget from "../Widget";
 
 
 export default function Pnl(){
@@ -14,6 +14,8 @@ export default function Pnl(){
   return (
     <>
    <div class="container-pnl " id="pnl-toogle">
+    <Widget/>
+    
       <span class="Heading">Futures Calulator</span>
       <span class="pnl-form-title">Open Price</span>
       <div class="wrapper">

@@ -38,12 +38,14 @@ background: linear-gradient(to right, #24243e, #141E30, #0f0c29);
 
 .container-pnl{
     width: 100%;
+    
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    
 }
 
 .wrapper{
