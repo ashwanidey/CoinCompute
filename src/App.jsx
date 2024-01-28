@@ -11,13 +11,14 @@ import OpenPrice from './components/open-price/OpenPrice'
 
 function App() {
   
-
- 
+  
 
   return (
     <>
     <body class="flex sm:flex-row flex-col">
       <NavBar/>
+      <script async src="https://static.coinstats.app/widgets/coin-price-marquee-widget.js"></script>
+
       
       <Routes>
       <Route path="/" element={<Pnl/>} />
