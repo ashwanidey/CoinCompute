@@ -1,13 +1,26 @@
 import Output from "../Output";
 import { useState, useEffect } from "react";
+import { calculateLiquidationPrice } from "../../functions/calculator";
 
 export default function LiquidationResult({ valueArray }){
   const [props, setProps] = useState([
-    { Class: "output-box", Label: "Initial Margin : ", Value: "0.00", Sign: "USD", Id: "margin" },
-    { Class: "output-pnl-box", Label: "PNL :", Value: "0.00", Sign: "USD", Id: "pnl" },
-    { Class: "label-output", Label: "ROE : ", Value: "-", Sign: "%", Id: "roe" },
-    { Class: "label-output", Label: "Quantity : ", Value: "0.00", Sign: "BTC", Id: "quantity" },
+    { Class: "output-box", Label: "Liquidation Price: ", Value: "-", Sign: "USDT", Id: "margin" },
+    
   ]);
+  // [ep,cost,lev,showoutput,isLOng]
+  useEffect(() => {
+    if(valueArray[3]){
+      const ep = valueArray[0];
+      const cost = valueArray[1];
+      const lev= valueArray[2];
+      const isLong = valueArray[4];
+      const liqPrice = calculateLiquidationPrice(ep,lev,cost,isLong);
+      const updatedProps = props.map((prop, index) => {
+        return { ...prop, Value: liqPrice};
+      });
+      setProps(updatedProps);
+    }
+  }, [valueArray])
 
  
 

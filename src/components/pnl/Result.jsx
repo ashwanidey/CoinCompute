@@ -19,7 +19,7 @@ export default function Result({ valueArray }) {
       const roe = calculateRoe(valueArray[2], valueArray[3], valueArray[1], valueArray[5], valueArray[0]);
 
       const updatedProps = props.map((prop, index) => {
-        return { ...prop, Value: index === 0 ? margin.toFixed(2) : index === 1 ? profit.toFixed(2) : index === 2 ? roe : quantity };
+        return { ...prop, Value: index === 0 ? margin : index === 1 ? profit : index === 2 ? roe : quantity };
       });
 
       setProps(updatedProps);

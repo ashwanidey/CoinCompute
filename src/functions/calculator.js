@@ -4,7 +4,7 @@ const calculateQuantity = (amt,lev,bp) => {
   if(Number.isFinite(quantity)){
       return Number(quantity).toFixed(2);
   }else{
-      return 0;
+      return "0.00";
   }
 }
 
@@ -14,7 +14,7 @@ const calculateProfit = (amt,lev,bp,isLong,sp) =>{
       var p = (bp- sp) * quantity.toFixed(2);
       if(Number.isFinite(p)){
           
-          return p;
+          return p.toFixed(2);
       }else{
           return "0.00";
       }
@@ -23,7 +23,7 @@ const calculateProfit = (amt,lev,bp,isLong,sp) =>{
   else {
       var p = (sp - bp) * quantity.toFixed(2);
       if(Number.isFinite(p)){
-          return p;
+          return p.toFixed(2);
       }else{
           return "0.00";
       }
@@ -36,9 +36,9 @@ const calculateMargin=(amt,lev,bp)=>{
   const initialMargin = totalValueOfTrade / lev;
   if(!Number.isNaN(initialMargin)){
       
-      return Number(initialMargin);
+      return Number(initialMargin).toFixed(2);
   }else{
-      return "-";
+      return "0.00";
   }
 }
 
@@ -52,6 +52,15 @@ const calculateRoe = (amt,lev,bp,isLong,sp) =>{
   }  
 }
 
-export {calculateQuantity,calculateProfit,calculateMargin,calculateRoe};
+const calculateLiquidationPrice = (entryPrice,lev,cost,isLong)=>{
+    let liqPrice; 
+    if(isLong)
+    liqPrice= (cost-entryPrice)/lev + entryPrice;
+    else liqPrice = -((cost-entryPrice)/lev - entryPrice);
+    if(!Number.isNaN(liqPrice)) return Number(liqPrice);
+    else return "-";
+}
+
+export {calculateQuantity,calculateProfit,calculateMargin,calculateRoe,calculateLiquidationPrice};
 
 

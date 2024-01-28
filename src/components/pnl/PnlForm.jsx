@@ -24,13 +24,14 @@ export default function PnlForm({passInput}){
   };
 
   const handleSubmit = () => {
-    let valueArray = props.map((prop) => Number(prop.inputVal));
+    const valueArray = props.map((prop) => Number(prop.inputVal));
     setShowOutput(true);
-    valueArray.push(lev);
-    valueArray.push(showOutput);
-    valueArray.push(isLong)
-    passInput(valueArray);
-  }
+  
+    const updatedValueArray = [...valueArray, lev, showOutput, isLong];
+  
+    
+    passInput(updatedValueArray);
+  };
 
   const handleLong = () => {
     setIsLong(true);

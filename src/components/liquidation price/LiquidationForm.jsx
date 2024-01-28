@@ -5,9 +5,9 @@ import Leverage from "../Leverage";
 
 export default function LiquidationForm({passInput}){
   const [props,setProps] = useState([
-    {Label:"Exit Price",Id:"sellingPrice",Placeholder:"Enter Selling or Exit price",Class:"input",inputVal : ""},
-    {Label:"Entry Price",Id:"buyingPrice",Placeholder:"Enter Buying or Entry Price",Class:"input",inputVal : ""},
-    {Label:"Amount Invested",Id:"amount",Placeholder:"Enter Amount Invested",Class:"input",inputVal : ""},
+    {Label:"Entry Price",Id:"buyingPrice",Placeholder:"Enter Entry Price",Class:"input",inputVal : ""},
+    {Label:"Cost ( Margin )",Id:"amount",Placeholder:"Enter Cost or Margin",Class:"input",inputVal : ""},
+    // {Label:"Balance",Id:"Balance",Placeholder:"Enter Balance Available",Class:"input",inputVal : ""},
   ]);
 
   const [lev,setLev] = useState(20);
@@ -22,13 +22,14 @@ export default function LiquidationForm({passInput}){
   };
 
   const handleSubmit = () => {
-    let valueArray = props.map((prop) => Number(prop.inputVal));
+    const valueArray = props.map((prop) => Number(prop.inputVal));
     setShowOutput(true);
-    valueArray.push(lev);
-    valueArray.push(showOutput);
-    valueArray.push(isLong)
-    passInput(valueArray);
-  }
+
+    const updatedValueArray = [...valueArray, lev, showOutput, isLong];
+  
+    
+    passInput(updatedValueArray);
+  };
 
   const handleLong = () => {
     setIsLong(true);
