@@ -61,6 +61,18 @@ const calculateLiquidationPrice = (entryPrice,lev,cost,isLong)=>{
     else return "-";
 }
 
-export {calculateQuantity,calculateProfit,calculateMargin,calculateRoe,calculateLiquidationPrice};
+const calculateTargetPrice = (ep,roe,lev,isLong) => {
+    let targetPrice;
+    if(isLong){
+        targetPrice = ep + ((roe/100)/lev)*ep;
+    }
+    else{
+        targetPrice = ep - ((roe/100)/lev)*ep;
+    }
+    if(!Number.isNaN(targetPrice)) return Number(targetPrice).toFixed(2);
+    else return '-';
+}
+
+export {calculateQuantity,calculateProfit,calculateMargin,calculateRoe,calculateLiquidationPrice,calculateTargetPrice};
 
 
