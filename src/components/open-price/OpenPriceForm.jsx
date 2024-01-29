@@ -5,7 +5,7 @@ import Leverage from "../Leverage";
 
 export default function OpenPriceForm({passInput}){
   const [props,setProps] = useState([
-    {Label:"Exit Price",Id:"sellingPrice",Placeholder:"Enter Selling or Exit price",Class:"input",inputVal : ""},
+    
     {Label:"Entry Price",Id:"buyingPrice",Placeholder:"Enter Buying or Entry Price",Class:"input",inputVal : ""},
     {Label:"Amount Invested",Id:"amount",Placeholder:"Enter Amount Invested",Class:"input",inputVal : ""},
   ]);
@@ -36,6 +36,15 @@ export default function OpenPriceForm({passInput}){
   const handleShort = ()=>{
     setIsLong(false);
   }
+
+  const handleAddInput = () => {
+    setProps([...props, { Label: "Entry Price", Id: "buyingPrice", Placeholder: "Enter Buying or Entry Price", Class: "input", inputVal: "" },
+    { Label: "Amount Invested", Id: "amount", Placeholder: "Enter Amount Invested", Class: "input", inputVal: "" },]);
+  }
+
+  const handleRemoveInput = (i) => {
+    setProps((prevProps,index) => prevProps.filter((prop) => i!== index ));
+  };
   
  
   return (
@@ -43,12 +52,15 @@ export default function OpenPriceForm({passInput}){
      <form class="pnl-form" action="" >
       <PositionButton long= {isLong} handleLong={handleLong} handleShort={handleShort}/>
       <Leverage lev= {lev} handleLev={(e) => setLev(e.target.value)}/>
-      {props.map((prop)=>(
+      {props.map((prop,index)=>(
         <>
         <Input Label={prop.Label} Id={prop.Id} Placeholder={prop.Placeholder} Class={prop.Class} inputVal = {prop.inputVal} handleInput={(e) => handleInput(prop.Id, e.target.value)}/>
+        <div className="bg-[black]" onClick ={()=>handleRemoveInput(index)}>Delete</div>
         
         </>
       ))}
+
+      <div className="bg-[black]" onClick = {handleAddInput}>+ Add Position</div>
       
       
       <div class="container-pnl-form-btn relative">
