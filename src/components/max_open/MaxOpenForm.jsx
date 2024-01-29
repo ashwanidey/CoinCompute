@@ -5,9 +5,9 @@ import Leverage from "../Leverage";
 
 export default function MaxOpenForm({passInput}){
   const [props,setProps] = useState([
-    {Label:"Exit Price",Id:"sellingPrice",Placeholder:"Enter Selling or Exit price",Class:"input",inputVal : ""},
+    
     {Label:"Entry Price",Id:"buyingPrice",Placeholder:"Enter Buying or Entry Price",Class:"input",inputVal : ""},
-    {Label:"Amount Invested",Id:"amount",Placeholder:"Enter Amount Invested",Class:"input",inputVal : ""},
+    {Label:"Balance",Id:"balance",Placeholder:"Enter Balance",Class:"input",inputVal : ""},
   ]);
 
   const [lev,setLev] = useState(20);

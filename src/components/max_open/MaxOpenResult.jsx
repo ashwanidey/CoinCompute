@@ -1,13 +1,28 @@
+import { calculateAmount, calculateMaxOpen } from "../../functions/calculator";
 import Output from "../Output";
 import { useState, useEffect } from "react";
 
 export default function MaxOpenResult({ valueArray }){
   const [props, setProps] = useState([
-    { Class: "output-box", Label: "Initial Margin : ", Value: "0.00", Sign: "USD", Id: "margin" },
-    { Class: "output-pnl-box", Label: "PNL :", Value: "0.00", Sign: "USD", Id: "pnl" },
-    { Class: "label-output", Label: "ROE : ", Value: "-", Sign: "%", Id: "roe" },
-    { Class: "label-output", Label: "Quantity : ", Value: "0.00", Sign: "BTC", Id: "quantity" },
+    { Class: "output-box", Label: "Max Open :  ", Value: "-", Sign: "BTC", Id: "margin" },
+    { Class: "output-pnl-box", Label: "Max Open (USDT) : ", Value: "-", Sign: "USDT", Id: "pnl" },
+   
   ]);
+  // [ep,balance,lev,showoutput,isLOng]
+  useEffect(() => {
+    if(valueArray[3]){
+      const ep = valueArray[0];
+      const balance = valueArray[1];
+      const lev= valueArray[2];
+      const isLong = valueArray[4];
+      const amt = calculateAmount(lev,balance);
+      const maxOpen = calculateMaxOpen(amt,lev,ep);
+      const updatedProps = props.map((prop, index) => {
+        return { ...prop, Value: index === 0 ?  maxOpen : amt};
+      });
+      setProps(updatedProps);
+    }
+  }, [valueArray])
 
  
 

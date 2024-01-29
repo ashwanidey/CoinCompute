@@ -73,6 +73,22 @@ const calculateTargetPrice = (ep,roe,lev,isLong) => {
     else return '-';
 }
 
-export {calculateQuantity,calculateProfit,calculateMargin,calculateRoe,calculateLiquidationPrice,calculateTargetPrice};
+const calculateAmount = (lev,balance)=>{
+    var amt = lev * balance;
+    if(!Number.isNaN(amt))
+    return lev * balance;
+    else return 0;
+}
+
+const calculateMaxOpen = (amt,lev,bp) => {
+    var quantity = amt/bp;
+    if(Number.isFinite(quantity)){
+        return Number(quantity).toFixed(3);
+    }else{
+        return "0.00";
+    }
+}
+
+export {calculateQuantity,calculateProfit,calculateMargin,calculateRoe,calculateLiquidationPrice,calculateTargetPrice,calculateAmount,calculateMaxOpen};
 
 
