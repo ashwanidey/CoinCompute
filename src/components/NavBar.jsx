@@ -45,11 +45,11 @@ export default function NavBar(){
         
         
 
-        <div className="m- md:hidden flex flex-row  items-center md:w-[40vh]  overflow-y-hidden mt-3 mb-3 text-gray-400 bg-[#070E13] rounded-full pb-2">
+        <div className="m-2 md:hidden flex flex-row  items-center md:w-[40vh]  overflow-y-hidden  mb-3 text-gray-400 bg-[#070E13] rounded-full pb-2">
             
             <div className="w-full px-2">
                 <div className="flex sm:flex-col  flex-row items-center w-full  border-t border-[#040D12]">
-                    <NavLink id="pnl-tag1" className="flex items-center w-full h-9 px-2 mt-2 rounded-full hover:bg-gray-700 hover:text-gray-300" to="/pnl">
+                    <NavLink id="pnl-tag1" className="flex items-center w-full h-10 px-2 mt-2 rounded-full hover:bg-gray-700 hover:text-gray-300" to="/pnl">
                         
                         <span className=" text-sm font-medium">PNL</span>
                     </NavLink>
