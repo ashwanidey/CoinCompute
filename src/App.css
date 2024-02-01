@@ -324,6 +324,7 @@ input{
 /* Position button */
 .container-position-setter{
     width: 100%;
+    height: fit-content;
     display: flex;
     margin-bottom: 4rem;
     justify-content: space-between;

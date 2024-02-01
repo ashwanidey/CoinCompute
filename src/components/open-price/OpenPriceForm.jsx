@@ -1,5 +1,5 @@
 import PositionButton from "../PositionButton";
-import Input from "../Input";
+import OpenPriceInput from "./OpenPriceInput";
 import { useState } from "react";
 import Leverage from "../Leverage";
 
@@ -7,12 +7,11 @@ export default function OpenPriceForm({passInput}){
   const [props,setProps] = useState([
     
     {Label:"Entry Price",Id:"buyingPrice",Placeholder:"Enter Buying or Entry Price",Class:"input",inputVal : ""},
-    {Label:"Amount Invested",Id:"amount",Placeholder:"Enter Amount Invested",Class:"input",inputVal : ""},
+    
   ]);
 
   const [lev,setLev] = useState(20);
-  const [showOutput,setShowOutput] = useState(false);
-  const [isLong,setIsLong] = useState(true);
+  
 
   const handleInput = (id, value) => {
     if(!isNaN(value) && value >= 0)
@@ -30,12 +29,7 @@ export default function OpenPriceForm({passInput}){
     passInput(valueArray);
   }
 
-  const handleLong = () => {
-    setIsLong(true);
-  }
-  const handleShort = ()=>{
-    setIsLong(false);
-  }
+  
 
   const handleAddInput = () => {
     setProps([...props, { Label: "Entry Price", Id: "buyingPrice", Placeholder: "Enter Buying or Entry Price", Class: "input", inputVal: "" },
@@ -49,25 +43,24 @@ export default function OpenPriceForm({passInput}){
  
   return (
     <>
-     <form class="pnl-form" action="" >
-      <PositionButton long= {isLong} handleLong={handleLong} handleShort={handleShort}/>
-      <Leverage lev= {lev} handleLev={(e) => setLev(e.target.value)}/>
+     <form class="openPrice-form" action="" >
+      
+      
+      
+      <div className="flex-row ">
       {props.map((prop,index)=>(
         <>
-        <Input Label={prop.Label} Id={prop.Id} Placeholder={prop.Placeholder} Class={prop.Class} inputVal = {prop.inputVal} handleInput={(e) => handleInput(prop.Id, e.target.value)}/>
-        <div className="bg-[black]" onClick ={()=>handleRemoveInput(index)}>Delete</div>
+        <OpenPriceInput Label={prop.Label} Id={prop.Id} Placeholder={prop.Placeholder} Class={prop.Class} inputVal = {prop.inputVal} handleInput={(e) => handleInput(prop.Id, e.target.value)}/>
+        {/* <div className="bg-[black]" onClick ={()=>handleRemoveInput(index)}>Delete</div> */}
         
         </>
       ))}
+      </div>
 
-      <div className="bg-[black]" onClick = {handleAddInput}>+ Add Position</div>
+      {/* <div className="bg-[black]" onClick = {handleAddInput}>+ Add Position</div> */}
       
       
-      <div class="container-pnl-form-btn relative">
-        <div id="add-button" class="button-81" onClick={handleSubmit}>
-            CALCULATE
-        </div>
-        </div>
+      
      </form>
 
     </>
