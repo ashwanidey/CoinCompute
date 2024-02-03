@@ -5,6 +5,7 @@ import Widget from "../Widget";
 import "./openPrice.css"
 import PositionButton from "../PositionButton";
 import OpenPriceInput from "./OpenPriceInput";
+import InputDiv from "./InputDiv";
 
 export default function Pnl(){
 
@@ -20,6 +21,34 @@ export default function Pnl(){
   const handleShort = ()=>{
     setIsLong(false);
   }
+
+  const [props,setProps] = useState([
+    {key : 1,openCount : 1,inputEP : "",inputQuantity : ""}
+  ])
+
+  const handleAddInput  = () => {
+    const newObj = {key : props[props.length-1].key +1,openCount : props[props.length-1].openCount  +1,inputEP : "",inputQuantity : ""};
+
+    setProps([...props,newObj]);
+
+    
+    
+
+  }
+
+  const handleInputEP = (id, value) => {
+    if(!isNaN(value) && value >= 0)
+    setProps((prevProps) =>
+      prevProps.map((prop) => (prop.key === id ? { ...prop, inputEP: value } : prop))
+    );
+  };
+
+  const handleInputQuantity = (id, value) => {
+    if(!isNaN(value) && value >= 0)
+    setProps((prevProps) =>
+      prevProps.map((prop) => (prop.key === id ? { ...prop, inputQuantity: value } : prop))
+    );
+  };
   
   const [isLong,setIsLong] = useState(true);
   return (
@@ -39,26 +68,26 @@ export default function Pnl(){
       
       </div>
       
-      <div className="flex justify-center gap-10">
-        <div className="">
-          <div className="label-input-op">Open</div>
-          <div className="label-output "> 1</div>
-          </div>
+      <div className="flex-col justify-center space-y-10">
+
+        <div className="labels-op gap-10">
+        <div className="label-input-op w-[5rem]">Open</div>
+        <div className="label-input-op w-full">  Entry Price(USDT)</div>
+        <div className="label-input-op w-full">Quantity(BTC)</div>
+        <div className="label-input-op"> Action</div>
+        </div>
+
+
+        {props.map((prop)=>(
+          <InputDiv openCount={prop.openCount} inputEP = {prop.inputEP} inputQuantity = {prop.inputQuantity} handleInputEP={(e) => handleInputEP(prop.key,e.target.value)} handleInputQuantity={(e) => handleInputQuantity(prop.key,e.target.value)}/>
+        ))}
+        
+        
           
-        <div className="w-full">
-          <div className="label-input-op ">  Entry Price(USDT)</div>
-          <OpenPriceInput/>
-          
-          </div>
-        <div className="w-full">
-          <div className="label-input-op">Quantity(BTC)</div>
-          <OpenPriceInput/>
-          </div>
-        <div className="">
-          <div className="label-input-op"> Action</div>
-          <div className="bg-black w-10 h-10"></div>
-          </div>
-      </div>
+       
+    </div>
+
+      <div className="text-white" onClick={handleAddInput}>+ Add Button</div>
       
       
       </div>
