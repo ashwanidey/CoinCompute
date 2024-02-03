@@ -1,67 +1,94 @@
 import PositionButton from "../PositionButton";
-import OpenPriceInput from "./OpenPriceInput";
+
 import { useState } from "react";
 import Leverage from "../Leverage";
+import InputDiv from "./InputDiv";
 
 export default function OpenPriceForm({passInput}){
   const [props,setProps] = useState([
-    
-    {Label:"Entry Price",Id:"buyingPrice",Placeholder:"Enter Buying or Entry Price",Class:"input",inputVal : ""},
-    
-  ]);
+    {key : 1,openCount : 1,inputEP : "",inputQuantity : ""}
+  ])
 
-  const [lev,setLev] = useState(20);
+  const handleSubmit = () => {
+    let valueArray = props.map((prop) => [Number(prop.inputEP),Number(prop.inputQuantity)]);
+    passInput(valueArray);
+    
+  }
+
   
 
-  const handleInput = (id, value) => {
+  const handleAddInput  = () => {
+    const newObj = {key : props[props.length-1].key +1,openCount : props[props.length-1].openCount  +1,inputEP : "",inputQuantity : ""};
+
+    setProps([...props,newObj]);
+
+    
+    
+
+  }
+
+  const handleInputEP = (id, value) => {
     if(!isNaN(value) && value >= 0)
     setProps((prevProps) =>
-      prevProps.map((prop) => (prop.Id === id ? { ...prop, inputVal: value } : prop))
+      prevProps.map((prop) => (prop.key === id ? { ...prop, inputEP: value } : prop))
     );
   };
 
-  const handleSubmit = () => {
-    let valueArray = props.map((prop) => Number(prop.inputVal));
-    setShowOutput(true);
-    valueArray.push(lev);
-    valueArray.push(showOutput);
-    valueArray.push(isLong)
-    passInput(valueArray);
-  }
-
+  const handleInputQuantity = (id, value) => {
+    if(!isNaN(value) && value >= 0)
+    setProps((prevProps) =>
+      prevProps.map((prop) => (prop.key === id ? { ...prop, inputQuantity: value } : prop))
+    );
+  };
   
 
-  const handleAddInput = () => {
-    setProps([...props, { Label: "Entry Price", Id: "buyingPrice", Placeholder: "Enter Buying or Entry Price", Class: "input", inputVal: "" },
-    { Label: "Amount Invested", Id: "amount", Placeholder: "Enter Amount Invested", Class: "input", inputVal: "" },]);
-  }
 
-  const handleRemoveInput = (i) => {
-    setProps((prevProps,index) => prevProps.filter((prop) => i!== index ));
+  const handleDeleteEntry = (id) => {
+    if(props.length === 1) return ;
+    
+    setProps((prevProps) => prevProps.filter((prop) => prop.key !== id).map((propi,index) =>(
+      {...propi,key : index + 1,openCount : index + 1}
+    )));
+    
+    
   };
+
+  
+  
   
  
   return (
     <>
-     <form class="openPrice-form" action="" >
-      
-      
-      
-      <div className="flex-row ">
-      {props.map((prop,index)=>(
-        <>
-        <OpenPriceInput Label={prop.Label} Id={prop.Id} Placeholder={prop.Placeholder} Class={prop.Class} inputVal = {prop.inputVal} handleInput={(e) => handleInput(prop.Id, e.target.value)}/>
-        {/* <div className="bg-[black]" onClick ={()=>handleRemoveInput(index)}>Delete</div> */}
-        
-        </>
-      ))}
-      </div>
+     
 
-      {/* <div className="bg-[black]" onClick = {handleAddInput}>+ Add Position</div> */}
-      
-      
-      
-     </form>
+
+<div className="flex-col justify-center space-y-10">
+
+  <div className="labels-op gap-10">
+  <div className="label-input-op w-[5rem]">Open</div>
+  <div className="label-input-op w-full">  Entry Price(USDT)</div>
+  <div className="label-input-op w-full">Quantity(BTC)</div>
+  <div className="label-input-op w-[5rem]"> Action</div>
+  </div>
+
+
+  {props.map((prop)=>(
+    <InputDiv inputKey = {prop.key} openCount={prop.openCount} inputEP = {prop.inputEP} inputQuantity = {prop.inputQuantity} handleInputEP={(e) => handleInputEP(prop.key,e.target.value)} handleInputQuantity={(e) => handleInputQuantity(prop.key,e.target.value)} handleDeleteEntry={handleDeleteEntry}/>
+  ))}
+  
+  
+    
+ 
+</div>
+
+<div className="text-white" onClick={handleAddInput}>+ Add Button</div>
+<div class="container-pnl-form-btn relative">
+        <div id="add-button" class="button-81" onClick={handleSubmit}>
+            CALCULATE
+        </div>
+        </div>
+
+
 
     </>
   )
