@@ -22,6 +22,11 @@ export default function Pnl(){
     setIsLong(false);
   }
 
+
+
+
+
+
   const [props,setProps] = useState([
     {key : 1,openCount : 1,inputEP : "",inputQuantity : ""}
   ])
@@ -51,6 +56,16 @@ export default function Pnl(){
   };
   
   const [isLong,setIsLong] = useState(true);
+
+  const handleDeleteEntry = (id) => {
+    if(props.length === 1) return ;
+    
+    setProps((prevProps) => prevProps.filter((prop) => prop.key !== id).map((propi,index) =>(
+      {...propi,key : index + 1,openCount : index + 1}
+    )));
+    
+    
+  };
   return (
     <>
    <div class="container-openprice" id="pnl-toogle">
@@ -74,12 +89,12 @@ export default function Pnl(){
         <div className="label-input-op w-[5rem]">Open</div>
         <div className="label-input-op w-full">  Entry Price(USDT)</div>
         <div className="label-input-op w-full">Quantity(BTC)</div>
-        <div className="label-input-op"> Action</div>
+        <div className="label-input-op w-[5rem]"> Action</div>
         </div>
 
 
         {props.map((prop)=>(
-          <InputDiv openCount={prop.openCount} inputEP = {prop.inputEP} inputQuantity = {prop.inputQuantity} handleInputEP={(e) => handleInputEP(prop.key,e.target.value)} handleInputQuantity={(e) => handleInputQuantity(prop.key,e.target.value)}/>
+          <InputDiv inputKey = {prop.key} openCount={prop.openCount} inputEP = {prop.inputEP} inputQuantity = {prop.inputQuantity} handleInputEP={(e) => handleInputEP(prop.key,e.target.value)} handleInputQuantity={(e) => handleInputQuantity(prop.key,e.target.value)} handleDeleteEntry={handleDeleteEntry}/>
         ))}
         
         

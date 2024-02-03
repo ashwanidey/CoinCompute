@@ -1,6 +1,6 @@
 import OpenPriceInput from "./OpenPriceInput"
 
-export default function InputDiv({openCount,inputEP,inputQuantity,handleInputEP,handleInputQuantity}){
+export default function InputDiv({inputKey,openCount,inputEP,inputQuantity,handleInputEP,handleInputQuantity,handleDeleteEntry}){
   return (
     <>
     <div className="input-op gap-10 ">
@@ -18,7 +18,7 @@ export default function InputDiv({openCount,inputEP,inputQuantity,handleInputEP,
           placeholder="Enter Quantity" value = {inputQuantity} onChange = {handleInputQuantity} autoComplete="off"/>
           
       </div>
-        <div className="bg-black w-10 h-10"></div>
+        <div className="bg-black h-10 w-[7rem]" onClick = {() => handleDeleteEntry(inputKey)}></div>
           
     </div>
     </>
