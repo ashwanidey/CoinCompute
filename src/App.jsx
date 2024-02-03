@@ -9,6 +9,7 @@ import MaxOpen from './components/max_open/MaxOpen'
 import OpenPrice from './components/open-price/OpenPrice'
 
 
+
 function App() {
   
   
@@ -17,9 +18,6 @@ function App() {
     <>
     <body class="flex sm:flex-row flex-col">
       <NavBar/>
-      
-      
-      
       <Routes>
       <Route path="/" element={<Pnl/>} />
       <Route path="/pnl" element={<Pnl/>} />
