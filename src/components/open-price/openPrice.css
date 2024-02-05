@@ -88,6 +88,14 @@
 
 }
 
+.container-position-setter-op{
+  width: 100%;
+    height: fit-content;
+    display: flex;
+    margin-bottom: 4rem;
+    justify-content: space-between;
+}
+
 @media(max-width: 768px){
   .input-op{
     gap: 0.5rem;
@@ -105,7 +113,7 @@
     width: 70% ;
   }
 
-  .container-position-setter{
+  .container-position-setter-op{
     margin-bottom: 1.5rem;
   }
   .container-openPrice-output{

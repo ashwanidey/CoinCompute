@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function PositionButton({ long, handleLong, handleShort }) {
+export default function PositionButton({ OuterBox = "container-position-setter",long, handleLong, handleShort }) {
   const [isLong, setIsLong] = useState(true);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function PositionButton({ long, handleLong, handleShort }) {
   };
 
   return (
-    <div className="container-position-setter">
+    <div className={OuterBox}>
       <div id="long-button" style={longStyle} className="button-28" role="button" onClick={handleLong}>
         LONG
       </div>

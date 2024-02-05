@@ -59,11 +59,11 @@ export default function Pnl(){
       <span class="pnl-form-title">Open Price</span>
       <div class="w-[90%]">
           <div className="flex" >
-      <PositionButton long= {isLong} handleLong={handleLong} handleShort={handleShort}/>
-      {activeMenu && <OpenPriceResult valueArray={FormData}/>}
-      
-
+        
+      <PositionButton OuterBox = "container-position-setter-op" long= {isLong} handleLong={handleLong} handleShort={handleShort} 
+      /> 
       </div>
+      {activeMenu && <OpenPriceResult valueArray={FormData}/>}
 
      <OpenPriceForm  passInput= {handleResultData}/>
      {!activeMenu && 
