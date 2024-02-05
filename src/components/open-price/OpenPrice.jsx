@@ -1,9 +1,10 @@
 import OpenPriceForm from "./OpenPriceForm";
 import OpenPriceResult from "./OpenPriceResult";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Widget from "../Widget";
 import "./openPrice.css"
 import PositionButton from "../PositionButton";
+
 
 import InputDiv from "./InputDiv";
 
@@ -25,6 +26,27 @@ export default function Pnl(){
     setIsLong(false);
   }
 
+  const [activeMenu, setActiveMenu] = useState(true);
+  const [screenSize, setScreenSize] = useState(null);
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (screenSize <= 800) {
+      setActiveMenu(false);
+    } else {
+      setActiveMenu(true);
+    }
+  }, [screenSize]);
+
 
 
   
@@ -38,11 +60,16 @@ export default function Pnl(){
       <div class="w-[90%]">
           <div className="flex" >
       <PositionButton long= {isLong} handleLong={handleLong} handleShort={handleShort}/>
-      <OpenPriceResult valueArray={FormData}/>
+      {activeMenu && <OpenPriceResult valueArray={FormData}/>}
+      
 
       </div>
 
      <OpenPriceForm  passInput= {handleResultData}/>
+     {!activeMenu && 
+     <div className="w-full mt-3">
+     <OpenPriceResult valueArray={FormData} />
+     </div>}
      </div>
 
     </div>

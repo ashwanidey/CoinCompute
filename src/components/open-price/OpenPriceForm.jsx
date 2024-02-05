@@ -1,8 +1,12 @@
 import PositionButton from "../PositionButton";
 
-import { useState } from "react";
+import { useState,useEffect  } from "react";
 import Leverage from "../Leverage";
 import InputDiv from "./InputDiv";
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+
+import AddIcon from '@mui/icons-material/Add';
 
 export default function OpenPriceForm({passInput}){
   const [props,setProps] = useState([
@@ -53,6 +57,27 @@ export default function OpenPriceForm({passInput}){
     
   };
 
+  const [activeMenu, setActiveMenu] = useState(true);
+  const [screenSize, setScreenSize] = useState(null);
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (screenSize <= 800) {
+      setActiveMenu(false);
+    } else {
+      setActiveMenu(true);
+    }
+  }, [screenSize]);
+
   
   
   
@@ -64,16 +89,18 @@ export default function OpenPriceForm({passInput}){
 
 <div className="flex-col justify-center space-y-10">
 
-  <div className="labels-op gap-10">
-  <div className="label-input-op w-[5rem]">Open</div>
-  <div className="label-input-op w-full">  Entry Price(USDT)</div>
+  <div className="labels-op ">
+
+  {activeMenu &&  <div className="label-input-op w-[5rem]">Open</div>}
+  
+   <div className="label-input-op ">  Entry Price(USDT)</div>
   <div className="label-input-op w-full">Quantity(BTC)</div>
-  <div className="label-input-op w-[5rem]"> Action</div>
+   { activeMenu &&  <div className="label-input-op w-[5rem]"> Action</div>}
   </div>
 
 
   {props.map((prop)=>(
-    <InputDiv inputKey = {prop.key} openCount={prop.openCount} inputEP = {prop.inputEP} inputQuantity = {prop.inputQuantity} handleInputEP={(e) => handleInputEP(prop.key,e.target.value)} handleInputQuantity={(e) => handleInputQuantity(prop.key,e.target.value)} handleDeleteEntry={handleDeleteEntry}/>
+    <InputDiv inputKey = {prop.key} openCount={prop.openCount} inputEP = {prop.inputEP} inputQuantity = {prop.inputQuantity} handleInputEP={(e) => handleInputEP(prop.key,e.target.value)} handleInputQuantity={(e) => handleInputQuantity(prop.key,e.target.value)} handleDeleteEntry={handleDeleteEntry} activeMenu = {activeMenu}/>
   ))}
   
   
@@ -81,7 +108,12 @@ export default function OpenPriceForm({passInput}){
  
 </div>
 
-<div className="text-white" onClick={handleAddInput}>+ Add Button</div>
+<div onClick={handleAddInput} className="mb-2 mt-3">
+<Button className="">
+  <AddIcon fontSize="medium"/>  Add Button
+</Button>
+</div>
+
 <div class="container-pnl-form-btn relative">
         <div id="add-button" class="button-81" onClick={handleSubmit}>
             CALCULATE
@@ -93,3 +125,5 @@ export default function OpenPriceForm({passInput}){
     </>
   )
 }
+
+
