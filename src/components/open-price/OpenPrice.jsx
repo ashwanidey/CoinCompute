@@ -62,8 +62,9 @@ export default function Pnl(){
         
       <PositionButton OuterBox = "container-position-setter-op" long= {isLong} handleLong={handleLong} handleShort={handleShort} 
       /> 
-      </div>
       {activeMenu && <OpenPriceResult valueArray={FormData}/>}
+      </div>
+      
 
      <OpenPriceForm  passInput= {handleResultData}/>
      {!activeMenu && 

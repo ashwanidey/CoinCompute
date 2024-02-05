@@ -13,6 +13,12 @@ export default function NavBar(){
                         </svg>
                         <span className="ml-2 text-sm font-medium">PNL</span>
                     </NavLink>
+                    <NavLink id="open-price-tag" className="flex items-center w-full h-9 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" to="/OpenPrice">
+                        <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        <span className="ml-2 text-sm font-medium">Open Price</span>
+                    </NavLink>
                     <NavLink a id="target-price-tag" className="flex items-center w-full h-9 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" to="/targetPrice">
                         <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -31,12 +37,7 @@ export default function NavBar(){
                         </svg>
                         <span className="ml-2 text-sm font-medium">Max Open</span>
                     </NavLink>
-                    <NavLink id="open-price-tag" className="flex items-center w-full h-9 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" to="/OpenPrice">
-                        <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                        <span className="ml-2 text-sm font-medium">Open Price</span>
-                    </NavLink>
+                    
                 </div>
                 
             </div>
@@ -53,6 +54,10 @@ export default function NavBar(){
                         
                         <span className=" text-sm font-medium">PNL</span>
                     </NavLink>
+                    <NavLink id="open-price-tag1" className="flex items-center w-full h-9 px-2 mt-2 rounded-full hover:bg-gray-700 hover:text-gray-300"  to="/OpenPrice" style={{ whiteSpace: 'nowrap' }}>
+                        
+                        <span className="text-sm font-medium w-[100%]">Open Price</span>
+                    </NavLink>
                     <NavLink id="target-price-tag1" className="flex items-center w-full h-9 px-2 mt-2 rounded-full hover:bg-gray-700 hover:text-gray-300" to="/targetPrice" style={{ whiteSpace: 'nowrap' }}>
                         <span className="text-sm font-medium">Target Price</span>
                     </NavLink>
@@ -64,10 +69,7 @@ export default function NavBar(){
                         
                         <span className="text-sm font-medium">Max Open</span>
                     </NavLink>
-                    <NavLink id="open-price-tag1" className="flex items-center w-full h-9 px-2 mt-2 rounded-full hover:bg-gray-700 hover:text-gray-300"  to="/OpenPrice" style={{ whiteSpace: 'nowrap' }}>
-                        
-                        <span className="text-sm font-medium w-[100%]">Open Price</span>
-                    </NavLink>
+                    
                 </div>
                 
             </div>
