@@ -1,6 +1,6 @@
 import PositionButton from "../PositionButton";
 import Input from "../Input";
-import { useState } from "react";
+import { useState} from "react";
 import Leverage from "../Leverage";
 
 export default function MaxOpenForm({passInput}){

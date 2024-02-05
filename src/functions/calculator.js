@@ -89,6 +89,24 @@ const calculateMaxOpen = (amt,lev,bp) => {
     }
 }
 
-export {calculateQuantity,calculateProfit,calculateMargin,calculateRoe,calculateLiquidationPrice,calculateTargetPrice,calculateAmount,calculateMaxOpen};
+const calculateOpenPRice = (Values) => {
+    let ans = 0;
+    let units = 0;
+    for(let i = 0;i<Values.length;i++){
+        ans += Values[i][0] * Values[i][1];
+        units += Values[i][1];
+    }
+    
+    
+    ans /= units;
+
+    if(Number.isFinite(ans)){
+        return Number(ans).toFixed(2);
+    }else{
+        return "0";
+    }
+}
+
+export {calculateQuantity,calculateProfit,calculateMargin,calculateRoe,calculateLiquidationPrice,calculateTargetPrice,calculateAmount,calculateMaxOpen,calculateOpenPRice};
 
 
