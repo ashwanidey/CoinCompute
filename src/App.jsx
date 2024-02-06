@@ -7,6 +7,9 @@ import TargetPrice from "./components/target_price/TargetPrice"
 import Liquidation from './components/liquidation price/Liquidation'
 import MaxOpen from './components/max_open/MaxOpen'
 import OpenPrice from './components/open-price/OpenPrice'
+import TopNavBar from './components/TopNavBar'
+import Tracker from './components/tracker/Tracker'
+
 
 
 
@@ -16,22 +19,25 @@ function App() {
 
   return (
     <>
-    <body class="flex sm:flex-row flex-col">
-      <NavBar/>
+   
+      <TopNavBar/>
+      
+      
       <Routes>
-      <Route path="/" element={<Pnl/>} />
-      <Route path="/pnl" element={<Pnl/>} />
-      <Route path="/targetPrice" element={<TargetPrice />} />
-      <Route path="/liquidationPrice" element={<Liquidation />} />
-      <Route path="/maxOpen" element={<MaxOpen />} />
-      <Route path="/OpenPrice" element={<OpenPrice />} />
+        <Route path = "/calculator" element={<div class="flex sm:flex-row flex-col"><NavBar/><Pnl/></div>}/>
+      <Route path="/" element={<Tracker/>} />
+      <Route path="/calculator/pnl" element={<div class="flex sm:flex-row flex-col"><NavBar/><Pnl/></div>} />
+      <Route path="/calculator/targetPrice" element={<div class="flex sm:flex-row flex-col"><NavBar/><TargetPrice /></div>} />
+      <Route path="/calculator/liquidationPrice" element={<div class="flex sm:flex-row flex-col"><NavBar/><Liquidation /></div>} />
+      <Route path="/calculator/maxOpen" element={<div class="flex sm:flex-row flex-col"><NavBar/><MaxOpen /></div>} />
+      <Route path="/calculator/OpenPrice" element={<div class="flex sm:flex-row flex-col"><NavBar/><OpenPrice /></div>} />
       </Routes>
     
       
       
       
     
-    </body>
+    
     
     
         
