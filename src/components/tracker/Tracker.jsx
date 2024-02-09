@@ -1,8 +1,17 @@
 import React from 'react'
+import InfoTable from './InfoTable'
+import { CryptoProvider } from '../../context/CryptoContext'
+
 
 const Tracker = () => {
   return (
-    <div>Tracker</div>
+    <>
+
+    <CryptoProvider>
+    <InfoTable/>
+    </CryptoProvider>
+    </>
+    
   )
 }
 

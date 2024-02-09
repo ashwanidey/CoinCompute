@@ -38,11 +38,11 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <div className=''>
-    <AppBar position="static" style = {{}}>
+    <div className='pr-[0.5rem] pt-[0.5rem] pl-[0.5rem] '>
+    <AppBar position="static" sx = {{borderRadius: "10px",  backgroundColor : "#4628ff",width:"100%"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <CurrencyBitcoinIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1,fontSize: 30  }} />
+          {/* <CurrencyBitcoinIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1,fontSize: 30  }} /> */}
 
           <NavLink to="/">
           <Typography
@@ -51,13 +51,14 @@ function ResponsiveAppBar() {
             component="a"
             
             sx={{
-              mr: 2,
+              mr: 6,
               display: { xs: 'none', md: 'flex' },
               fontFamily: {'Rubik': ['Rubik', 'sans-serif']},
               fontWeight: 1000,
-              
+              fontSize : "1.5rem",
               color: 'inherit',
               textDecoration: 'none',
+              
             }}
           >
             COIN COMPUTE
@@ -97,13 +98,13 @@ function ResponsiveAppBar() {
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   {/* console.log(index); */}
                   <NavLink to={paths[index]}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center" sx = {{fontWeight:1000}}>{page}</Typography>
                   </NavLink>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <CurrencyBitcoinIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1,fontSize: 30 }} />
+          {/* <CurrencyBitcoinIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1,fontSize: 30 }} /> */}
           <Typography
             variant="h5"
             noWrap
@@ -128,7 +129,7 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'block',fontWeight:1000,fontSize: "1rem " , mr:2}}
               >
                 {page}
               </Button>
