@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { Search } from './Search';
+import { SortOrder } from './SortOrder';
 
 
 const ControlBar = () => {
@@ -45,6 +46,8 @@ const ControlBar = () => {
         ></input>
         <button type='submit'>Submit</button>
         </form>
+
+        <SortOrder/>
       </Paper>
     </>
 

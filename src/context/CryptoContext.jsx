@@ -15,6 +15,7 @@ export const CryptoProvider = ({children}) => {
   const [searchedOptions,setSearchedOptions] = useState([]);
   const [searchVal,setSearchVal] = useState("");
   const [limit,setLimit] = useState(10);
+  const [order,setOrder] = useState("marketCap");
   
   
   // const requestSearch = (searchVal) => {
@@ -41,7 +42,7 @@ export const CryptoProvider = ({children}) => {
       referenceCurrencyUuid: 'yhjMzLPhuIDl',
       timePeriod: '24h',
       'tiers[0]': '1',
-      orderBy: 'marketCap',
+      orderBy: order,
       orderDirection: 'desc',
       limit: limit.toString(),
       offset: '0',
@@ -60,7 +61,7 @@ export const CryptoProvider = ({children}) => {
       
       timePeriod: '7d',
       'tiers[0]': '1',
-      orderBy: 'marketCap',
+      orderBy: order,
       orderDirection: 'desc',
       limit: limit.toString(),
       search: searchVal,
@@ -79,7 +80,7 @@ export const CryptoProvider = ({children}) => {
       
       timePeriod: '3h',
       'tiers[0]': '1',
-      orderBy: 'marketCap',
+      orderBy: order,
       orderDirection: 'desc',
       limit: limit.toString(),
       search: searchVal,
@@ -101,7 +102,7 @@ export const CryptoProvider = ({children}) => {
       
       timePeriod: '3h',
       'tiers[0]': '1',
-      orderBy: 'marketCap',
+      orderBy: order,
       orderDirection: 'desc',
       limit: limit.toString(),
       search: searchVal,
@@ -147,14 +148,14 @@ export const CryptoProvider = ({children}) => {
   }
   useEffect(() =>{
     getCryptoData();
-  },[limit,searchVal])
+  },[limit,searchVal,order])
 
 
   
   
   
   return (
-    <CryptoContext.Provider value = {{cryptoData,searched,searchVal,setSearchVal,limit,setLimit}}>
+    <CryptoContext.Provider value = {{cryptoData,searched,searchVal,setSearchVal,limit,setLimit,order,setOrder}}>
       {children}
     </CryptoContext.Provider>
   )
