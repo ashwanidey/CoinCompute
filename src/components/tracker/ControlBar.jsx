@@ -4,9 +4,11 @@ import { CryptoContext} from '../../context/CryptoContext';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import { Search } from './Search';
+
 
 const ControlBar = () => {
-  const {searchVal,setSearchVal,limit,setLimit} = useContext(CryptoContext);
+  const{limit,setLimit} = useContext(CryptoContext);
 
   const inputRef = useRef(null);
   const handleSubmit = (e) => {
@@ -17,16 +19,17 @@ const ControlBar = () => {
       inputRef.current.value = val;
     }
   };
+
+
+
+  
   return (
     <>
     <Paper sx = {{marginBottom:2,padding:2,display:"flex"}}>
       
-        <InputBase
-          value={searchVal}
-          onChange={(e) => setSearchVal(e.target.value)}
-          // onCancelSearch={() => cancelSearch()}
-          style={{backgroundColor:"black",color:"white"}}
-        /> <SearchIcon />
+        
+
+        <Search/>
 
 
         <form onSubmit={handleSubmit}>
