@@ -15,7 +15,8 @@ export const CryptoProvider = ({children}) => {
   const [searchedOptions,setSearchedOptions] = useState([]);
   const [searchVal,setSearchVal] = useState("");
   const [limit,setLimit] = useState(10);
-  const [order,setOrder] = useState("marketCap");
+  const [orderBy,setOrderBy] = useState("");
+  const [order,setOrder] = useState("");
   
   
   // const requestSearch = (searchVal) => {
@@ -42,8 +43,8 @@ export const CryptoProvider = ({children}) => {
       referenceCurrencyUuid: 'yhjMzLPhuIDl',
       timePeriod: '24h',
       'tiers[0]': '1',
-      orderBy: order,
-      orderDirection: 'desc',
+      orderBy: orderBy !== "" ? orderBy : "marketCap",
+      orderDirection: order !== '' ? order : 'desc',
       limit: limit.toString(),
       offset: '0',
       search: searchVal,
@@ -61,8 +62,8 @@ export const CryptoProvider = ({children}) => {
       
       timePeriod: '7d',
       'tiers[0]': '1',
-      orderBy: order,
-      orderDirection: 'desc',
+      orderBy: orderBy !== "" ? orderBy : "marketCap",
+      orderDirection: order !== '' ? order : 'desc',
       limit: limit.toString(),
       search: searchVal,
       
@@ -80,8 +81,8 @@ export const CryptoProvider = ({children}) => {
       
       timePeriod: '3h',
       'tiers[0]': '1',
-      orderBy: order,
-      orderDirection: 'desc',
+      orderBy: orderBy !== "" ? orderBy : "marketCap",
+      orderDirection: order !== '' ? order : 'desc',
       limit: limit.toString(),
       search: searchVal,
       
@@ -102,8 +103,8 @@ export const CryptoProvider = ({children}) => {
       
       timePeriod: '3h',
       'tiers[0]': '1',
-      orderBy: order,
-      orderDirection: 'desc',
+      orderBy: orderBy !== "" ? orderBy : "marketCap",
+      orderDirection: order !== '' ? order : 'desc',
       limit: limit.toString(),
       search: searchVal,
       
@@ -148,14 +149,14 @@ export const CryptoProvider = ({children}) => {
   }
   useEffect(() =>{
     getCryptoData();
-  },[limit,searchVal,order])
+  },[limit,searchVal,orderBy,order])
 
 
   
   
   
   return (
-    <CryptoContext.Provider value = {{cryptoData,searched,searchVal,setSearchVal,limit,setLimit,order,setOrder}}>
+    <CryptoContext.Provider value = {{cryptoData,searched,searchVal,setSearchVal,limit,setLimit,orderBy,setOrderBy,order,setOrder}}>
       {children}
     </CryptoContext.Provider>
   )

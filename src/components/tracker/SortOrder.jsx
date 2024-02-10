@@ -6,7 +6,7 @@ import Select from '@mui/material/Select';
 import { CryptoContext } from '../../context/CryptoContext';
 
 export const SortOrder = () => {
-  const OrderBy = [
+  const OrderByObject = [
     {value : 'marketCap' , Label : "Market"}, 
     {value : 'price', Label : "Price"},
     {value : '24hVolume',Label : "Volume"}, 
@@ -15,9 +15,9 @@ export const SortOrder = () => {
   ];
 
 
-  const {order,setOrder} = useContext(CryptoContext);
+  const {orderBy,setOrderBy} = useContext(CryptoContext);
   const handleChange = (event) => {
-    setOrder(event.target.value);
+    setOrderBy(event.target.value);
   };
   return (
     <>
@@ -26,12 +26,12 @@ export const SortOrder = () => {
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
-    value={order}
+    value={orderBy}
     label="Order By"
     onChange={handleChange}
   >
 
-    {OrderBy.map((order) => (
+    {OrderByObject.map((order) => (
       <MenuItem value={order.value}>{order.Label}</MenuItem>
     ))}
     

@@ -6,6 +6,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { Search } from './Search';
 import { SortOrder } from './SortOrder';
+import { Order } from './Order';
 
 
 const ControlBar = () => {
@@ -27,7 +28,7 @@ const ControlBar = () => {
   return (
 
     <>
-    <Paper sx = {{marginBottom:2,padding:2,display:"flex"}}>
+    <Paper sx = {{marginBottom:2,padding:2,display:"flex",flexDirection: "column"}}>
       
         
 
@@ -48,6 +49,7 @@ const ControlBar = () => {
         </form>
 
         <SortOrder/>
+        <Order/>
       </Paper>
     </>
 
