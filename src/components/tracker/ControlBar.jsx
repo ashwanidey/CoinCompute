@@ -24,6 +24,7 @@ const ControlBar = () => {
 
   
   return (
+
     <>
     <Paper sx = {{marginBottom:2,padding:2,display:"flex"}}>
       
@@ -46,6 +47,8 @@ const ControlBar = () => {
         </form>
       </Paper>
     </>
+
+    
   )
 }
 
