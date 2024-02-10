@@ -11,13 +11,14 @@ import InputBase from '@mui/material/InputBase';
 import { Card } from '@mui/material';
 import { CryptoContext } from '../../context/CryptoContext';
 import SearchIcon from '@mui/icons-material/Search';
+import { RemoveFromQueue } from '@mui/icons-material';
 
 
 
 export default function InfoTable() {
-  const {cryptoData,searched,requestSearch,setSearchVal,searchVal} = useContext(CryptoContext);
+  const {cryptoData,searched,requestSearch,setSearchVal,searchVal,getCryptoHistory} = useContext(CryptoContext);
 
-  const tableheads = ["Name","Price","Market Cap Change","1H","24H","7D"];
+  const tableheads = ["Name","Price","Market Cap Change (24h)","3H","7D","30D"];
   return (
     <>
     <Paper sx = {{marginBottom:2,padding:2}}>
@@ -42,25 +43,28 @@ export default function InfoTable() {
         </TableHead>
         <TableBody >
           {searched.map((row) => (
+            <>
+            {/* {getCryptoHistory(row.uuid)} */}
             <TableRow
-              key={row.id}
+              key={row.uuid}
               sx={{ '&:last-child td, &:last-child th': { border: 0 ,} } }
             >
               <TableCell component="th" align="center">
-              <img src = {row.image} className='h-[1.6rem] w-[1.6rem]'/>
+              <img src = {row.iconUrl} className='h-[1.6rem] w-[1.6rem]'/>
               </TableCell>
               <TableCell align="center">{row.name}</TableCell>
-              <TableCell align="center">${row.current_price}</TableCell>
-              <TableCell align="center">{(row.market_cap_change_percentage_24h).toFixed(2)}%</TableCell>
-              <TableCell align="center">{(row.price_change_percentage_1h_in_currency).toFixed(2)
+              <TableCell align="center">${row.price ? Number(row.price).toFixed(2) : 0}</TableCell>
+              <TableCell align="center">{row.change ? Number(row.change).toFixed(2) : 0}%</TableCell>
+              <TableCell align="center">{row.change3h ? Number(row.change3h).toFixed(2) : 0
 }%</TableCell>
-<TableCell align="center">{(row.price_change_percentage_24h_in_currency
-).toFixed(2) }%</TableCell>
-              <TableCell align="center">{(row.price_change_percentage_7d_in_currency
-).toFixed(2)}%</TableCell>
+<TableCell align="center">{row.change7d ? Number(row.change7d
+).toFixed(2) : 0}%</TableCell>
+              <TableCell align="center">{row.change30d ? Number(row.change30d
+).toFixed(2) : 0}%</TableCell>
               
             </TableRow>
-          ))}
+            </>))
+          }
         </TableBody>
       </Table>
     </TableContainer>

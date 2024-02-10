@@ -30,29 +30,119 @@ export const CryptoProvider = ({children}) => {
     requestSearch(searched);
   };
 
-  // let config = {
-  //   method: 'get',
-  // maxBodyLength: Infinity,
-  //   url: 'https://rest.coinapi.io/v1/assets',
-  //   headers: { 
-  //     'Accept': 'text/json', 
-  //     'X-CoinAPI-Key': 'F5792C6B-F676-4729-A275-626494431950'
-  //   }
-  // };
+  
+  const options24h = {
+    method: 'GET',
+    url: 'https://coinranking1.p.rapidapi.com/coins',
+    params: {
+      referenceCurrencyUuid: 'yhjMzLPhuIDl',
+      timePeriod: '24h',
+      'tiers[0]': '1',
+      orderBy: 'marketCap',
+      orderDirection: 'desc',
+      limit: '50',
+      offset: '0'
+    },
+    headers: {
+      'X-RapidAPI-Key': 'fef93e0117msh2c96991107f59b4p1fb309jsn5804230510a6',
+      'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+    }
+  };
+
+  const options7d = {
+    method: 'GET',
+    url: 'https://coinranking1.p.rapidapi.com/coins',
+    params: {
+      
+      timePeriod: '7d',
+      'tiers[0]': '1',
+      orderBy: 'marketCap',
+      orderDirection: 'desc',
+      limit: '50',
+      
+    },
+    headers: {
+      'X-RapidAPI-Key': 'fef93e0117msh2c96991107f59b4p1fb309jsn5804230510a6',
+      'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+    }
+  };
+
+  const options3h  = {
+    method: 'GET',
+    url: 'https://coinranking1.p.rapidapi.com/coins',
+    params: {
+      
+      timePeriod: '3h',
+      'tiers[0]': '1',
+      orderBy: 'marketCap',
+      orderDirection: 'desc',
+      limit: '50',
+      
+    },
+    headers: {
+      'X-RapidAPI-Key': 'fef93e0117msh2c96991107f59b4p1fb309jsn5804230510a6',
+      'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+    }
+  };
+
+  const options30d  = {
+    method: 'GET',
+    url: 'https://coinranking1.p.rapidapi.com/coins',
+    params: {
+      
+      timePeriod: '3h',
+      'tiers[0]': '1',
+      orderBy: 'marketCap',
+      orderDirection: 'desc',
+      limit: '50',
+      
+    },
+    headers: {
+      'X-RapidAPI-Key': 'fef93e0117msh2c96991107f59b4p1fb309jsn5804230510a6',
+      'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+    }
+  };
+
+  
 
   const getCryptoData  = async () => {
-        try {
-          const data = await fetch(
-            `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`
-          )
-            .then((res) => res.json())
-            .then((json) => json);
-    console.log(data);
-    setCryptoData(data);
-    setSearched(data);
-        } catch (error) {
-          console.log(error);
-        }
+
+    try {
+      const data24h = await axios.request(options24h);
+      const data7d = await axios.request(options7d);
+      const data3h = await axios.request(options3h);
+      const data30d = await axios.request(options30d);
+
+      const array = data24h.data.data.coins;
+      const array7d = data7d.data.data.coins;
+      const array3h = data3h.data.data.coins;
+      const array30d = data30d.data.data.coins;
+      const newValue = array7d.map((eachData, index) => ({
+        ...array[index],
+        change7d: eachData.change, change3h : array3h[index].change,change30d : array30d[index].change
+      }));
+      setSearched(newValue);
+      setCryptoData(newValue);
+      
+      
+      
+    } catch (error) {
+      console.error(error);
+    }
+
+
+    //     try {
+    //       const data = await fetch(
+    //         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`
+    //       )
+    //         .then((res) => res.json())
+    //         .then((json) => json);
+    // console.log(data);
+    // setCryptoData(data);
+    // setSearched(data);
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
   }
   useEffect(() =>{
     getCryptoData();
