@@ -6,12 +6,12 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import InputBase from '@mui/material/InputBase';
+
 import { Card } from '@mui/material';
 import { CryptoContext } from '../../context/CryptoContext';
-import SearchIcon from '@mui/icons-material/Search';
+
 import { RemoveFromQueue } from '@mui/icons-material';
+import ControlBar from './ControlBar';
 
 
 
@@ -21,13 +21,7 @@ export default function InfoTable() {
   const tableheads = ["Name","Price","Market Cap Change (24h)","3H","7D","30D"];
   return (
     <>
-    <Paper sx = {{marginBottom:2,padding:2}}>
-        <InputBase
-          value={searchVal}
-          onChange={(e) => setSearchVal(e.target.value)}
-          onCancelSearch={() => cancelSearch()}
-          sx={{backgroundColor:"black",color:"white"}}
-        /> <SearchIcon /></Paper>
+   
      {cryptoData ? <div >
     <TableContainer component={Card}>
       <Table sx={{ minWidth: 650 ,backgroundColor:"white",}}>

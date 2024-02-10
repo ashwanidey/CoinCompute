@@ -13,6 +13,8 @@ export const CryptoProvider = ({children}) => {
   
   const [searched, setSearched] = useState([]);
   const [searchVal,setSearchVal] = useState("");
+  const [limit,setLimit] = useState(10);
+  console.log(limit);
   
   const requestSearch = (searchVal) => {
     const filteredRows = cryptoData.filter((row) => {
@@ -30,7 +32,7 @@ export const CryptoProvider = ({children}) => {
     requestSearch(searched);
   };
 
-  
+
   const options24h = {
     method: 'GET',
     url: 'https://coinranking1.p.rapidapi.com/coins',
@@ -40,7 +42,7 @@ export const CryptoProvider = ({children}) => {
       'tiers[0]': '1',
       orderBy: 'marketCap',
       orderDirection: 'desc',
-      limit: '50',
+      limit: limit.toString(),
       offset: '0'
     },
     headers: {
@@ -58,7 +60,7 @@ export const CryptoProvider = ({children}) => {
       'tiers[0]': '1',
       orderBy: 'marketCap',
       orderDirection: 'desc',
-      limit: '50',
+      limit: limit.toString(),
       
     },
     headers: {
@@ -76,7 +78,7 @@ export const CryptoProvider = ({children}) => {
       'tiers[0]': '1',
       orderBy: 'marketCap',
       orderDirection: 'desc',
-      limit: '50',
+      limit: limit.toString(),
       
     },
     headers: {
@@ -94,7 +96,7 @@ export const CryptoProvider = ({children}) => {
       'tiers[0]': '1',
       orderBy: 'marketCap',
       orderDirection: 'desc',
-      limit: '50',
+      limit: limit.toString(),
       
     },
     headers: {
@@ -146,13 +148,13 @@ export const CryptoProvider = ({children}) => {
   }
   useEffect(() =>{
     getCryptoData();
-  },[])
+  },[limit])
 
   
   
   
   return (
-    <CryptoContext.Provider value = {{cryptoData,searched,requestSearch,searchVal,setSearchVal}}>
+    <CryptoContext.Provider value = {{cryptoData,searched,requestSearch,searchVal,setSearchVal,limit,setLimit}}>
       {children}
     </CryptoContext.Provider>
   )
