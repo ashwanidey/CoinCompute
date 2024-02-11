@@ -17,23 +17,11 @@ export const CryptoProvider = ({children}) => {
   const [limit,setLimit] = useState(10);
   const [orderBy,setOrderBy] = useState("");
   const [order,setOrder] = useState("");
-  
-  
-  // const requestSearch = (searchVal) => {
-  //   const filteredRows = cryptoData.filter((row) => {
-  //     return row.name.toLowerCase().includes(searchVal.toLowerCase());
-  //   });
-  //   setSearched(filteredRows);
-    
-  // };
-  // useEffect(() =>{
-  //   requestSearch(searchVal);
-  // },[searchVal])
 
-  // const cancelSearch = () => {
-  //   setSearched("");
-  //   requestSearch(searched);
-  // };
+  const [loading,setLoading] = useState();
+  
+  
+ 
 
 
   const options24h = {
@@ -119,6 +107,8 @@ export const CryptoProvider = ({children}) => {
 
   const getCryptoData  = async () => {
 
+    setLoading(false);
+
     try {
       const data24h = await axios.request(options24h);
       const data7d = await axios.request(options7d);
@@ -135,10 +125,12 @@ export const CryptoProvider = ({children}) => {
       }));
       setSearched(newValue);
       setCryptoData(newValue);
+      setLoading(true);
       
       
       
     } catch (error) {
+      setLoading(false);
       console.error(error);
     }
 
@@ -156,7 +148,7 @@ export const CryptoProvider = ({children}) => {
   
   
   return (
-    <CryptoContext.Provider value = {{cryptoData,searched,searchVal,setSearchVal,limit,setLimit,orderBy,setOrderBy,order,setOrder}}>
+    <CryptoContext.Provider value = {{cryptoData,searched,searchVal,setSearchVal,limit,setLimit,orderBy,setOrderBy,order,setOrder,loading}}>
       {children}
     </CryptoContext.Provider>
   )
