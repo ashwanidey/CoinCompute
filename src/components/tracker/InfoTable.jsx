@@ -14,6 +14,9 @@ import { RemoveFromQueue } from '@mui/icons-material';
 import ControlBar from './ControlBar';
 import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
+
+
 
 
 
@@ -21,16 +24,17 @@ export default function InfoTable() {
   const {cryptoData,searched,requestSearch,setSearchVal,searchVal,getCryptoHistory,loading} = useContext(CryptoContext);
   
 
-  const tableheads = ["Name","Price","Market Cap Change (24h)","3H","7D","30D"];
+  const tableheads = ["Rank","Asset","Name","Price","Market Cap Change (24h)","3H","7D","30D"];
   return (
     <>
+    
    
      <div >
     <TableContainer component={Card}>
       <Table sx={{ minWidth: 650 ,backgroundColor:"white",}}>
         <TableHead>
           <TableRow >
-          <TableCell align="center" sx={{fontWeight:1000}}>Asset</TableCell>
+         
           {tableheads.map((data) => (
               <TableCell align="center" sx={{fontWeight:1000}}>{data}</TableCell>
             ))}
@@ -40,16 +44,19 @@ export default function InfoTable() {
         </TableHead>
         {loading ? 
         <TableBody >
-          {searched.map((row) => (
+          {searched.map((row,index) => (
             <>
-            {/* {getCryptoHistory(row.uuid)} */}
+            
             <TableRow
               key={row.uuid}
               sx={{ '&:last-child td, &:last-child th': { border: 0 ,} } }
-            >
-              <TableCell component="th" align="center">
+            > <TableCell align="center">{index+1}</TableCell>
+            <Link to={`/tracker/${row.uuid}`}>
+              <TableCell component="th" align="center" sx={{display:"flex" ,gap:1,justifyContent:"center", alignItems:"center"}}>
               <img src = {row.iconUrl} className='h-[1.6rem] w-[1.6rem]'/>
+              {row.symbol}
               </TableCell>
+              </Link>
               <TableCell align="center">{row.name}</TableCell>
               <TableCell align="center">${row.price ? Number(row.price).toFixed(2) : 0}</TableCell>
               <TableCell align="center">{row.change ? Number(row.change).toFixed(2) : 0}%</TableCell>

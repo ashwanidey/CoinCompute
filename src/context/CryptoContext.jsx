@@ -2,6 +2,7 @@ import { createContext,useEffect,useState,useMemo } from "react";
 import { CoinList } from "../config/api";
 
 
+
 import axios from "axios";
 
 export const CryptoContext = createContext({});
@@ -19,6 +20,9 @@ export const CryptoProvider = ({children}) => {
   const [order,setOrder] = useState("");
 
   const [loading,setLoading] = useState();
+
+  const [coinId,setCoinId] = useState('');
+  
   
   
  
@@ -133,22 +137,49 @@ export const CryptoProvider = ({children}) => {
       setLoading(false);
       console.error(error);
     }
-
-   
-
-
     
   }
   useEffect(() =>{
     getCryptoData();
   },[limit,searchVal,orderBy,order])
 
+  const options = {
+    method: 'GET',
+    url: `https://coinranking1.p.rapidapi.com/coin/${coinId}`,
+    params: {
+      referenceCurrencyUuid: 'yhjMzLPhuIDl',
+      timePeriod: '24h'
+    },
+    headers: {
+      'X-RapidAPI-Key': 'fef93e0117msh2c96991107f59b4p1fb309jsn5804230510a6',
+      'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+    }
+  };
 
+  const [coinData,setCoinData] = useState([]);
+  const [loadingCoin,setLoadingCoin] = useState();
+
+  const getCoinData = async () => {
+    setLoadingCoin(false);
+    try {
+      const response = await axios.request(options);
+      setCoinData(response.data.data.coin);
+      setLoadingCoin(true);
+    } catch (error) {
+      setLoadingCoin(false);
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    if(coinId != "")
+    getCoinData()
+  },[coinId])
   
   
   
   return (
-    <CryptoContext.Provider value = {{cryptoData,searched,searchVal,setSearchVal,limit,setLimit,orderBy,setOrderBy,order,setOrder,loading}}>
+    <CryptoContext.Provider value = {{cryptoData,searched,searchVal,setSearchVal,limit,setLimit,orderBy,setOrderBy,order,setOrder,loading,coinId,setCoinId,coinData,loadingCoin}}>
       {children}
     </CryptoContext.Provider>
   )

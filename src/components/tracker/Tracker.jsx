@@ -2,12 +2,13 @@ import React from 'react'
 import InfoTable from './InfoTable'
 import { CryptoProvider } from '../../context/CryptoContext'
 import ControlBar from './ControlBar'
+import { Outlet } from '@mui/icons-material'
 
 
 const Tracker = () => {
   return (
     <>
-
+    <Outlet/>
     <CryptoProvider>
       <div className='mt-10 ml-[2rem] mr-[2rem]'>
     <ControlBar/>

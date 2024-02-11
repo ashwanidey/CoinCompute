@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import './App.css'
 import NavBar from './components/NavBar'
 import { Route, Routes } from "react-router-dom"
@@ -9,7 +9,9 @@ import MaxOpen from './components/max_open/MaxOpen'
 import OpenPrice from './components/open-price/OpenPrice'
 import TopNavBar from './components/TopNavBar'
 import Tracker from './components/tracker/Tracker'
-import { CryptoProvider} from './context/CryptoContext'
+
+import { CryptoContext } from './context/CryptoContext'
+import { CryptoDetails } from './components/tracker/crypto-details/CryptoDetails'
 
 
 
@@ -25,14 +27,18 @@ function App() {
       
       
       <Routes>
+      <Route path = "/"></Route>
       <Route path = "/calculator" element={<div class="flex sm:flex-row flex-col"><NavBar/><Pnl/></div>}/>
-      <Route path="/tracker" element={<Tracker/>}/>
+      <Route path="/tracker" element={<Tracker/>} />
+      <Route path="/tracker/:coinId" element={<CryptoDetails/>} />
+       
       <Route path="/calculator/pnl" element={<div class="flex sm:flex-row flex-col"><NavBar/><Pnl/></div>} />
       <Route path="/calculator/targetPrice" element={<div class="flex sm:flex-row flex-col"><NavBar/><TargetPrice /></div>} />
       <Route path="/calculator/liquidationPrice" element={<div class="flex sm:flex-row flex-col"><NavBar/><Liquidation /></div>} />
       <Route path="/calculator/maxOpen" element={<div class="flex sm:flex-row flex-col"><NavBar/><MaxOpen /></div>} />
       <Route path="/calculator/OpenPrice" element={<div class="flex sm:flex-row flex-col"><NavBar/><OpenPrice /></div>} />
       </Routes>
+      
       
     
       
