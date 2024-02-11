@@ -12,17 +12,20 @@ import { CryptoContext } from '../../context/CryptoContext';
 
 import { RemoveFromQueue } from '@mui/icons-material';
 import ControlBar from './ControlBar';
+import LinearProgress from '@mui/material/LinearProgress';
+import Box from '@mui/material/Box';
 
 
 
 export default function InfoTable() {
-  const {cryptoData,searched,requestSearch,setSearchVal,searchVal,getCryptoHistory} = useContext(CryptoContext);
+  const {cryptoData,searched,requestSearch,setSearchVal,searchVal,getCryptoHistory,loading} = useContext(CryptoContext);
+  
 
   const tableheads = ["Name","Price","Market Cap Change (24h)","3H","7D","30D"];
   return (
     <>
    
-     {cryptoData ? <div >
+     <div >
     <TableContainer component={Card}>
       <Table sx={{ minWidth: 650 ,backgroundColor:"white",}}>
         <TableHead>
@@ -35,6 +38,7 @@ export default function InfoTable() {
            
           </TableRow>
         </TableHead>
+        {loading ? 
         <TableBody >
           {searched.map((row) => (
             <>
@@ -60,12 +64,17 @@ export default function InfoTable() {
             </>))
           }
         </TableBody>
+        : <TableCell colSpan={7}>
+        <LinearProgress sx={{width:"100%"}}/>
+        </TableCell>
+      }
+
       </Table>
     </TableContainer>
 
    
 
-    </div>  : null}
+    </div> 
     </>
   );
 }
