@@ -12,7 +12,7 @@ export const CryptoDetails = () => {
   return (
     <>
     <div className='ml-[1rem] mr-[1rem]'>
-      <div className='flex w-[100%] :p-[52px] p-[10px] bg-white mt-10'>
+      <div className='flex w-[100%] :p-[52px] p-[10px] bg-white mt-10 rounded-md'>
 
      <Header/>
       
