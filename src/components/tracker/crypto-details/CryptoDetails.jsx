@@ -17,13 +17,16 @@ export const CryptoDetails = () => {
     
     <div className='ml-[1rem] mr-[1rem] mt-[-1rem]'>
       <div className='w-[100%] lg:p-[52px] px-[20px] pt-[10px] bg-white mt-10 rounded-md'>
-    {loadingCoin ? <div className=''>
+    {loadingCoin ? <div className='' >
+
+     
     <Header/>
 
      <div className='text-[1rem] color-[#002358] mt-2'>
       <span className='font-[700] text-[1.2rem] mr-2'>Summary </span> 
       <span>{coinData.description}</span>
      </div>  
+     
 
       <div className='flex justify-between max-w-[1632px] w-full mt-9 lg:flex-row flex-col '>
       <Supply/>

@@ -35,9 +35,9 @@ export const Supply = () => {
       <h2 class="text-[2.4rem] font-[700]"> Supply information </h2>
       <p className='color-[#264d89] leading-[1.7] '>View the total and circulating supply of {coinData.name}, including details on how the supplies are calculated.</p>
 
-      <div className='mt-[35px] rounded-[10px] bg-[#f1f6ff]'>
+      <div className='mt-[35px] rounded-[10px] bg-[#f1f6ff]' style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}}>
         
-        <table className='w-full'>
+        <table className='w-full ' >
           <tbody>
             <tr style={row}>
               <th style={thead}>Circulating supply</th>

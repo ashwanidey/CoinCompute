@@ -52,9 +52,9 @@ const ControlBar = () => {
   return (
 
     <>
-    <div className='bg-white mb-2 rounded-lg flex p-3 justify-between md:gap-7 gap-3 md:flex-row flex-col items-center' >
+    <div className='bg-white mb-4 rounded-lg flex p-3 justify-between md:gap-7 gap-3 md:flex-row flex-col items-center' style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}} >
         <Search/>
-        <PerPage/>
+        {/* <PerPage/> */}
         <div className='md:w-[60%] w-full flex gap-3'>
         <SortOrder/>
         <Order/>

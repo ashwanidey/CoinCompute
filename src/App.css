@@ -19,8 +19,9 @@ body{
     line-height: 1.5;
     color: #212529;
     overflow-x: hidden;
-    background-color: #141E30;
-background: linear-gradient(to right, #24243e, #141E30, #0f0c29);
+    /* background-color: #141E30; */
+   background-color: white;
+/* background: linear-gradient(to right, #24243e, #141E30, #0f0c29); */
 }
 
 .Heading {

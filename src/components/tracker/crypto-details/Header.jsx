@@ -9,8 +9,8 @@ export const Header = () => {
     <>
   
     <div className=''>
-      <div className='flex lg:max-w-[30%] w-full justify-between'>
-        <div className='flex items-center'>
+      <div className='flex lg:max-w-[30%] w-full justify-between'  >
+        <div className='flex items-center' >
         <div className='w-[40px] h-[40px] mr-[9px] ml-[-3px] lg:mb-0 mb-[-4px]'><img src= {coinData.iconUrl}/></div>
         <div className='flex lg:items-center flex-col lg:flex-row items-start'>
         <div className='lg:text-[1.9rem]  text-[1.6rem] font-[700] color-[#002358] mr-[8px] max-w-[340px] tracking-[-0.028em]'>
