@@ -8,7 +8,7 @@ import { Outlet } from '@mui/icons-material'
 const Tracker = () => {
   return (
     <>
-    <Outlet/>
+   
     <CryptoProvider>
       <div className='mt-10 ml-[2rem] mr-[2rem]'>
     <ControlBar/>

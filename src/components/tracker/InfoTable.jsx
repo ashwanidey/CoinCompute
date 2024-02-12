@@ -14,7 +14,7 @@ import { RemoveFromQueue } from '@mui/icons-material';
 import ControlBar from './ControlBar';
 import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ScreenSizeContext } from '../../context/ScreenSize';
 
 
@@ -64,7 +64,12 @@ export default function InfoTable() {
   const {activeMenu,size400} = useContext(ScreenSizeContext);
   
 
-  const tableheads = ["Order","Asset","Name","Price","Market Cap Change (24h)","3H","7D","30D"];
+  const tableheads = ["Asset","Name","Price","Market Cap Change (24h)","3H","7D","30D"];
+ 
+  const navigate = useNavigate();
+  const handleRowClick = (id) => {
+    navigate(`/tracker/${id}`);
+  }
 
   
   return (
@@ -78,7 +83,10 @@ export default function InfoTable() {
           <TableRow >
          
           {tableheads.map((data) => (
-            !activeMenu && data === "Order" || !size400  && data === "Name"? <></> : (!activeMenu && data === "Market Cap Change (24h)" ? <TableCell align="center" sx={{fontWeight:900,fontSize:"1.1rem",color: "black"}}>24H </TableCell> : <TableCell align="center" sx={{fontWeight:900,fontSize:"1.1rem",color: "black"}}>{data}</TableCell>)
+            !size400  && data === "Name"? <></> : 
+            (!activeMenu && data === "Market Cap Change (24h)" ? 
+            <TableCell align="center" sx={{fontWeight:900,fontSize:"1.1rem",color: "black"}}>24H </TableCell> :
+            data === "Name" || data === "Price" || data === "Asset" ? <TableCell align="left" sx={{fontWeight:900,fontSize:"1.1rem",color: "black"}}>{data}</TableCell> : <TableCell align="center" sx={{fontWeight:900,fontSize:"1.1rem",color: "black"}}>{data}</TableCell>)
               
 
               
@@ -96,19 +104,23 @@ export default function InfoTable() {
             
             <TableRow
               key={row.uuid}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 ,} } }
+              sx={{ '&:last-child td, &:last-child th': { border: 0 ,},cursor:"pointer" } }
+              onClick={()=> handleRowClick(row.uuid)}
               
             > 
-            {activeMenu && <TableCell align="center">{index+1}</TableCell>}
-            <Link to={`/tracker/${row.uuid}`}>
-              <TableCell align="center" sx={{display:"flex" ,gap:1, alignItems:"center" , justifyContent:"center",Width:"100px,",paddingLeft:"30px"}}>
+            
+            
+            {/* <Link to={`/tracker/${row.uuid}`}> */}
+              <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"100px,",paddingLeft:"20px",paddingRight:"40px"}}>
+              <div className='font-[700] mr-2'>{index+1}</div>
               <img src = {row.iconUrl} className='h-[1.6rem] w-[1.6rem]' />
               {row.symbol}
               </TableCell>
-              </Link>
-              { size400 && <TableCell align="center" sx={cellValue} className='min-w-[200px]'>{row.name}</TableCell> }
+              {/* </Link> */}
               
-              <TableCell align="center" sx={cellValue}>${row.price ? Number(row.price).toFixed(2) : 0}</TableCell>
+              { size400 && <TableCell align="left" sx={cellValue} className='min-w-[150px] '>{row.name}</TableCell> }
+            
+              <TableCell align="left" sx={cellValue} >${row.price ? Number(row.price).toFixed(2) : 0}</TableCell>
               
               <Item value = {row.change} />
               <Item value={row.change3h}/>
@@ -116,7 +128,9 @@ export default function InfoTable() {
 
               <Item value = {row.change30d}/>
               
+              
             </TableRow>
+            
             </>))
           }
         </TableBody>

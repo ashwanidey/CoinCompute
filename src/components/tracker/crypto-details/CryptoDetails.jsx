@@ -15,7 +15,7 @@ export const CryptoDetails = () => {
   return (
     <>
     
-    <div className='ml-[1rem] mr-[1rem]'>
+    <div className='ml-[1rem] mr-[1rem] mt-[-1rem]'>
       <div className='w-[100%] lg:p-[52px] px-[20px] pt-[10px] bg-white mt-10 rounded-md'>
     {loadingCoin ? <div className=''>
     <Header/>
@@ -31,7 +31,7 @@ export const CryptoDetails = () => {
       </div>
      
      </div>
-     : <div className='w-[100%]'><LinearProgress color="secondary" /> </div>
+     : <div className='w-[100%] h-[10px] items-center'><LinearProgress color="secondary" /> </div>
      
      }
      

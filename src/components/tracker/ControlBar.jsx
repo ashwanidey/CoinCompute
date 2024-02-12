@@ -16,21 +16,19 @@ const ControlBar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let val = inputRef.current.value;
-    if (val !== 0) {
+
+    if (Number(val) !== 0) {
       setLimit(val);
       inputRef.current.value = val;
     }
+    else setLimit(10);;
   };
 
 
-
-  
-  return (
-
-    <>
-    <div className='bg-white mb-2 rounded-lg flex p-3 justify-between md:gap-7 gap-3 md:flex-row flex-col items-center' >
-        <Search/>
-        <form onSubmit={handleSubmit}>
+  const PerPage = () => {
+    return (
+      <>
+      <form onSubmit={handleSubmit}>
         <input
         ref={inputRef}
         type='number'
@@ -43,6 +41,20 @@ const ControlBar = () => {
         <button type='submit'>Submit</button>
         </form>
 
+        
+      </>
+    )
+  }
+
+
+
+  
+  return (
+
+    <>
+    <div className='bg-white mb-2 rounded-lg flex p-3 justify-between md:gap-7 gap-3 md:flex-row flex-col items-center' >
+        <Search/>
+        <PerPage/>
         <div className='md:w-[60%] w-full flex gap-3'>
         <SortOrder/>
         <Order/>
