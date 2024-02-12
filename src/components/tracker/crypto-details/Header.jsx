@@ -7,8 +7,9 @@ export const Header = () => {
   const {setCoinId,coinData,loadingCoin} = useContext(CryptoContext);
   return (
     <>
-    { loadingCoin ?
-      <div className='flex w-full justify-between'>
+  
+    <div className=''>
+      <div className='flex lg:max-w-[30%] w-full justify-between'>
         <div className='flex items-center'>
         <div className='w-[40px] h-[40px] mr-[9px] ml-[-3px] lg:mb-0 mb-[-4px]'><img src= {coinData.iconUrl}/></div>
         <div className='flex lg:items-center flex-col lg:flex-row items-start'>
@@ -27,7 +28,8 @@ export const Header = () => {
         </div>
       
       </div>
-: <div className='w-[100%]'><LinearProgress color="secondary" /> </div>}
+      </div>
+
 </>
   )
 }
