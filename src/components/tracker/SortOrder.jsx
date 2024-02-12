@@ -21,7 +21,7 @@ export const SortOrder = () => {
   };
   return (
     <>
-    <FormControl >
+    <FormControl className='w-[50%]'>
   <InputLabel id="demo-simple-select-label">Order By</InputLabel>
   <Select
     labelId="demo-simple-select-label"

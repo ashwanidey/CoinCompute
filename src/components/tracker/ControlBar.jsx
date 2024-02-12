@@ -28,13 +28,8 @@ const ControlBar = () => {
   return (
 
     <>
-    <Paper sx = {{marginBottom:2,padding:2,display:"flex",flexDirection: "column"}}>
-      
-        
-
+    <div className='bg-white mb-2 rounded-lg flex p-3 justify-between md:gap-7 gap-3 md:flex-row flex-col items-center' >
         <Search/>
-
-
         <form onSubmit={handleSubmit}>
         <input
         ref={inputRef}
@@ -48,9 +43,11 @@ const ControlBar = () => {
         <button type='submit'>Submit</button>
         </form>
 
+        <div className='md:w-[60%] w-full flex gap-3'>
         <SortOrder/>
         <Order/>
-      </Paper>
+        </div>
+      </div>
     </>
 
     

@@ -28,8 +28,8 @@ const tdata = {
 
 export const Supply = () => {
   const {setCoinId,coinData,loadingCoin} = useContext(CryptoContext);
-  // console.log(coinData);
-  // console.log(coinData.supply.circulating)
+  console.log(coinData);
+  console.log(coinData.supply.max)
   return (
     <div className='color-[#002358] lg:pr-[32px]'>
       <h2 class="text-[2.4rem] font-[700]"> Supply information </h2>
@@ -41,15 +41,15 @@ export const Supply = () => {
           <tbody>
             <tr style={row}>
               <th style={thead}>Circulating supply</th>
-              <td style={tdata}>{millify(coinData.supply.circulating,{precision : 2})} BTC</td>
+              <td style={tdata}>{millify(coinData.supply.circulating,{precision : 2})} {coinData.symbol}</td>
             </tr>
             <tr style={row}>
               <th style={thead}>Total supply</th>
-              <td style={tdata}>{millify(coinData.supply.total,{precision : 2})} BTC</td>
+              <td style={tdata}>{millify(coinData.supply.total,{precision : 2})} {coinData.symbol}</td>
             </tr>
             <tr style={row}>
               <th style={thead}>Max supply</th>
-              <td style={tdata}>{millify(coinData.supply.max,{precision : 2})} BTC</td>
+              <td style={tdata}>{coinData.supply.max !== null ? millify(coinData.supply.max,{precision : 2}) + coinData.symbol: "Data Not Available"} </td>
             </tr>
             <tr style={row}>
               <th style={thead}>Issuance blockchain</th>

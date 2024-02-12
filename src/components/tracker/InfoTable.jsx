@@ -15,29 +15,76 @@ import ControlBar from './ControlBar';
 import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
+import { ScreenSizeContext } from '../../context/ScreenSize';
 
 
 
+
+const positive = {
+  
+  borderColor : "green",
+  color : "green",
+  
+
+}
+
+const negative = {
+  borderColor : "red",
+  color:"red",
+ 
+}
+
+const zero = {
+  borderColor : "gray",
+  color:"gray",
+}
+
+const cellValue = {
+  fontSize: "0.9rem",
+  fontWeight : 700,
+  color: " #002358"
+}
+
+const Item = ({value}) => {
+  return (
+    <>
+    <TableCell align="center"  sx={cellValue}>
+      
+      <span className='border-solid border-[1px]  rounded-[3px] p-1' style={ Number(value) >= 0 ? (Number(value)!== 0 ? positive: zero) : negative}>{value ? Number(value).toFixed(2) : 0}%</span>
+   
+      </TableCell>
+    </>
+  )
+}
 
 
 export default function InfoTable() {
   const {cryptoData,searched,requestSearch,setSearchVal,searchVal,getCryptoHistory,loading} = useContext(CryptoContext);
+
+  const {activeMenu,size400} = useContext(ScreenSizeContext);
   
 
-  const tableheads = ["Asset","Name","Price","Market Cap Change (24h)","3H","7D","30D"];
+  const tableheads = ["Order","Asset","Name","Price","Market Cap Change (24h)","3H","7D","30D"];
+
+  
   return (
     <>
     
    
      <div >
     <TableContainer component={Card}>
-      <Table sx={{ minWidth: 800 ,backgroundColor:"white",}}>
+      <Table >
         <TableHead>
           <TableRow >
-         <TableCell  sx={{fontWeight:1000}}>Rank</TableCell>
+         
           {tableheads.map((data) => (
-              <TableCell align="center" sx={{fontWeight:1000}}>{data}</TableCell>
-            ))}
+            !activeMenu && data === "Order" || !size400  && data === "Name"? <></> : (!activeMenu && data === "Market Cap Change (24h)" ? <TableCell align="center" sx={{fontWeight:900,fontSize:"1.1rem",color: "black"}}>24H </TableCell> : <TableCell align="center" sx={{fontWeight:900,fontSize:"1.1rem",color: "black"}}>{data}</TableCell>)
+              
+
+              
+          ))}
+
+            
            
            
           </TableRow>
@@ -50,23 +97,24 @@ export default function InfoTable() {
             <TableRow
               key={row.uuid}
               sx={{ '&:last-child td, &:last-child th': { border: 0 ,} } }
+              
             > 
-            <TableCell >{index+1}</TableCell>
+            {activeMenu && <TableCell align="center">{index+1}</TableCell>}
             <Link to={`/tracker/${row.uuid}`}>
-              <TableCell align="center" sx={{display:"flex" ,gap:1, alignItems:"center"}}>
-              <img src = {row.iconUrl} className='h-[1.6rem] w-[1.6rem]'/>
+              <TableCell align="center" sx={{display:"flex" ,gap:1, alignItems:"center" , justifyContent:"center",Width:"100px,",paddingLeft:"30px"}}>
+              <img src = {row.iconUrl} className='h-[1.6rem] w-[1.6rem]' />
               {row.symbol}
               </TableCell>
               </Link>
-              <TableCell align="center" sx={{width:"100%"}}>{row.name}</TableCell>
-              <TableCell align="center">${row.price ? Number(row.price).toFixed(2) : 0}</TableCell>
-              <TableCell align="center">{row.change ? Number(row.change).toFixed(2) : 0}%</TableCell>
-              <TableCell align="center">{row.change3h ? Number(row.change3h).toFixed(2) : 0
-}%</TableCell>
-<TableCell align="center">{row.change7d ? Number(row.change7d
-).toFixed(2) : 0}%</TableCell>
-              <TableCell align="center">{row.change30d ? Number(row.change30d
-).toFixed(2) : 0}%</TableCell>
+              { size400 && <TableCell align="center" sx={cellValue} className='min-w-[200px]'>{row.name}</TableCell> }
+              
+              <TableCell align="center" sx={cellValue}>${row.price ? Number(row.price).toFixed(2) : 0}</TableCell>
+              
+              <Item value = {row.change} />
+              <Item value={row.change3h}/>
+              <Item value = {row.change7d}/>
+
+              <Item value = {row.change30d}/>
               
             </TableRow>
             </>))

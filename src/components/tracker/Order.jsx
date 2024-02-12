@@ -19,7 +19,7 @@ export const Order = () => {
   };
   return (
     <>
-    <FormControl >
+    <FormControl className='w-[50%]'>
   <InputLabel id="lable-select">Order</InputLabel>
   <Select
     labelId="lable-select"
