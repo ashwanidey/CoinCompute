@@ -11,8 +11,8 @@ export const CryptoDetails = () => {
   setCoinId(coinId);
   return (
     <>
-    <div className='ml-[2rem] mr-[2rem]'>
-      <div className='inline-flex w-[100%] p-[52px] bg-white mt-10 '>
+    <div className='ml-[1rem] mr-[1rem]'>
+      <div className='flex w-[100%] :p-[52px] p-[10px] bg-white mt-10'>
 
      <Header/>
       
