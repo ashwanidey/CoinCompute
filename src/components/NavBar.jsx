@@ -1,19 +1,35 @@
+import { useContext } from "react"
 import { Link, NavLink, useMatch, useResolvedPath } from "react-router-dom"
+
+import  {ScreenSizeContext}  from "../context/ScreenSize"
+
+
+
+const LinkStyle = {
+    display: "flex",
+    alignItems: "center",
+    width : "100%",
+    height: "2.25rem",
+    paddingLeft: "0.75rem",
+  paddingRight: "0.75rem",
+}
 export default function NavBar(){
+
+    const {size400} = useContext(ScreenSizeContext);
   return (
     <>
     
-        <div className="hidden md:block m-2 flex flex-col items-center w-[40vh] overflow-hidden text-gray-400 bg-[#040D12] rounded-xl re">
+        <div className="hidden md:block m-2 lg:flex flex-col items-center min-w-[10%] w-full overflow-hidden text-[#242424] bg-[#B3BCCC] " style={{borderRadius: "20px 0px 0px 20px"}}>
             
-            <div className="w-[40vh] px-2">
-                <div className="flex flex-col items-center w-[40vh] mt-3 border-t border-[#040D12]">
-                    <NavLink id="pnl-tag" className="flex items-center w-full h-9 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" to="/calculator/pnl">
+            <div className="w-[100%] px-2">
+                <div className="flex flex-col items-center w-full mt-3 ">
+                    <NavLink id="pnl-tag" className="flex items-center w-full h-9 px-3 mt-2 rounded hover:bg-[#3458B1] " to="/calculator/pnl">
                         <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                         </svg>
                         <span className="ml-2 text-sm font-medium">PNL</span>
                     </NavLink>
-                    <NavLink id="open-price-tag" className="flex items-center w-full h-9 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" to="/calculator/OpenPrice">
+                    <NavLink id="open-price-tag" className="flex items-center w-full h-9 px-3 mt-2 rounded  hover:text-[#02146A]" to="/calculator/OpenPrice">
                         <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
@@ -46,10 +62,10 @@ export default function NavBar(){
         
         
 
-        <div className="m-2 md:hidden flex flex-row  items-center md:w-[40vh]  overflow-y-hidden  mb-3 text-gray-400 bg-[#070E13] rounded-full pb-2">
+        <div className="m-2 md:hidden flex flex-row  items-center md:w-[40vh]  overflow-y-hidden  mb-3 text-[#070E13] bg-[#B3BCCC]  rounded-full pb-2">
             
             <div className="w-full px-2">
-                <div className="flex sm:flex-col  flex-row items-center w-full  border-t border-[#040D12]">
+                <div className="flex sm:flex-col  flex-row items-center w-full ">
                     <NavLink id="pnl-tag1" className="flex items-center w-full h-10 px-2 mt-2 rounded-full hover:bg-gray-700 hover:text-gray-300" to="/calculator/pnl">
                         
                         <span className=" text-sm font-medium">PNL</span>
@@ -75,6 +91,7 @@ export default function NavBar(){
             </div>
             
         </div>
+        
     </>
   )
 }

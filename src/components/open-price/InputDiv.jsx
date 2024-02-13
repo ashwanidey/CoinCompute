@@ -8,7 +8,7 @@ export default function InputDiv({inputKey,openCount,inputEP,inputQuantity,handl
   return (
     <>
     <div className="input-op">
-          {activeMenu && <div className="label-output w-[5rem] pb-6"> {openCount}</div>}
+          {activeMenu && <div className="font-[700] w-[5rem] pb-6 color-[#110A5C]"> {openCount}</div>}
           
       <div className="wrap-input-openPrice ">
         

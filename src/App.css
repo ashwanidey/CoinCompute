@@ -40,12 +40,15 @@ body{
 .container-pnl{
     width: 100%;
     
-    min-height: 100vh;
+    
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    
     
 }
 
@@ -70,14 +73,14 @@ body{
     margin-bottom: .5em;
     font-family: 'Rubik', sans-serif;
     font-size: 3rem;
-    color: white; 
+    color: #02146A; 
 }
 
 
 
 /* INPUT START */
 .wrap-input{
-    background: rgba(255, 255, 255, .015);
+   background-color: #EFF2F7;
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 13px;
@@ -89,7 +92,7 @@ body{
 .label-input{
     font-family: 'Montserrat', sans-serif;
     font-size: 10px;
-    color: rgb(196, 191, 183);
+    color: #021E9A;
     font-weight: 600;
     line-height: 1.5;
     position: relative;
@@ -103,11 +106,11 @@ input{
 .input {
     display: block;
     width: 100%;
-    background: 0 0;
+    background-color: #EFF2F7;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 18px;
-    color: white;
+    color: #021E9A;
     line-height: 1.2;
     padding-right: 15px;
     height: 40px;
@@ -123,12 +126,14 @@ input{
     flex-direction: column;
     position: relative;
     border: 2px solid transparent;
-    background: linear-gradient(71deg, #080509, #1a171c, #080509);
+    /* background: linear-gradient(71deg, #080509, #1a171c, #080509); */
+    background-color: #021E9A;
     background-clip: padding-box;
     border-radius: 45px;
     padding: 40px;
     margin-bottom: 32px;
     height: fit-content;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
    
     
 }
@@ -146,7 +151,7 @@ input{
     content: "";
     z-index: -1;
     border-radius: 45px;
-    background: linear-gradient(71deg, #0c0a0e, #5f6fad, #0c0a0e);
+    /* background: linear-gradient(71deg, #0c0a0e, #5f6fad, #0c0a0e); */
   }
 
 .output-heading{
@@ -235,8 +240,8 @@ input{
     height: 0.4em;
     outline: none;
     border-radius: 3px;
-    background: black;
-    box-shadow: 3px 3px 6px #000, inset 1px 1px 1px #909090;
+    background: #110A5C;
+     
 }
 
 .range-slider .slider::-webkit-slider-thumb{
@@ -286,13 +291,12 @@ input{
     left: 50%;
     top: -1.6em;
     transform: translate(-50%,-50%);
-    background:#090909;
+    background:#110A5C;
     text-align: center;
     line-height: 35px;
     color: #fff;
     border-radius: 3px;
-    box-shadow :
-    0px 3px 10px #1f1f1f, inset 0px 1px 2px #090909;
+    
 }
 
 .range-slider .tooltip::before{
@@ -302,7 +306,7 @@ input{
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 10px solid #090909;
+    border-top: 10px solid #110A5C;
     bottom: -0.5em;
     left: 50%;
     transform: translate(-50%);
@@ -329,13 +333,10 @@ input{
     display: flex;
     margin-bottom: 4rem;
     justify-content: space-between;
+    
 }
 
-.position-button{
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-}
+
 
 /* POSITION BUTTON END */
 
@@ -344,11 +345,11 @@ input{
 
 /* BUTTONS START */
 .button-28 {
-    box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset, 0 -20px 10px -20px rgba(0,0,0,0.45) inset, 20px 0 10px -20px rgba(0,0,0,0.45) inset;
+    
   appearance: none;
-  background-color: white;
-  border: 2px solid #1A1A1A;
-  border-radius: 15px;
+  background-color: #EFF2F7;
+  /* border: 2px solid #1A1A1A; */
+  /* border-radius: 15px; */
   box-sizing: border-box;
   color: #3B3B3B;
   cursor: pointer;
@@ -370,18 +371,16 @@ input{
   touch-action: manipulation;
   width: 100%;
   will-change: transform;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
 }
-#long-button{
-    background-color: green;
-    color: white;
-}
+
 .button-28:disabled {
   pointer-events: none;
 }
 
 .button-28:hover {
   color: #fff;
-  background-color: #374151;
+  /* background-color: #374151; */
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
@@ -393,11 +392,11 @@ input{
 
 .button-81 {
     width: 100%;
-  background-color: #fff;
+  background-color: #02146A;
   border: 0 solid #e2e8f0;
   border-radius: 1.5rem;
   box-sizing: border-box;
-  color: #0d172a;
+  color: white;
   cursor: pointer;
   display: inline-block;
   font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
@@ -456,6 +455,7 @@ input{
         margin-bottom: 0.2em;
         margin-top: 0.3em;
         font-size: 2em;
+        
     }
 
     .wrapper{
@@ -475,6 +475,9 @@ input{
     }
     .button-81{
         margin-top: 0.5em;
+    }
+    .container-pnl{
+        padding: 0;
     }
 }
 

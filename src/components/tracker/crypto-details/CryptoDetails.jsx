@@ -23,7 +23,7 @@ export const CryptoDetails = () => {
      
     <Header/>
 
-     <div className='text-[1rem] color-[#002358] mt-2'>
+     <div className='text-[1rem] color-[#002358] mt-2 '>
       <span className='font-[700] text-[1.2rem] mr-2'>Summary </span> 
       <span>{coinData.description}</span>
      </div>  

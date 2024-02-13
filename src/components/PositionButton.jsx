@@ -9,17 +9,19 @@ export default function PositionButton({ OuterBox = "container-position-setter",
   }, [long]);
 
   const longStyle = {
-    backgroundColor: isLong ? 'green' : 'white',
-    color: isLong ? 'white' : "#3B3B3B"
+    backgroundColor: isLong ? 'green' : '',
+    color: isLong ? 'white' : "#3B3B3B",
+    borderRadius : "20px 0 0 20px",
   };
 
   const shortStyle = {
-    backgroundColor: !isLong ? 'red' : 'white',
-    color: !isLong ? 'white' : "#3B3B3B"
+    backgroundColor: !isLong ? 'red' : '',
+    color: !isLong ? 'white' : "#3B3B3B",
+    borderRadius : "0px 20px 20px 0px"
   };
 
   return (
-    <div className={OuterBox}>
+    <div className={OuterBox} >
       <div id="long-button" style={longStyle} className="button-28" role="button" onClick={handleLong}>
         LONG
       </div>

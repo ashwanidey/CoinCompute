@@ -39,7 +39,7 @@ function ResponsiveAppBar() {
 
   return (
     <div className='pr-[0.5rem] pt-[0.5rem] pl-[0.5rem] '>
-    <AppBar position="static" sx = {{borderRadius: "10px",  backgroundColor : "#4628ff",width:"100%"}}>
+    <AppBar position="static" sx = {{borderRadius: "10px",  backgroundColor : "#021E9A",width:"100%"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <CurrencyBitcoinIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1,fontSize: 30  }} /> */}
