@@ -28,8 +28,8 @@ const tdata = {
 
 export const Supply = () => {
   const {setCoinId,coinData,loadingCoin} = useContext(CryptoContext);
-  console.log(coinData);
-  console.log(coinData.supply.max)
+  // console.log(coinData);
+  // console.log(coinData.supply.max)
   return (
     <div className='color-[#002358] lg:pr-[32px]'>
       <h2 class="text-[2.4rem] font-[700]"> Supply information </h2>

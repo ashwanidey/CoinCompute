@@ -7,6 +7,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import { Header } from './Header';
 import { Value } from './Value';
 import { Supply } from './Supply';
+import { LIneChart } from './LIneChart';
 
 export const CryptoDetails = () => {
   let {coinId} = useParams();
@@ -15,7 +16,7 @@ export const CryptoDetails = () => {
   return (
     <>
     
-    <div className='ml-[1rem] mr-[1rem] mt-[-1rem]'>
+    <div className='lg:ml-[1rem] lg:mr-[1rem] mt-[-1rem]'>
       <div className='w-[100%] lg:p-[52px] px-[20px] pt-[10px] bg-white mt-10 rounded-md'>
     {loadingCoin ? <div className='' >
 
@@ -27,7 +28,7 @@ export const CryptoDetails = () => {
       <span>{coinData.description}</span>
      </div>  
      
-
+    <LIneChart/>
       <div className='flex justify-between max-w-[1632px] w-full mt-9 lg:flex-row flex-col '>
       <Supply/>
       <Value/>

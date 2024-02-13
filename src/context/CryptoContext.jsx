@@ -22,7 +22,39 @@ export const CryptoProvider = ({children}) => {
   const [loading,setLoading] = useState();
 
   const [coinId,setCoinId] = useState('');
+
+  const [coinHistory,setCoinHistory] = useState([]);
+  const [timePeriod,setTimePeriod] = useState('7d');
+
+  const optionsHistory = {
+    method: 'GET',
+    url: `https://coinranking1.p.rapidapi.com/coin/${coinId}/history`,
+    params: {
+      referenceCurrencyUuid: 'yhjMzLPhuIDl',
+      timePeriod: timePeriod
+    },
+    headers: {
+      'X-RapidAPI-Key': 'fef93e0117msh2c96991107f59b4p1fb309jsn5804230510a6',
+      'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+    }
+  };
+
+  const getCoinHistory = async () => {
+    
+    
+    try {
+      const response = await axios.request(optionsHistory);
+      setCoinHistory(response.data.data.history);
+    } catch (error) {
+      console.error(error);
+    }
+  }
   
+
+  useEffect(() => {
+    if(coinId !== '')
+    getCoinHistory();
+  },[timePeriod,coinId])
   
   
  
@@ -179,7 +211,7 @@ export const CryptoProvider = ({children}) => {
   
   
   return (
-    <CryptoContext.Provider value = {{cryptoData,searched,searchVal,setSearchVal,limit,setLimit,orderBy,setOrderBy,order,setOrder,loading,coinId,setCoinId,coinData,loadingCoin}}>
+    <CryptoContext.Provider value = {{cryptoData,searched,searchVal,setSearchVal,limit,setLimit,orderBy,setOrderBy,order,setOrder,loading,coinId,setCoinId,coinData,loadingCoin,coinHistory,timePeriod,setTimePeriod}}>
       {children}
     </CryptoContext.Provider>
   )
