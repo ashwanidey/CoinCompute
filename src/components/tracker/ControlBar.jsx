@@ -12,41 +12,6 @@ import { Order } from './Order';
 const ControlBar = () => {
   const{limit,setLimit} = useContext(CryptoContext);
 
-  const inputRef = useRef(null);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let val = inputRef.current.value;
-
-    if (Number(val) !== 0) {
-      setLimit(val);
-      inputRef.current.value = val;
-    }
-    else setLimit(10);;
-  };
-
-
-  const PerPage = () => {
-    return (
-      <>
-      <form onSubmit={handleSubmit}>
-        <input
-        ref={inputRef}
-        type='number'
-        max = "150"
-        min = "1"
-        placeholder='10'
-        
-        sx={{backgroundColor:"black",color:"white"}}
-        ></input>
-        <button type='submit'>Submit</button>
-        </form>
-
-        
-      </>
-    )
-  }
-
-
 
   
   return (

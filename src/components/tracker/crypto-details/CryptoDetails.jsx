@@ -17,7 +17,7 @@ export const CryptoDetails = () => {
     <>
     
     <div className='lg:ml-[1rem] lg:mr-[1rem] mt-[-1rem]'>
-      <div className='w-[100%] lg:p-[52px] px-[20px] pt-[10px] bg-white mt-10 rounded-md'>
+      <div className='w-[100%] px-[20px] pt-[10px] bg-white mt-10 rounded-md'>
     {loadingCoin ? <div className='' >
 
      

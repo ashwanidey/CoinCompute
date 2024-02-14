@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-import { Card } from '@mui/material';
+import { Card} from '@mui/material';
 import { CryptoContext } from '../../context/CryptoContext';
 
 import { RemoveFromQueue } from '@mui/icons-material';
@@ -16,6 +16,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
 import { Link, useNavigate } from 'react-router-dom';
 import { ScreenSizeContext } from '../../context/ScreenSize';
+import TablePagination from './TablePagination';
 
 
 
@@ -59,7 +60,7 @@ const Item = ({value}) => {
 
 
 export default function InfoTable() {
-  const {cryptoData,searched,requestSearch,setSearchVal,searchVal,getCryptoHistory,loading} = useContext(CryptoContext);
+  const {cryptoData,searched,requestSearch,setSearchVal,searchVal,getCryptoHistory,loading,offset} = useContext(CryptoContext);
 
   const {activeMenu,size400} = useContext(ScreenSizeContext);
   
@@ -70,13 +71,14 @@ export default function InfoTable() {
   const handleRowClick = (id) => {
     navigate(`/tracker/${id}`);
   }
+  let serialNo = offset+1;
 
   
   return (
     <>
     
    
-     <div >
+     <div > 
     <TableContainer component={Card}>
       <Table >
         <TableHead>
@@ -112,7 +114,7 @@ export default function InfoTable() {
             
             {/* <Link to={`/tracker/${row.uuid}`}> */}
               <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"100px,",paddingLeft:"20px",paddingRight:"40px"}}>
-              <div className='font-[700] mr-2'>{index+1}</div>
+              <div className='font-[700] mr-2'>{serialNo++}</div>
               <img src = {row.iconUrl} className='h-[1.6rem] w-[1.6rem]' />
               {row.symbol}
               </TableCell>
@@ -142,9 +144,11 @@ export default function InfoTable() {
       </Table>
     </TableContainer>
 
-   
+  
 
     </div> 
+    <TablePagination/>
+    
     </>
   );
 }

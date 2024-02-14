@@ -16,6 +16,7 @@ export const CryptoProvider = ({children}) => {
   const [searchedOptions,setSearchedOptions] = useState([]);
   const [searchVal,setSearchVal] = useState("");
   const [limit,setLimit] = useState(10);
+  const [offset,setOffset] = useState(0);
   const [orderBy,setOrderBy] = useState("");
   const [order,setOrder] = useState("");
 
@@ -25,6 +26,8 @@ export const CryptoProvider = ({children}) => {
 
   const [coinHistory,setCoinHistory] = useState([]);
   const [timePeriod,setTimePeriod] = useState('7d');
+
+  const[totalCoin,setTotalCoin] = useState();
 
   const optionsHistory = {
     method: 'GET',
@@ -70,7 +73,7 @@ export const CryptoProvider = ({children}) => {
       orderBy: orderBy !== "" ? orderBy : "marketCap",
       orderDirection: order !== '' ? order : 'desc',
       limit: limit.toString(),
-      offset: '0',
+      offset: offset.toString(),
       search: searchVal,
     },
     headers: {
@@ -89,6 +92,7 @@ export const CryptoProvider = ({children}) => {
       orderBy: orderBy !== "" ? orderBy : "marketCap",
       orderDirection: order !== '' ? order : 'desc',
       limit: limit.toString(),
+      offset: offset.toString(),
       search: searchVal,
       
     },
@@ -108,6 +112,7 @@ export const CryptoProvider = ({children}) => {
       orderBy: orderBy !== "" ? orderBy : "marketCap",
       orderDirection: order !== '' ? order : 'desc',
       limit: limit.toString(),
+      offset: offset.toString(),
       search: searchVal,
       
     },
@@ -130,6 +135,7 @@ export const CryptoProvider = ({children}) => {
       orderBy: orderBy !== "" ? orderBy : "marketCap",
       orderDirection: order !== '' ? order : 'desc',
       limit: limit.toString(),
+      offset: offset.toString(),
       search: searchVal,
       
     },
@@ -162,6 +168,8 @@ export const CryptoProvider = ({children}) => {
       setSearched(newValue);
       setCryptoData(newValue);
       setLoading(true);
+
+      setTotalCoin(data24h.data.data.stats.total);
       
       
       
@@ -173,7 +181,7 @@ export const CryptoProvider = ({children}) => {
   }
   useEffect(() =>{
     getCryptoData();
-  },[limit,searchVal,orderBy,order])
+  },[limit,searchVal,orderBy,order,offset])
 
   const options = {
     method: 'GET',
@@ -211,7 +219,7 @@ export const CryptoProvider = ({children}) => {
   
   
   return (
-    <CryptoContext.Provider value = {{cryptoData,searched,searchVal,setSearchVal,limit,setLimit,orderBy,setOrderBy,order,setOrder,loading,coinId,setCoinId,coinData,loadingCoin,coinHistory,timePeriod,setTimePeriod}}>
+    <CryptoContext.Provider value = {{cryptoData,searched,searchVal,setSearchVal,limit,setLimit,orderBy,setOrderBy,order,setOrder,loading,coinId,setCoinId,coinData,loadingCoin,coinHistory,timePeriod,setTimePeriod,offset,setOffset,totalCoin}}>
       {children}
     </CryptoContext.Provider>
   )
