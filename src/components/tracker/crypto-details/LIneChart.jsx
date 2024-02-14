@@ -39,6 +39,15 @@ export const LIneChart = () => {
           
         },
       },
+      stroke: {
+        show: true,
+        curve: 'straight',
+        lineCap: 'butt',
+        colors: undefined,
+         width: size400 ? 2 : 1,
+        dashArray: 0, 
+    },
+      
       xaxis: {
         type : 'datetime',
         categories: coinTimestamp,
@@ -54,8 +63,10 @@ export const LIneChart = () => {
               hour: 'hh:mm TT',
           },
       }
-      }
+      },
+      
     },
+    
     series: [
       {
         name: coinData.name,
