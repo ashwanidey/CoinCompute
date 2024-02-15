@@ -52,7 +52,7 @@ const cellValue = {
 const Item = ({value}) => {
   return (
     <>
-    <TableCell align="center"  sx={cellValue}>
+    <TableCell align="center"  sx={cellValue} >
       
       <span className='border-solid border-[1px]  rounded-[3px] p-1' style={ Number(value) >= 0 ? (Number(value)!== 0 ? positive: zero) : negative}>{value ? Number(value).toFixed(2) : 0}%</span>
    
@@ -70,7 +70,7 @@ export default function InfoTable() {
   const {activeMenu,size400} = useContext(ScreenSizeContext);
   
 
-  const tableheads = ["Asset","Price","Market Cap Change (24h)","3H","7D","30D","Chart"];
+  const tableheads = ["Asset","Price","Market Cap Change (24h)","Chart","3H","7D","30D"];
  
   const navigate = useNavigate();
   const handleRowClick = (id) => {
@@ -78,13 +78,10 @@ export default function InfoTable() {
   }
   let serialNo = offset+1;
   const Chartify = ({sparklineData,change}) => {
-    let arr = [];
-    for(let i =0;i<sparklineData.length;i++){
-      arr.push(Number(sparklineData[i]).toFixed(8));
-    }
+    
     const chartOptions = {
       series: [{
-        data: arr
+        data: sparklineData
       }],
       options: {
         chart: {
@@ -136,13 +133,13 @@ export default function InfoTable() {
                 series={chartOptions.series}
                 type={"area"}
                 
-                height={35}/>
+                height={size400 ? 35 :25}/>
                  </div>
       </>
      
     )
   }
-
+  
   
   return (
     <>
@@ -156,9 +153,11 @@ export default function InfoTable() {
          
           {tableheads.map((data) => (
             
+            (!size400 && data === "Chart" ? "" :
             (!activeMenu && data === "Market Cap Change (24h)" ? 
             <TableCell align="center" sx={{fontWeight:900,fontSize:"1.1rem",color: "black"}}>24H </TableCell> :
             data === "Price" || data === "Asset" ? <TableCell align="left" sx={{fontWeight:800,fontSize:"1.1rem",color: "black"}}>{data}</TableCell> : <TableCell align="center" sx={{fontWeight:800,fontSize:"1.1rem",color: "black"}}>{data}</TableCell>)
+            )
               
 
               
@@ -183,7 +182,7 @@ export default function InfoTable() {
             
             
             {/* <Link to={`/tracker/${row.uuid}`}> */}
-              <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"100px,",paddingLeft:"20px",paddingRight:"40px"}}>
+              <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"100px,",paddingLeft:"20px",paddingRight:"40px", height: size400 ? "" : "80px"}} >
               <div className='font-[700] mr-2'>{serialNo++}</div>
               <img src = {row.iconUrl} className='h-[1.6rem] w-[1.6rem]' />
               <div className='flex flex-col'>
@@ -197,7 +196,14 @@ export default function InfoTable() {
             
               <TableCell align="left" sx={cellValue} >${row.price ? Number(row.price).toFixed(2) : 0}</TableCell>
               
-              <Item value = {row.change} />
+             
+              {size400 && <Item value = {row.change} />}
+              
+              <TableCell  className="max-w-[150px] min-w-[150px]">
+              {!size400 && <span style={row.change < 0 ? negative : positive} className='font-[600] '>
+                {row.change > 0 ? <span>+</span> : <></>}
+                {row.change}</span>}
+              <Chartify sparklineData = {row.sparkline} change={row.change}/></TableCell>
               <Item value={row.change3h}/>
               <Item value = {row.change7d}/>
 
@@ -205,7 +211,6 @@ export default function InfoTable() {
 
               
 
-                <TableCell  className="w-[150px]"><Chartify sparklineData = {row.sparkline} change={row.change}/></TableCell>
               
               
            
