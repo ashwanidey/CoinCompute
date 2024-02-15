@@ -88,18 +88,22 @@ export default function InfoTable() {
       }],
       options: {
         chart: {
-          type: 'area',
+          
           
           sparkline: {
             enabled: true
           }
         },
+        fill: {
+          opacity: 1,
+          colors: Number(change) > 0 ? green[800] : red[800],
+        },
         stroke: {
           show: true,
-          curve: 'straight',
-          lineCap: 'butt',
-          colors: Number(change) > 0 ? green[800] : red[800],
-           width: size400 ? 2 : 1,
+          // curve: 'straight',
+          
+          colors: Number(change) > 0 ? ["#0A5C15"]: ["#911710"],
+           width: 2,
            
       },
         tooltip: {
@@ -127,12 +131,15 @@ export default function InfoTable() {
   
     return (
       <>
+      <div className='w-full'>
       <Chart options={chartOptions.options}
                 series={chartOptions.series}
+                type={"area"}
                 
-                width={50}
-                height={11}/>
+                height={35}/>
+                 </div>
       </>
+     
     )
   }
 
@@ -198,10 +205,10 @@ export default function InfoTable() {
 
               
 
-                <TableCell align="center" sx={{margin:"0px"}}><Chartify sparklineData = {row.sparkline} change={row.change}/></TableCell>
+                <TableCell  className="w-[150px]"><Chartify sparklineData = {row.sparkline} change={row.change}/></TableCell>
               
               
-              {/* {console.log(row.sparkline )} */}
+           
               
               
             </TableRow>
