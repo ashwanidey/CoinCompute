@@ -16,7 +16,8 @@ export const LIneChart = () => {
   const chartOptions = {
     options: {
       chart: {
-        type: 'area',
+        
+        type:'area',
         // stacked: false,
         
         zoom: {
@@ -28,14 +29,19 @@ export const LIneChart = () => {
           autoSelected: 'zoom'
         }
       },
+      dataLabels: {
+        enabled: false
+      },
       fill: {
         type: 'gradient',
+        colors :["#021E9A"],
         gradient: {
           shadeIntensity: 1,
           inverseColors: false,
-          // opacityFrom: 0.5,
-          // opacityTo: 0,
-          stops: [0, 90, 100]
+          
+          opacityFrom: 0.8,
+          opacityTo: 0.2,
+          // stops: [0, 90, 100]
           
         },
       },
@@ -43,7 +49,7 @@ export const LIneChart = () => {
         show: true,
         curve: 'straight',
         lineCap: 'butt',
-        colors: undefined,
+        colors: ["#02146A"],
          width: size400 ? 2 : 1,
         dashArray: 0, 
     },
@@ -89,7 +95,7 @@ export const LIneChart = () => {
     setClickedItem(index);
     setTimePeriod(val);
   }
-  const [clickedItem,setClickedItem] = useState(-1);
+  const [clickedItem,setClickedItem] = useState(value.indexOf(timePeriod));
 
   const clicked = {
     color: "#fff",
@@ -102,7 +108,7 @@ export const LIneChart = () => {
     <div className='ml-[-1rem]'>
     <Chart  options={chartOptions.options}
               series={chartOptions.series}
-              // type="line"
+              type='area'
               
               height={300}/>
 
