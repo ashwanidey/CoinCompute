@@ -18,6 +18,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ScreenSizeContext } from '../../context/ScreenSize';
 import TablePagination from './TablePagination';
 
+import Chart from "react-apexcharts";
+import { green, red } from '@mui/material/colors';
+
 
 
 
@@ -42,8 +45,8 @@ const zero = {
 
 const cellValue = {
   fontSize: "0.9rem",
-  fontWeight : 700,
-  color: " #002358"
+  fontWeight : 600,
+  color: " #242424"
 }
 
 const Item = ({value}) => {
@@ -59,19 +62,79 @@ const Item = ({value}) => {
 }
 
 
+
+
 export default function InfoTable() {
   const {cryptoData,searched,requestSearch,setSearchVal,searchVal,getCryptoHistory,loading,offset} = useContext(CryptoContext);
 
   const {activeMenu,size400} = useContext(ScreenSizeContext);
   
 
-  const tableheads = ["Asset","Name","Price","Market Cap Change (24h)","3H","7D","30D"];
+  const tableheads = ["Asset","Price","Market Cap Change (24h)","3H","7D","30D","Chart"];
  
   const navigate = useNavigate();
   const handleRowClick = (id) => {
     navigate(`/tracker/${id}`);
   }
   let serialNo = offset+1;
+  const Chartify = ({sparklineData,change}) => {
+    let arr = [];
+    for(let i =0;i<sparklineData.length;i++){
+      arr.push(Number(sparklineData[i]).toFixed(8));
+    }
+    const chartOptions = {
+      series: [{
+        data: arr
+      }],
+      options: {
+        chart: {
+          type: 'area',
+          
+          sparkline: {
+            enabled: true
+          }
+        },
+        stroke: {
+          show: true,
+          curve: 'straight',
+          lineCap: 'butt',
+          colors: Number(change) > 0 ? green[800] : red[800],
+           width: size400 ? 2 : 1,
+           
+      },
+        tooltip: {
+          enabled:false,
+          fixed: {
+            enabled: false,
+            
+          },
+          x: {
+            show: false
+          },
+          y: {
+            title: {
+              formatter: function (seriesName) {
+                return ''
+              }
+            }
+          },
+          marker: {
+            show: false
+          }
+        }
+      },
+    }
+  
+    return (
+      <>
+      <Chart options={chartOptions.options}
+                series={chartOptions.series}
+                
+                width={50}
+                height={11}/>
+      </>
+    )
+  }
 
   
   return (
@@ -85,10 +148,10 @@ export default function InfoTable() {
           <TableRow >
          
           {tableheads.map((data) => (
-            !size400  && data === "Name"? <></> : 
+            
             (!activeMenu && data === "Market Cap Change (24h)" ? 
             <TableCell align="center" sx={{fontWeight:900,fontSize:"1.1rem",color: "black"}}>24H </TableCell> :
-            data === "Name" || data === "Price" || data === "Asset" ? <TableCell align="left" sx={{fontWeight:900,fontSize:"1.1rem",color: "black"}}>{data}</TableCell> : <TableCell align="center" sx={{fontWeight:900,fontSize:"1.1rem",color: "black"}}>{data}</TableCell>)
+            data === "Price" || data === "Asset" ? <TableCell align="left" sx={{fontWeight:800,fontSize:"1.1rem",color: "black"}}>{data}</TableCell> : <TableCell align="center" sx={{fontWeight:800,fontSize:"1.1rem",color: "black"}}>{data}</TableCell>)
               
 
               
@@ -116,11 +179,14 @@ export default function InfoTable() {
               <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"100px,",paddingLeft:"20px",paddingRight:"40px"}}>
               <div className='font-[700] mr-2'>{serialNo++}</div>
               <img src = {row.iconUrl} className='h-[1.6rem] w-[1.6rem]' />
-              {row.symbol}
+              <div className='flex flex-col'>
+              <span style={cellValue}>{row.name}</span>
+              <span>{row.symbol}</span>
+              </div>
               </TableCell>
               {/* </Link> */}
               
-              { size400 && <TableCell align="left" sx={cellValue} className='min-w-[150px] '>{row.name}</TableCell> }
+              {/* { size400 && <TableCell align="left" sx={cellValue} className='min-w-[150px] '></TableCell> } */}
             
               <TableCell align="left" sx={cellValue} >${row.price ? Number(row.price).toFixed(2) : 0}</TableCell>
               
@@ -129,6 +195,13 @@ export default function InfoTable() {
               <Item value = {row.change7d}/>
 
               <Item value = {row.change30d}/>
+
+              
+
+                <TableCell align="center" sx={{margin:"0px"}}><Chartify sparklineData = {row.sparkline} change={row.change}/></TableCell>
+              
+              
+              {/* {console.log(row.sparkline )} */}
               
               
             </TableRow>
