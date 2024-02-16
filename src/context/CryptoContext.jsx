@@ -130,7 +130,7 @@ export const CryptoProvider = ({children}) => {
     url: 'https://coinranking1.p.rapidapi.com/coins',
     params: {
       
-      timePeriod: '3h',
+      timePeriod: '30d',
       'tiers[0]': '1',
       orderBy: orderBy !== "" ? orderBy : "marketCap",
       orderDirection: order !== '' ? order : 'desc',

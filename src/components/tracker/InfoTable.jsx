@@ -20,6 +20,7 @@ import TablePagination from './TablePagination';
 
 import Chart from "react-apexcharts";
 import { green, red } from '@mui/material/colors';
+import millify from 'millify';
 
 
 
@@ -70,7 +71,7 @@ export default function InfoTable() {
   const {activeMenu,size400} = useContext(ScreenSizeContext);
   
 
-  const tableheads = ["Asset","Price","Market Cap Change (24h)","Chart","3H","7D","30D"];
+  const tableheads = ["Price","Market Cap Change (24h)","Chart","3H","7D","30D",,"MarketCap","Volume(24H)"];
  
   const navigate = useNavigate();
   const handleRowClick = (id) => {
@@ -139,6 +140,13 @@ export default function InfoTable() {
      
     )
   }
+
+  // const stickyLeft = {
+  //   position: sticky;
+  // zIndex: 1;
+  // top: 0;
+  // left: 0;
+  // }
   
   
   return (
@@ -146,17 +154,20 @@ export default function InfoTable() {
     
    
      <div > 
-    <TableContainer component={Card}>
-      <Table >
+    <TableContainer component={Card} style = {{borderRadius : "16px",backgroundColor:"#FCFCFD",boxShadow : "0px 4px 16px 0px rgba(148, 156, 169, 0.15)",border: "2px solid #EDEEF1"}}>
+      <Table style ={{ fontFamily: "sans-serif"}}>
         <TableHead>
           <TableRow >
-         
+            <div className = "pl-9" style = {{borderBottom: "1px solid rgba(224, 224, 224, 1)",position:"sticky",left:"0",zIndex : "1",backgroundColor:"#FCFCFD",}}>
+          <TableCell align="left" sx={{fontWeight:800,fontSize:"1.1rem",color: "#272727",borderBottom: "0"}}
+          >Asset</TableCell>
+          </div>
           {tableheads.map((data) => (
             
             (!size400 && data === "Chart" ? "" :
             (!activeMenu && data === "Market Cap Change (24h)" ? 
-            <TableCell align="center" sx={{fontWeight:900,fontSize:"1.1rem",color: "black"}}>24H </TableCell> :
-            data === "Price" || data === "Asset" ? <TableCell align="left" sx={{fontWeight:800,fontSize:"1.1rem",color: "black"}}>{data}</TableCell> : <TableCell align="center" sx={{fontWeight:800,fontSize:"1.1rem",color: "black"}}>{data}</TableCell>)
+            <TableCell align="center" sx={{fontWeight:900,fontSize:"1.1rem",color: "#272727"}}>24H </TableCell> :
+            data === "Price" || data === "Asset" ? <TableCell align="left" sx={{fontWeight:800,fontSize:"1.1rem",color: "#272727"}}>{data}</TableCell> : <TableCell align="center" sx={{fontWeight:800,fontSize:"1.1rem",color: "#272727"}}>{data}</TableCell>)
             )
               
 
@@ -175,15 +186,15 @@ export default function InfoTable() {
             
             <TableRow
               key={row.uuid}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 ,},cursor:"pointer" } }
+              sx={{ '&:last-child td, &:last-child th': { border: 0 ,},cursor:"pointer" ,} }
               onClick={()=> handleRowClick(row.uuid)}
               
             > 
             
             
             {/* <Link to={`/tracker/${row.uuid}`}> */}
-              <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"100px,",paddingLeft:"20px",paddingRight:"40px", minHeight: size400 ? "" : "80px"}} >
-              <div className='font-[700] mr-2'>{serialNo++}</div>
+              <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"80px,",paddingLeft:"20px",paddingRight:"40px", minHeight: size400 ? "" : "80px",position:"sticky",left:"0",zIndex : "1",backgroundColor:"#FCFCFD"}} >
+              <div className='font-[700] mr-1'>{serialNo++}</div>
               <img src = {row.iconUrl} className='h-[1.6rem] w-[1.6rem]' />
               <div className='flex flex-col'>
               <span style={cellValue}>{row.name}</span>
@@ -204,10 +215,14 @@ export default function InfoTable() {
                 {row.change > 0 ? <span>+</span> : <></>}
                 {row.change}</span>}
               <Chartify sparklineData = {row.sparkline} change={row.change}/></TableCell>
+              
+              
               <Item value={row.change3h}/>
               <Item value = {row.change7d}/>
 
               <Item value = {row.change30d}/>
+              <TableCell align= "center" sx ={cellValue}>${millify(row.marketCap)}</TableCell>
+              <TableCell align= "center" sx ={cellValue}>${millify(row["24hVolume"])}</TableCell>
 
               
 

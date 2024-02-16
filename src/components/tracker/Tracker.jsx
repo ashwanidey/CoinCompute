@@ -3,6 +3,7 @@ import InfoTable from './InfoTable'
 import { CryptoProvider } from '../../context/CryptoContext'
 import ControlBar from './ControlBar'
 import { Outlet } from '@mui/icons-material'
+import { Table2 } from './Table2'
 
 
 const Tracker = () => {
@@ -14,6 +15,7 @@ const Tracker = () => {
     <ControlBar/>
     <div >
     <InfoTable/>
+    {/* <Table2/> */}
     </div>
     </div>
     </CryptoProvider>
