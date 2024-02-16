@@ -182,7 +182,7 @@ export default function InfoTable() {
             
             
             {/* <Link to={`/tracker/${row.uuid}`}> */}
-              <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"100px,",paddingLeft:"20px",paddingRight:"40px", height: size400 ? "" : "80px"}} >
+              <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"100px,",paddingLeft:"20px",paddingRight:"40px", minHeight: size400 ? "" : "80px"}} >
               <div className='font-[700] mr-2'>{serialNo++}</div>
               <img src = {row.iconUrl} className='h-[1.6rem] w-[1.6rem]' />
               <div className='flex flex-col'>
