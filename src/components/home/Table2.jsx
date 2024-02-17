@@ -99,7 +99,7 @@ export const Table2 = () => {
 					</svg>
 					Watchlist
 				</span>
-				{/* <span class="table-row-count"></span> */}
+				<span class="table-row-count">[{savedCoins.length}] Coins</span>
 			</span>
 			<div class="table-wrapper">
 				<table className='max-h-[1px]'>
