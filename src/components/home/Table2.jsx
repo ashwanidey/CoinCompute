@@ -105,7 +105,7 @@ export const Table2 = () => {
 				<table className='max-h-[1px]'>
           <thead>
             <tr>
-              <th className='sticky-ticker'>Asset</th>
+              <th className='sticky-ticker ' >Asset</th>
               <th>Price</th>
               <th>Market Cap Change (24h)</th>
               {size400 && <th align= "center">Chart</th> }
@@ -119,16 +119,16 @@ export const Table2 = () => {
             
               {savedCoins.map((row) => (
                 <tr onClick={(e) => handleRowClick(row.uuid,e)} style={{cursor:"pointer" }}>
-                <td align="left" style={{display:"flex" ,gap:6, alignItems:"center",justifyContent:"left",Width:"80px,",paddingLeft:"10px",paddingRight:"40px", minHeight: size400 ? "" : "80px",position:"sticky",left:"0",zIndex : "1",backgroundColor:"#FCFCFD", maxWidth:"auto",minWidth:"auto"}} 
+                <td align="left" style={{display:"flex" ,gap:6, alignItems:"center",justifyContent:"left",Width:"80px,",paddingLeft:"10px",paddingRight:"40px", minHeight: size400 ? "" : "80px",position:"sticky",left:"0",zIndex : "1",backgroundColor:"#FCFCFD",}} 
               // style={{content: "::before", position: "absolute",boxShadow: "inset 10px 0 8px -8px #00000026"}}
               // style={tablecellshadowright} 
               >
                 <SaveBtn ID = {row.uuid}/>
               {/* <div className='font-[700] mr-1'>{serialNo++}</div> */}
               <img src = {row.iconUrl} className='h-[1.6rem] w-[1.6rem]' />
-              <div className='flex flex-col'>
+              <div className='flex flex-col m'>
               <span className='stock-info__ticker'>{row.symbol}</span>
-              <span className='tick'>{row.name}</span>
+              <span className='md:text-nowrap text-pretty'>{row.name}</span>
               
               </div>
               </td>
