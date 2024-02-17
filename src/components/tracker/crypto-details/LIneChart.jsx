@@ -86,7 +86,7 @@ export const LIneChart = () => {
     coinPrice.push(Number(coinHistory[i].price).toFixed(2));
     coinTimestamp.push(coinHistory[i].timestamp*1000);
   }
-  console.log(coinTimestamp);
+  
 
   
   const value = ['3h','24h','7d','30d','3m','1y','3y','5y'];

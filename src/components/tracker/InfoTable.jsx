@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -19,9 +19,13 @@ import { ScreenSizeContext } from '../../context/ScreenSize';
 import TablePagination from './TablePagination';
 
 import Chart from "react-apexcharts";
-import { green, red } from '@mui/material/colors';
+
 import millify from 'millify';
 
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { StorageContext } from '../../context/StorageContext';
+import { Chartify } from '../Chartify';
 
 
 
@@ -71,82 +75,68 @@ export default function InfoTable() {
   const {activeMenu,size400} = useContext(ScreenSizeContext);
   
 
-  const tableheads = ["Price","Market Cap Change (24h)","Chart","3H","7D","30D",,"MarketCap","Volume(24H)"];
+  const tableheads = ["Price","Market Cap Change (24h)","Chart","3H","7D","30D","MarketCap","Volume(24H)"];
+
+  const [clickedDiv,setClickedDiv] = useState(0);
+  
  
   const navigate = useNavigate();
-  const handleRowClick = (id) => {
+  
+  const handleRowClick = (id,event) => {
+    // console.log(event.target.tagName.toLowerCase());
+    if (event.target.tagName.toLowerCase() === 'svg' || event.target.tagName.toLowerCase() === 'path') {
+      // If clicked on the button, don't navigate
+      return;
+    }
     navigate(`/tracker/${id}`);
+    
+    
+    
   }
   let serialNo = offset+1;
-  const Chartify = ({sparklineData,change}) => {
-    
-    const chartOptions = {
-      series: [{
-        data: sparklineData
-      }],
-      options: {
-        chart: {
-          
-          
-          sparkline: {
-            enabled: true
-          }
-        },
-        fill: {
-          opacity: 1,
-          colors: Number(change) > 0 ? green[800] : red[800],
-        },
-        stroke: {
-          show: true,
-          // curve: 'straight',
-          
-          colors: Number(change) > 0 ? ["#0A5C15"]: ["#911710"],
-           width: 2,
-           
-      },
-        tooltip: {
-          enabled:false,
-          fixed: {
-            enabled: false,
-            
-          },
-          x: {
-            show: false
-          },
-          y: {
-            title: {
-              formatter: function (seriesName) {
-                return ''
-              }
-            }
-          },
-          marker: {
-            show: false
-          }
-        }
-      },
-    }
+
+
+  const tablecellshadowright =  {
+    boxShadow: "inset 10px 0 8px -8px #00000026",
+    position: "absolute",
+    // top: "0",
+    right: "0",
+    bottom: "-1px",
+    width: "30px",
+    transform: "translate(100%)",
+    transition: "box-shadow .3s",
+    content: "::before",
   
-    return (
-      <>
-      <div className='w-full'>
-      <Chart options={chartOptions.options}
-                series={chartOptions.series}
-                type={"area"}
-                
-                height={size400 ? 35 :25}/>
-                 </div>
-      </>
-     
-    )
+}
+
+
+const SaveBtn = ({ID}) => {
+  const {saveCoin,allCoins,removeCoin} = useContext(StorageContext);
+  
+
+  const handleClick = () => {
+    saveCoin(ID);
+
+    
+
+
+    if(allCoins.includes(ID)){
+      removeCoin(ID);
+    }else{
+      saveCoin(ID);
+    }
   }
 
-  // const stickyLeft = {
-  //   position: sticky;
-  // zIndex: 1;
-  // top: 0;
-  // left: 0;
-  // }
+  return (
+  <button className='w-[20px]' onClick= {() => handleClick()}>
+     {
+      !allCoins.includes(ID) ?  <FavoriteBorderOutlinedIcon sx={{fontSize : "large"}}/> : 
+      <FavoriteIcon sx={{fontSize : "large"}}/>
+     }             
+  
+  </button>
+  )
+}
   
   
   return (
@@ -186,14 +176,18 @@ export default function InfoTable() {
             
             <TableRow
               key={row.uuid}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 ,},cursor:"pointer" ,} }
-              onClick={()=> handleRowClick(row.uuid)}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 ,},cursor:"pointer" } }
+              onClick={(e)=> handleRowClick(row.uuid,e)}
               
             > 
             
             
             {/* <Link to={`/tracker/${row.uuid}`}> */}
-              <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"80px,",paddingLeft:"20px",paddingRight:"40px", minHeight: size400 ? "" : "80px",position:"sticky",left:"0",zIndex : "1",backgroundColor:"#FCFCFD"}} >
+              <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"80px,",paddingLeft:"10px",paddingRight:"40px", minHeight: size400 ? "" : "80px",position:"sticky",left:"0",zIndex : "1",backgroundColor:"#FCFCFD", maxWidth:"auto",minWidth:"auto"}} 
+              // style={{content: "::before", position: "absolute",boxShadow: "inset 10px 0 8px -8px #00000026"}}
+              // style={tablecellshadowright} 
+              >
+                <SaveBtn ID = {row.uuid}/>
               <div className='font-[700] mr-1'>{serialNo++}</div>
               <img src = {row.iconUrl} className='h-[1.6rem] w-[1.6rem]' />
               <div className='flex flex-col'>
@@ -221,8 +215,8 @@ export default function InfoTable() {
               <Item value = {row.change7d}/>
 
               <Item value = {row.change30d}/>
-              <TableCell align= "center" sx ={cellValue}>${millify(row.marketCap)}</TableCell>
-              <TableCell align= "center" sx ={cellValue}>${millify(row["24hVolume"])}</TableCell>
+              <TableCell align= "center" sx ={cellValue}>${Number(row.marketCap).toLocaleString()}</TableCell>
+              <TableCell align= "center" sx ={cellValue}>${Number(row["24hVolume"]).toLocaleString()}</TableCell>
 
               
 
@@ -236,7 +230,7 @@ export default function InfoTable() {
             </>))
           }
         </TableBody>
-        : <TableCell colSpan={7}>
+        : <TableCell colSpan={9}>
         <LinearProgress sx={{width:"100%"}}/>
         </TableCell>
       }

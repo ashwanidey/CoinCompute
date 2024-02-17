@@ -5,13 +5,16 @@ import './index.css'
 import { BrowserRouter } from "react-router-dom"
 import { CryptoProvider } from './context/CryptoContext.jsx'
 import { SizeProvider } from './context/ScreenSize.jsx'
+import { StorageProvider } from './context/StorageContext.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <CryptoProvider>
       <SizeProvider>
+        <StorageProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
+    </StorageProvider>
     </SizeProvider>
     </CryptoProvider>
   </React.StrictMode>,

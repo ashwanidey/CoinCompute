@@ -26,31 +26,52 @@
   border-radius: 16px;
   background-color: var(
       --table-background);
-  padding: 24px;
-  /* width: 90%; */
+  
   margin: 16px;
-  /* max-width: 760px; */
+  max-width: auto;
   border: 2px solid var(
       --gray-background);
   box-shadow: 0px 4px 16px 0px 
       rgba(148, 156, 169, 0.15);
   text-align: left;
+  padding: 24px;
 }
 
 .table-wrapper {
   overflow-x: auto;
   overflow-y: auto;
   padding-bottom: 8px;
+  max-height: 350px;
+  
+  
 }
 
 .table-widget table {
-  /* max-width: 600px; */
+  
   border-collapse: collapse;
   table-layout: fixed;
 }
 
 .table-widget thead {
   position: sticky;
+
+  z-index: 100;
+  top: 0;
+  
+  background-color: var(
+      --table-background);
+  
+}
+
+.sticky-ticker{
+  position: sticky;
+
+  z-index: 101;
+  top: 0;
+  left:0;
+  
+  background-color: var(
+      --table-background);
 }
 
 .table-widget th {
@@ -130,7 +151,7 @@
 .sticky-left {
   position: sticky;
   z-index: 1;
-  top: 0;
+  
   left: 0;
   background-color: var(
       --table-background);
@@ -139,11 +160,13 @@
 .sticky-right {
   position: sticky;
   z-index: 1;
-  top: 0;
+  
   right: 0;
   background-color: var(
       --table-background);
 }
+
+
 
 .caption-container {
   display: flex;
@@ -196,6 +219,7 @@
 
 .table-wrapper::-webkit-scrollbar {
   height: 12px;
+  display: block;
 }
 
 .table-wrapper::-webkit-scrollbar-track {
@@ -210,3 +234,17 @@
   border-radius: 5px;
 }
 
+
+@media (max-width: 768px) {
+  .table-wrapper::-webkit-scrollbar{
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .table-widget{
+    padding : 13px;
+    margin-left: 10px;
+    
+  }
+}

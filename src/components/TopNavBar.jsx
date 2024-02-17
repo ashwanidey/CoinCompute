@@ -12,10 +12,10 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-const pages = ['Tracker', 'Calculator'];
-const paths = ['/tracker',"/calculator"]
+const pages = ['Home','Tracker', 'Calculator',];
+const paths = ["/home",'/tracker',"/calculator",]
 const settings = [];
 
 function ResponsiveAppBar() {
@@ -37,6 +37,12 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/home`);
+  }
+
   return (
     <div className='pr-[0.5rem] pt-[0.5rem] pl-[0.5rem] '>
     <AppBar position="static" sx = {{borderRadius: "10px",  backgroundColor : "#021E9A",width:"100%"}}>
@@ -44,7 +50,7 @@ function ResponsiveAppBar() {
         <Toolbar disableGutters>
           {/* <CurrencyBitcoinIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1,fontSize: 30  }} /> */}
 
-          <NavLink to="/">
+          <NavLink to="/home">
           <Typography
             variant="h6"
             noWrap
@@ -105,11 +111,12 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
           {/* <CurrencyBitcoinIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1,fontSize: 30 }} /> */}
+          {/* <NavLink to='/home'> */}
+          
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -120,9 +127,11 @@ function ResponsiveAppBar() {
               color: 'inherit',
               textDecoration: 'none',
             }}
-          >
+          onClick = {() => handleClick()}>
             COIN COMPUTE
           </Typography>
+          
+          {/* </NavLink> */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page,index) => (
               <NavLink to={paths[index]}>
