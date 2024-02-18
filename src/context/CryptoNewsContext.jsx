@@ -11,23 +11,52 @@ export const CryptoNewsProvider = ({children}) => {
     method: 'GET',
     url: 'https://cryptocurrency-news2.p.rapidapi.com/v1/coindesk',
     headers: {
-      'X-RapidAPI-Key': 'fef93e0117msh2c96991107f59b4p1fb309jsn5804230510a6',
-      'X-RapidAPI-Host': 'cryptocurrency-news2.p.rapidapi.com'
+      'X-RapidAPI-Key': '4454717dcbmshc71e62e0dabf928p1c1724jsnc8ee87fa81ac',
+    'X-RapidAPI-Host': 'cryptocurrency-news2.p.rapidapi.com'
     }
   };
 
-  const getNews = async() => {
+  const getNews = async () => {
     try {
       const response = await axios.request(options);
-      setNews(response.data.data);
+      return response.data.data;
     } catch (error) {
       console.error(error);
     }
   }
 
-  useLayoutEffect(() =>{
-    getNews()
-  },[])
+  
+
+  useLayoutEffect(() => {
+    const fetchData = async () => {
+      let now = new Date().getTime();
+      const oneDay = 1000 * 60 * 60 * 24;
+  
+      if (localStorage.color && localStorage.expireTime && parseInt(localStorage.expireTime) > now) {
+        setNews(JSON.parse(localStorage.color));
+        console.log(`Returning user -- color from last visit is ${localStorage.color}`);
+      } else {
+        // Fetch news if not stored or expired
+        let fetchedNews = await getNews();
+        if (fetchedNews.length > 0) {
+          setNews(fetchedNews);
+          
+          let newExpireTime = now + oneDay;
+  
+          localStorage.setItem("color", JSON.stringify(fetchedNews));
+          localStorage.setItem("expireTime", newExpireTime);
+  
+          let dateString = new Date(newExpireTime).toLocaleString();
+          console.log(`First visit (since storage was cleared). New color, ${newColor}, will be replaced at ${dateString}`);
+        }
+      }
+    };
+  
+    fetchData();
+  }, []); // Empty dependency array to ensure the effect runs only once
+
+    
+ 
   return(
     <CryptoNewsContext.Provider
     value={{
