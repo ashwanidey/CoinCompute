@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { GlobalDataContext } from '../../context/GlobalDataContext'
+import { TopCoins } from './TopCoins'
 
 const Card = ({data,label}) => {
   return (
@@ -27,10 +28,7 @@ export const HomeHeader = () => {
     <Card data = {globalData.total24hVolume} label={"24h Volume"}/>
     </div>
 
-    {/* <div>
-      <div>Top Coins</div>
-      <div></div>
-    </div> */}
+    <TopCoins/>
     </div>
    
     </>
