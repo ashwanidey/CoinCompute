@@ -61,7 +61,7 @@ export const TopCoins = () => {
     
     
       
-    <div className=' my-5 md:w-[49%] h-[50%]  bg-[#f1f6ff] p-3 rounded-lg' style={{
+    <div className=' my-5 md:w-full h-[35%] bg-[#f1f6ff] p-3 rounded-lg' style={{
       boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
     }}>
 

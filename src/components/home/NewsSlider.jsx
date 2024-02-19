@@ -32,8 +32,11 @@ export const NewsSlider = () => {
     <Slider {...settings}>
       {news.map((data) => (
         <div className='p-3 h-full'>
+          <a href={data.url}>
         <NewsCard data = {data}/>
+        </a>
         </div>
+        
       ))}
       
       </Slider>

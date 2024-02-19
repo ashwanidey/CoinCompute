@@ -13,6 +13,7 @@ import Tracker from './components/tracker/Tracker'
 import { CryptoContext } from './context/CryptoContext'
 import { CryptoDetails } from './components/tracker/crypto-details/CryptoDetails'
 import { Home } from './components/home/Home'
+import { News } from './components/news/News'
 
 
 
@@ -30,6 +31,7 @@ function App() {
       <Routes>
       <Route path = "/" element = {<Home/>}></Route>
       <Route path = "/home" element = {<Home/>}></Route>
+      <Route path = "/news" element = {<News/>}></Route>
       <Route path = "/calculator" element={<div class="flex sm:flex-row flex-col"><NavBar/><Pnl/></div>}/>
       <Route path="/tracker" element={<Tracker/>} />
       <Route path="/tracker/:coinId" element={<CryptoDetails/>} />

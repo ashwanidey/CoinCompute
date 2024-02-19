@@ -5,6 +5,7 @@ import { StorageContext } from '../../context/StorageContext'
 import millify from 'millify'
 import { ScreenSizeContext } from '../../context/ScreenSize'
 import { NewsSlider } from './NewsSlider'
+import { WatchList } from './WatchList'
 
 const Card = ({data,label,prefixsymbol,suffixSymbol}) => {
   return (
@@ -35,7 +36,10 @@ export const HomeHeader = () => {
     {size400 && <Card data = {globalData.totalCoins} label={"Total Coins"} /> }
     </div>
     <div className='flex md:flex-row flex-col gap-[2%]'>
+    <div className='flex flex-col md:w-[49%]'>
     <TopCoins/>
+    <WatchList/>
+    </div>
     <NewsSlider/>
     </div>
     

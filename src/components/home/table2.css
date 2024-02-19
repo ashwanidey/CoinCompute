@@ -27,7 +27,7 @@
   background-color: var(
       --table-background);
   
-  margin: 16px;
+  
   max-width: auto;
   border: 2px solid var(
       --gray-background);
@@ -244,7 +244,7 @@
 @media (max-width: 600px) {
   .table-widget{
     padding : 13px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     
   }
 }
