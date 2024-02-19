@@ -244,7 +244,12 @@
 @media (max-width: 600px) {
   .table-widget{
     padding : 13px;
+   
+    
     /* margin-left: 10px; */
     
+  }
+  .table-wrapper{
+    max-height: 290px;
   }
 }
