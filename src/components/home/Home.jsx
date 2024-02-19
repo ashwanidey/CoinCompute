@@ -8,7 +8,7 @@ import { News } from './News'
 export const Home = () => {
   return (
     <>
-    <div>
+    <div className='xl:mx-[70px] mx-0'>
       <HomeHeader/>
     <WatchList/>
     <News/>

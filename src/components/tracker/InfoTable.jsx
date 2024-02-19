@@ -1,50 +1,43 @@
 import React, { useContext, useState } from 'react'
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-
 import { Card} from '@mui/material';
 import { CryptoContext } from '../../context/CryptoContext';
-
-import { RemoveFromQueue } from '@mui/icons-material';
-import ControlBar from './ControlBar';
 import LinearProgress from '@mui/material/LinearProgress';
-import Box from '@mui/material/Box';
-import { Link, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import { ScreenSizeContext } from '../../context/ScreenSize';
 import TablePagination from './TablePagination';
-
-import Chart from "react-apexcharts";
-
-import millify from 'millify';
-
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { StorageContext } from '../../context/StorageContext';
 import { Chartify } from '../Chartify';
+import { Item } from './crypto-details/Item';
 
 
 
 const positive = {
   
-  borderColor : "green",
+  backgroundColor : "rgba(52, 179, 73, 0.1)",
   color : "green",
   
 
 }
 
 const negative = {
-  borderColor : "red",
+  
+  backgroundColor : "rgba(240, 41, 52, 0.1)",
   color:"red",
  
 }
 
 const zero = {
-  borderColor : "gray",
+  backgroundColor : "#f1f6ff",
   color:"gray",
 }
 
@@ -54,17 +47,7 @@ const cellValue = {
   color: " #242424"
 }
 
-const Item = ({value}) => {
-  return (
-    <>
-    <TableCell align="center"  sx={cellValue} >
-      
-      <span className='border-solid border-[1px]  rounded-[3px] p-1' style={ Number(value) >= 0 ? (Number(value)!== 0 ? positive: zero) : negative}>{value ? Number(value).toFixed(2) : 0}%</span>
-   
-      </TableCell>
-    </>
-  )
-}
+
 
 
 
@@ -156,7 +139,7 @@ const SaveBtn = ({ID}) => {
             
             (!size400 && data === "Chart" ? "" :
             (!activeMenu && data === "Market Cap Change (24h)" ? 
-            <TableCell align="center" sx={{fontWeight:900,fontSize:"1.1rem",color: "#272727"}}>24H </TableCell> :
+            <TableCell align="center" sx={{fontWeight:800,fontSize:"1.1rem",color: "#272727"}}>24H </TableCell> :
             data === "Price" || data === "Asset" ? <TableCell align="left" sx={{fontWeight:800,fontSize:"1.1rem",color: "#272727"}}>{data}</TableCell> : <TableCell align="center" sx={{fontWeight:800,fontSize:"1.1rem",color: "#272727"}}>{data}</TableCell>)
             )
               
@@ -183,7 +166,7 @@ const SaveBtn = ({ID}) => {
             
             
             {/* <Link to={`/tracker/${row.uuid}`}> */}
-              <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"80px,",paddingLeft:"10px",paddingRight:"40px", minHeight: size400 ? "" : "80px",position:"sticky",left:"0",zIndex : "1",backgroundColor:"#FCFCFD", maxWidth:"auto",minWidth:"auto"}} 
+              <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"80px,",paddingLeft:"10px",paddingRight:"40px", minHeight: size400 ? "" : "90px",position:"sticky",left:"0",zIndex : "1",backgroundColor:"#FCFCFD", maxWidth:"auto",minWidth:"auto"}} 
               // style={{content: "::before", position: "absolute",boxShadow: "inset 10px 0 8px -8px #00000026"}}
               // style={tablecellshadowright} 
               >
@@ -204,10 +187,14 @@ const SaveBtn = ({ID}) => {
              
               {size400 && <Item value = {row.change} />}
               
-              <TableCell  className="max-w-[150px] min-w-[150px]">
-              {!size400 && <span style={row.change < 0 ? negative : positive} className='font-[600] '>
-                {row.change > 0 ? <span>+</span> : <></>}
-                {row.change}</span>}
+              <TableCell  className="max-w-[150px] min-w-[150px]" sx={{padding:0}}>
+              {!size400 && <div  className='rounded-[8px] w-[75px] py-[1px] pr-[6px] h-[30px] font-[500] text-[14px] flex items-center' style={ Number(row.change) >= 0 ? (Number(row.change)!== 0 ? positive: zero) : negative}>
+      
+      {(Number(row.change) > 0 ? <ArrowDropUpIcon/> : <ArrowDropDownIcon/>)}
+      
+      {row.change ? Math.abs(Number(row.change)).toFixed(2) : 0}%
+      
+      </div>}
               <Chartify sparklineData = {row.sparkline} change={row.change}/></TableCell>
               
               

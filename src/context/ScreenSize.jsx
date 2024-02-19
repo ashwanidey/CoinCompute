@@ -26,7 +26,7 @@ export const SizeProvider = ({children}) => {
   }, []);
 
   useEffect(() => {
-    if (screenSize <= 1024) {
+    if (screenSize <= 1280) {
       setActiveMenu(false);
     } else {
       setActiveMenu(true);

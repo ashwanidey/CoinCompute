@@ -53,7 +53,7 @@ export const CryptoNewsProvider = ({children}) => {
     };
   
     fetchData();
-  }, []); // Empty dependency array to ensure the effect runs only once
+  }, []);
 
     
  

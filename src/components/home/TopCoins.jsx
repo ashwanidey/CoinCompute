@@ -46,20 +46,24 @@ export const TopCoins = () => {
 
   
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-    pauseOnHover: true
+    pauseOnHover: true,
+    arrows : false,
+    draggable : true
   };
 
   return (
     
-    <div className='my-4'>
+    <div className='my-5'>
       
-    <div className=' md:w-[50%] bg-[#f1f6ff] p-3 rounded-lg'>
+    <div className=' md:w-[50%] bg-[#f1f6ff] p-3 rounded-lg' style={{
+      boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+    }}>
 
        <Slider {...settings}>
         <div>
