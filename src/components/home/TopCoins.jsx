@@ -59,14 +59,14 @@ export const TopCoins = () => {
 
   return (
     
-    <div className='my-5'>
+    
       
-    <div className=' md:w-[50%] bg-[#f1f6ff] p-3 rounded-lg' style={{
+    <div className=' my-5 md:w-[49%] h-[50%]  bg-[#f1f6ff] p-3 rounded-lg' style={{
       boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
     }}>
 
        <Slider {...settings}>
-        <div>
+        <div >
         <span className='font-[900] uppercase text-[1.1rem]'>Top Coins</span>
     {bestCoins.map((data,index) => (
       < Card data = {data} index= {index}/>
@@ -85,7 +85,7 @@ export const TopCoins = () => {
     
     </Slider>
     </div>
-    </div>
+  
     
   )
 }

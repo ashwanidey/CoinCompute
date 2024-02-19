@@ -34,9 +34,9 @@ export const HomeHeader = () => {
     {size400 && <Card data = {millify(globalData.btcDominance)} label={"Bitcoin dominance"} suffixSymbol=" %"/> }
     {size400 && <Card data = {globalData.totalCoins} label={"Total Coins"} /> }
     </div>
-    <div className=''>
+    <div className='flex md:flex-row flex-col gap-[2%]'>
     <TopCoins/>
-    {/* <NewsSlider/> */}
+    <NewsSlider/>
     </div>
     
     </div>

@@ -23,7 +23,7 @@ export const Table2 = () => {
   
 
   return (
-    <div class="table-widget lg:w-[60%] w-[95%] ">
+    <div class="table-widget md:w-[49%] w-[95%] ">
 			<span class="caption-container relative">
 				<span class="table-title">
 					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
