@@ -2,10 +2,7 @@ import React, { useContext } from 'react'
 import './table2.css'
 import { StorageContext } from '../../context/StorageContext';
 import { ScreenSizeContext } from '../../context/ScreenSize';
-
-import { Chartify } from '../Chartify';
 import { useNavigate } from 'react-router-dom';
-
 import { TableRow } from './TableRow';
 
 export const Table2 = () => {

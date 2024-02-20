@@ -34,7 +34,7 @@ export const CryptoNewsProvider = ({children}) => {
   
       if (localStorage.color && localStorage.expireTime && parseInt(localStorage.expireTime) > now) {
         setNews(JSON.parse(localStorage.color));
-        console.log(`Returning user -- color from last visit is ${localStorage.color}`);
+        // console.log(`Returning user -- color from last visit is ${localStorage.color}`);
       } else {
         // Fetch news if not stored or expired
         let fetchedNews = await getNews();
@@ -47,7 +47,7 @@ export const CryptoNewsProvider = ({children}) => {
           localStorage.setItem("expireTime", newExpireTime);
   
           let dateString = new Date(newExpireTime).toLocaleString();
-          console.log(`First visit (since storage was cleared). New color, ${newColor}, will be replaced at ${dateString}`);
+          // console.log(`First visit (since storage was cleared). New color, ${newColor}, will be replaced at ${dateString}`);
         }
       }
     };

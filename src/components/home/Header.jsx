@@ -36,7 +36,7 @@ export const HomeHeader = () => {
     {size400 && <Card data = {globalData.totalCoins} label={"Total Coins"} /> }
     </div>
     <div className='flex md:flex-row flex-col gap-[2%]'>
-    <div className='flex flex-col md:w-[49%]'>
+    <div className='flex flex-col md:w-[49%] justify-between h-full'>
     <TopCoins/>
     <WatchList/>
     </div>
