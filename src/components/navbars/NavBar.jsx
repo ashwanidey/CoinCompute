@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { Link, NavLink, useMatch, useResolvedPath } from "react-router-dom"
 
-import  {ScreenSizeContext}  from "../context/ScreenSize"
+import  {ScreenSizeContext}  from "../../context/ScreenSize"
 
 
 

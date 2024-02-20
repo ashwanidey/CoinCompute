@@ -1,28 +1,29 @@
 import { useContext, useState } from 'react'
 import './App.css'
-import NavBar from './components/NavBar'
+import NavBar from './components/navbars/NavBar'
 import { Route, Routes } from "react-router-dom"
 import Pnl from "./components/pnl/Pnl"
 import TargetPrice from "./components/target_price/TargetPrice"
 import Liquidation from './components/liquidation price/Liquidation'
 import MaxOpen from './components/max_open/MaxOpen'
 import OpenPrice from './components/open-price/OpenPrice'
-import TopNavBar from './components/TopNavBar'
+import TopNavBar from './components/navbars/TopNavBar'
 import Tracker from './components/tracker/Tracker'
 
 import { CryptoContext } from './context/CryptoContext'
 import { CryptoDetails } from './components/tracker/crypto-details/CryptoDetails'
 import { Home } from './components/home/Home'
 import { News } from './components/news/News'
-import { BottomNav } from './components/BottomNav'
+import { BottomNav } from './components/navbars/BottomNav'
 import { ScreenSizeContext } from './context/ScreenSize'
+import { WatchList } from './components/watchlist/WatchList'
 
 
 
 
 function App() {
   
-  const {size400} = useContext(ScreenSizeContext)
+  const {size900} = useContext(ScreenSizeContext)
 
   return (
     <>
@@ -34,6 +35,7 @@ function App() {
       <Route path = "/" element = {<Home/>}></Route>
       <Route path = "/home" element = {<Home/>}></Route>
       <Route path = "/news" element = {<News/>}></Route>
+      <Route path = "/watchlist" element = {<WatchList/>}></Route>
       <Route path = "/calculator" element={<div class="flex sm:flex-row flex-col mb-[5rem]"><NavBar/><Pnl/></div>}/>
       <Route path="/tracker" element={<Tracker/>} />
       <Route path="/tracker/:coinId" element={<CryptoDetails/>} />
@@ -46,7 +48,7 @@ function App() {
      
       </Routes>
 
-      {!size400  &&<BottomNav/>}
+      {!size900  &&<BottomNav/>}
 
  
       

@@ -14,6 +14,7 @@ export const SizeProvider = ({children}) => {
   const [screenSize, setScreenSize] = useState(null);
 
   const [size400,setSize400] = useState(true);
+  const [size900,setSize900] = useState(true);
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -40,9 +41,16 @@ export const SizeProvider = ({children}) => {
       setSize400(true);
     }
   }, [screenSize]);
+  useEffect(() => {
+    if (screenSize <= 900) {
+      setSize900(false);
+    } else {
+      setSize900(true);
+    }
+  }, [screenSize]);
   
   return (
-    <ScreenSizeContext.Provider value = {{activeMenu,size400}}>
+    <ScreenSizeContext.Provider value = {{activeMenu,size400,size900}}>
       {children}
     </ScreenSizeContext.Provider>
   )
