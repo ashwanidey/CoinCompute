@@ -105,9 +105,9 @@ function ResponsiveAppBar() {
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   {/* console.log(index); */}
                   <NavLink to={paths[index]}>
-                    {page === "News" ? <Typography textAlign="center" sx = {{fontWeight:1000}}
+                    {page === "News"  || page === "Watchlist"? <Typography textAlign="center" sx = {{fontWeight:1000}}
                     className='flex items-center'>
-                    {page} <div className='text-[0.6rem] bg-[#3861FB] text-white rounded-[40px] py-[1px] px-[7px] ml-2 '>New</div>
+                    {page} <div className='text-[0.6rem] bg-[#3861FB] text-white rounded-[40px] py-[3px] px-[7px] ml-2 '>New</div>
                   </Typography> : <Typography textAlign="center" sx = {{fontWeight:1000}}>
                     {page}
                   </Typography>}
@@ -143,7 +143,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page,index) => (
               <NavLink to={paths[index]}>
-                { page === "News" ? <Button
+                { page === "News" || page === "Watchlist"? <Button
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'flex',fontWeight:1000,fontSize: "1rem " , mr:2}}
