@@ -22,7 +22,7 @@ export const NewsCard = ({data}) => {
       <div className="flex justify-end">
     <a
               href={data.url}
-              className="inline-block rounded-full border border-[#242424] md:px-7 px-3 py-2 text-base font-medium text-[white] transition hover:border-primary hover:bg-transparent hover:text-black dark:border-dark-3 dark:text-dark-6 mt-4 mb-4 bg-[#3080E8]"
+              className="inline-block rounded-full border border-[#242424] md:px-7 px-3 py-2 text-base font-medium text-[white] transition hover:border-primary hover:bg-transparent hover:text-black dark:border-dark-3 dark:text-dark-6 md:mt-4 md:mb-4 bg-[#3080E8]"
             > View Details</a> 
             </div>
     

@@ -82,6 +82,7 @@ function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
+            <div className='w-[6px] h-[6px] bg-[red] rounded-full relative top-3 right-3'></div>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -99,12 +100,19 @@ function ResponsiveAppBar() {
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
-            >
+            > 
               {pages.map((page,index) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   {/* console.log(index); */}
                   <NavLink to={paths[index]}>
-                  <Typography textAlign="center" sx = {{fontWeight:1000}}>{page}</Typography>
+                    {page === "News" ? <Typography textAlign="center" sx = {{fontWeight:1000}}
+                    className='flex items-center'>
+                    {page} <div className='text-[0.6rem] bg-[#3861FB] text-white rounded-[40px] py-[1px] px-[7px] ml-2 '>New</div>
+                  </Typography> : <Typography textAlign="center" sx = {{fontWeight:1000}}>
+                    {page}
+                  </Typography>}
+                  
+                 
                   </NavLink>
                 </MenuItem>
               ))}
@@ -135,13 +143,21 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page,index) => (
               <NavLink to={paths[index]}>
-              <Button
+                { page === "News" ? <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'flex',fontWeight:1000,fontSize: "1rem " , mr:2}}
+                className='items-center'
+              >
+                {page} <div className='text-[0.6rem] bg-white text-black rounded-[40px] py-[1px] px-[7px] ml-2 '>New</div>
+              </Button> : <Button
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block',fontWeight:1000,fontSize: "1rem " , mr:2}}
               >
                 {page}
-              </Button>
+              </Button>}
+              
               </NavLink>
             ))}
           </Box>
