@@ -26,18 +26,20 @@ export const BottomNav = () => {
         <button type="button" class="inline-flex flex-col items-center justify-center px-5 group rounded-xl p-1 m-1 hover:bg-[#021E9A] " onClick={() => handleClick("/home")}>
             <HomeIcon  sx={{color:'#021E9A',fontSize:'25px'}}
             className='group-hover:text-white '/>
-            <span class="text-sm text-[#021E9A] group-hover:text-white ">Home</span>
+            <span class="text-[0.8rem] text-[#021E9A] group-hover:text-white ">Home</span>
         </button>
         
         <button type="button" class="inline-flex flex-col items-center justify-center px-5 group rounded-xl p-1 m-1 hover:bg-[#021E9A]" onClick={() => handleClick("/tracker")}>
            <CandlestickChartIcon  sx={{color:'#021E9A',fontSize:'25px'}}
             className='group-hover:text-white '/>
-            <span class="text-sm text-[#021E9A] group-hover:text-white ">Tracker</span>
+            <span class="text-[0.8rem] text-[#021E9A] group-hover:text-white ">Tracker</span>
         </button>
+
+
         <button type="button" class="inline-flex flex-col items-center justify-center px-5 group rounded-xl p-1 m-1 hover:bg-[#021E9A]" onClick={() => handleClick("/watchlist")}>
            <FavoriteIcon  sx={{color:'#021E9A',fontSize:'25px'}}
             className='group-hover:text-white '/>
-            <span class="text-sm text-[#021E9A] group-hover:text-white whitespace-nowrap ">Watch List</span>
+            <span class="text-[0.8rem] text-[#021E9A] group-hover:text-white whitespace-nowrap ">Watchlist</span>
         </button>
 
 
@@ -45,14 +47,14 @@ export const BottomNav = () => {
         <button type="button" class="inline-flex flex-col items-center justify-center px-5  group rounded-xl p-1 m-1 hover:bg-[#021E9A]" onClick={() => handleClick("/calculator")}>
             <CalculateIcon sx={{color:'#021E9A',fontSize:'25px'}}
             className='group-hover:text-white '/>
-            <span class="text-sm text-[#021E9A] group-hover:text-white ">Calculator</span>
+            <span class="text-[0.8rem] text-[#021E9A] group-hover:text-white ">Calculator</span>
         </button>
 
 
         <button type="button" class="inline-flex flex-col items-center justify-center px-5  group rounded-xl p-1 m-1 hover:bg-[#021E9A]" onClick={() => handleClick("/news")}>
             <NewspaperIcon sx={{color:'#021E9A',fontSize:'25px'}}
             className='group-hover:text-white '/>
-            <span class="text-sm text-[#021E9A] group-hover:text-white ">News</span>
+            <span class="text-[0.8rem] text-[#021E9A] group-hover:text-white ">News</span>
         </button>
     </div>
 </div>

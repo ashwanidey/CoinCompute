@@ -9,6 +9,7 @@ export const StorageProvider  = ({children}) => {
 
   const [allCoins,setAllCoins] = useState([]);
   const [savedCoins,setSavedCoins] = useState([]);
+  console.log(allCoins)
  
 
 
@@ -16,7 +17,7 @@ export const StorageProvider  = ({children}) => {
       let oldCoins = JSON.parse(localStorage.getItem("coins"));
   
       if (oldCoins.includes(coinId)) {
-        return null;
+        return ;
       } else {
         let newCoins = [...oldCoins, coinId];
         setAllCoins(newCoins);
@@ -140,7 +141,7 @@ export const StorageProvider  = ({children}) => {
       if (allCoins.length > 0) {
         getSavedCoins(allCoins);
       } else {
-        getSavedCoins();
+        setSavedCoins([]);
       }
     }, [allCoins]);
 
@@ -154,6 +155,7 @@ export const StorageProvider  = ({children}) => {
     else{
       //set the state with the current values from the storge
       let totalCoins = JSON.parse(localStorage.getItem("coins"));
+      // console.log(totalCoins)
       setAllCoins(totalCoins);
      
       if (totalCoins.length > 0) {

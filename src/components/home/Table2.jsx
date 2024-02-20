@@ -5,7 +5,8 @@ import { ScreenSizeContext } from '../../context/ScreenSize';
 import { useNavigate } from 'react-router-dom';
 import { TableRow } from './TableRow';
 
-export const Table2 = () => {
+export const Table2 = ({tableHeight}) => {
+  
   const tableheads = ["Asset","Price","Market Cap Change (24h)","Chart","3H","7D","30D"];
 
   const {savedCoins} = useContext(StorageContext);
@@ -34,7 +35,7 @@ export const Table2 = () => {
         <div className=' right-0 bottom-5 absolute cursor-pointer' onClick = {() => handleClick()}>+ Add Coins</div>
         
 			</span>
-			<div class="table-wrapper">
+			<div className='table-wrapper ' style={{maxHeight : `${tableHeight}`}}>
 				<table className='max-h-[1px]'>
           <thead>
             <tr>

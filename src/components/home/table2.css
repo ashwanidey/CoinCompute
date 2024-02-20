@@ -41,7 +41,7 @@
   overflow-x: auto;
   overflow-y: auto;
   padding-bottom: 8px;
-  max-height: 350px;
+  max-height: 300px;
   
   
 }
@@ -249,7 +249,5 @@
     /* margin-left: 10px; */
     
   }
-  .table-wrapper{
-    max-height: 290px;
-  }
+  
 }

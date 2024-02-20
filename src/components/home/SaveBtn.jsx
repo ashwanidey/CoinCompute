@@ -20,7 +20,7 @@ export const SaveBtn = ({ID}) => {
   }
 
   return (
-  <button className='w-[20px]' onClick= {() => handleClick()}>
+  <button className='w-[25px]' onClick= {() => handleClick()}>
      {
       !allCoins.includes(ID) ?  <FavoriteBorderOutlinedIcon sx={{fontSize : "large"}}/> : 
       <FavoriteIcon sx={{fontSize : "large"}}/>

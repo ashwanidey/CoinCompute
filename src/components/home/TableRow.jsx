@@ -15,7 +15,7 @@ export const TableRow = ({row,id}) => {
   const navigate = useNavigate();
   const handleRowClick = (id,event) => {
     // console.log(event.target.tagName.toLowerCase());
-    if (event.target.tagName.toLowerCase() === 'svg' || event.target.tagName.toLowerCase() === 'path') {
+    if (event.target.tagName.toLowerCase() === 'svg' || event.target.tagName.toLowerCase() === 'path' ||event.target.tagName.toLowerCase() === 'button') {
       // If clicked on the button, don't navigate
       return;
     }
