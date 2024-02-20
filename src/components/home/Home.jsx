@@ -24,7 +24,7 @@ export const Home = () => {
     <div className='md:text-[2rem] font-[900] text-[1.2rem] uppercase '>Today's Cryptocurrency Prices </div>
     </div>
     <div className='flex w-full justify-end '>
-      <span className='font-[600] text-[1.1rem] mr-3' >Highlights</span>
+      <span className='font-[600] text-[1rem] mr-3 ' >Highlights</span>
     <Switcher4 handleCheckboxChange = {handleCheckboxChange} isChecked={isChecked} />
     </div>
     {isChecked && <HomeHeader/>}

@@ -14,12 +14,12 @@ const Switcher4 = ({handleCheckboxChange,isChecked}) => {
             className='sr-only'
           />
           <div
-            className={`box block h-8 w-14 rounded-full ${
-              isChecked ? 'bg-[#02146A]' : 'bg-black'
+            className={`box block h-[24px] w-[44px] rounded-full ${
+              isChecked ? 'bg-[#3080E8]' : 'bg-black'
             }`}
           ></div>
           <div
-            className={`absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition ${
+            className={`absolute left-[4px] top-[3px] flex h-[18px] w-[18px] items-center justify-center rounded-full bg-white transition ${
               isChecked ? 'translate-x-full' : ''
             }`}
           ></div>
