@@ -17,7 +17,7 @@ export const Home = () => {
   
   return (
     <>
-    <div className='xl:mx-[70px] mx-0'>
+    <div className='xl:mx-[70px] mx-0 mb-[5rem]'>
       
     <div className='m-[20px] '>
       <div className='w-full flex justify-center mb-3'>

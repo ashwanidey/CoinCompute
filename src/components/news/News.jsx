@@ -11,10 +11,10 @@ export const News = () => {
   return (
     <>
     
-      <div className='flex justify-center '>
+      <div className='flex justify-center  '>
     <div className='font-[900] text-[2rem] uppercase md:mt-10 mt-4'>Crypto News</div>
     </div>
-    <div className='grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 md:gap-8 gap-3 md:m-6 m-[1.1rem] xl:mx-[70px] mx-[20px]'>
+    <div className='grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 md:gap-8 gap-3 md:m-6 m-[1.1rem] xl:mx-[70px] mx-[20px] mb-[5rem]'>
       
       {news.map((data,index) => (
         

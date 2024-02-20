@@ -9,7 +9,7 @@ import { Table2 } from '../home/Table2'
 const Tracker = () => {
   return (
     <>
-   <div className=' lg:mt-0 mt-[-1rem] '>
+   <div className=' lg:mt-0 mt-[-1rem] mb-[5rem]'>
     <CryptoProvider>
       <div className='mt-10 lg:ml-[2rem] lg:mr-[2rem] ml-[0.5rem]  mr-[0.5rem]'>
     <ControlBar/>
