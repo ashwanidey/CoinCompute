@@ -4,7 +4,7 @@ import { TopCoins } from './TopCoins'
 import { StorageContext } from '../../context/StorageContext'
 import millify from 'millify'
 import { ScreenSizeContext } from '../../context/ScreenSize'
-import { NewsSlider } from './NewsSlider'
+import { NewsSlider } from '../news/NewsSlider'
 import { WatchList } from './WatchList'
 
 const Card = ({data,label,prefixsymbol,suffixSymbol}) => {
@@ -22,27 +22,12 @@ export const HomeHeader = () => {
   const {size400} = useContext(ScreenSizeContext)
   return (
     <>
-   
-    <div className='m-[20px] '>
-      <div className='w-full flex justify-center mb-3'>
-    <div className='md:text-[2rem] font-[900] text-[1.2rem] uppercase '>Today's Cryptocurrency Prices </div>
-    </div>
-
     
     <div className='flex gap-3 md:flex-row flex-col' >
     <Card data = {globalData.totalMarketCap} label={"market Cap"} prefixsymbol="$"/>
     <Card data = {globalData.total24hVolume} label={"24h Volume"} prefixsymbol="$"/>
     {size400 && <Card data = {millify(globalData.btcDominance)} label={"Bitcoin dominance"} suffixSymbol=" %"/> }
     {size400 && <Card data = {globalData.totalCoins} label={"Total Coins"} /> }
-    </div>
-    <div className='flex md:flex-row flex-col gap-[2%]'>
-    <div className='flex flex-col md:w-[49%] justify-between h-full'>
-    <TopCoins/>
-    <WatchList/>
-    </div>
-    <NewsSlider/>
-    </div>
-    
     </div>
    
     </>

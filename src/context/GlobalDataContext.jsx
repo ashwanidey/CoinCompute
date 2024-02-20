@@ -6,8 +6,9 @@ export const GlobalDataContext = createContext({});
 export const GlobalDataProvider = ({children}) => {
 
   const [globalData,setGlobalData] = useState({});
-  const [data,setData] = useState([]);
-  const [bestCoins,setBestCoins] = useState([]);
+ 
+
+ 
 
   const options = {
     method: 'GET',
@@ -43,19 +44,16 @@ export const GlobalDataProvider = ({children}) => {
   const getData = async() => {
     try {
       const response = await axios.request(options);
-      const bestCoinsData = response.data.data.bestCoins;
-      
-      const uuids = bestCoinsData.map(item => item.uuid);
-      // console.log(uuids);
-      setBestCoins(uuids);
-      
-      setGlobalData(response.data.data);
+
+      return (response.data.data);
     } catch (error) {
       console.error(error);
+
     }
   }
 
-  const getBestCoins = async({bestCoins}) => {
+  const getCoinsData = async(bestCoins) => {
+    
     const newData = {}
       for (let i = 0; i < bestCoins.length; i++) {
         newData[`uuids[${i}]`] = bestCoins[i];
@@ -73,53 +71,45 @@ export const GlobalDataProvider = ({children}) => {
       // console.log(newOptions)
       try {
         const response = await axios.request(newOptions);    
-        setData(response.data.data.coins);
+        return (response.data.data.coins);
       } catch (error) {
         console.error(error);
       }
   }
 
-  const manipulateData = () => {
-    // console.log(data)
+
+  const completeFunction = async() => {
+    let dataofGlobal = await getData();
+    const bestCoinsData = dataofGlobal.bestCoins;
     
-      globalData.bestCoins.forEach((item1) => {
-        data.forEach((item2) => {
-          if (item1.uuid === item2.uuid) {
-            item1.price = item2.price;
-            item1.change = item2.change;
-          }
-        });
+    const uuids = bestCoinsData.map(item => item.uuid);
+  
+    let bestCoins = await getCoinsData(uuids);
+   
+
+    dataofGlobal.bestCoins.forEach((item1) => {
+      bestCoins.forEach((item2) => {
+        if (item1.uuid === item2.uuid) {
+          item1.price = item2.price;
+          item1.change = item2.change;
+        }
       });
-      console.log(globalData.bestCoins)
-      
+    });
+    setGlobalData(dataofGlobal)
   }
 
-
   useEffect(() => {
-    if(data.length > 0){
-      manipulateData();
-    }
-  },[data,bestCoins])
-  
-
-  
-  useEffect(() => {
-    if(bestCoins.length > 0){
-      getBestCoins({bestCoins});
-      
-    }
-    
-    else getBestCoins();
-  },[bestCoins])
-
-  useLayoutEffect(() =>{
-    getData()
+    completeFunction()
   },[])
+
+
+
   
   return(
     <GlobalDataContext.Provider
     value={{
       globalData,
+   
     }}
   >
     {children}

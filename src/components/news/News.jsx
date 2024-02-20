@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { CryptoNewsContext } from '../../context/CryptoNewsContext'
-import { NewsCard } from '../home/NewsCard';
+import { NewsCard } from './NewsCard';
 
 
 

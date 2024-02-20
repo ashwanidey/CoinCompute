@@ -12,7 +12,7 @@ export const NewsSlider = () => {
   var settings = {
     dots: false,
     infinite: true,
-    slidesToShow: !size400 ? 1 : 2,
+    slidesToShow: !size400 ? 2 : 2,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,

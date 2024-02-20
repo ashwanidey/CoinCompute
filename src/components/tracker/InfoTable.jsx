@@ -18,6 +18,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { StorageContext } from '../../context/StorageContext';
 import { Chartify } from '../Chartify';
 import { Item } from './crypto-details/Item';
+import millify from 'millify';
 
 
 
@@ -166,15 +167,15 @@ const SaveBtn = ({ID}) => {
             
             
             {/* <Link to={`/tracker/${row.uuid}`}> */}
-              <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"80px,",paddingLeft:"10px",paddingRight:"40px", minHeight: size400 ? "" : "90px",position:"sticky",left:"0",zIndex : "1",backgroundColor:"#FCFCFD", maxWidth:"auto",minWidth:"auto"}} 
+              <TableCell align="left" sx={{display:"flex" ,gap:1, alignItems:"center",justifyContent:"left",Width:"80px,",paddingLeft:"10px",paddingRight:size400 ? "40px": "20px", minHeight: size400 ? "" : "20px",position:"sticky",left:"0",zIndex : "1",backgroundColor:"#FCFCFD", maxWidth:"auto",minWidth:"auto"}} 
               // style={{content: "::before", position: "absolute",boxShadow: "inset 10px 0 8px -8px #00000026"}}
               // style={tablecellshadowright} 
               >
                 <SaveBtn ID = {row.uuid}/>
-              <div className='font-[700] mr-1'>{serialNo++}</div>
+              {size400 && <div className='font-[700] md:mr-1'>{serialNo++}</div>}
               <img src = {row.iconUrl} className='h-[1.6rem] w-[1.6rem]' />
               <div className='flex flex-col'>
-              <span style={cellValue}>{row.name}</span>
+              <span style={cellValue} className='line-clamp-2'>{row.name}</span>
               <span>{row.symbol}</span>
               </div>
               </TableCell>
@@ -187,7 +188,7 @@ const SaveBtn = ({ID}) => {
              
               {size400 && <Item value = {row.change} />}
               
-              <TableCell  className="max-w-[150px] min-w-[150px]" sx={{padding:0}}>
+              <TableCell  className="max-w-[150px] min-w-[150px]" sx={{padding: "0px 10px 0px 10px"}}>
               {!size400 && <div  className='rounded-[8px] w-[75px] py-[1px] pr-[6px] h-[30px] font-[500] text-[14px] flex items-center' style={ Number(row.change) >= 0 ? (Number(row.change)!== 0 ? positive: zero) : negative}>
       
       {(Number(row.change) > 0 ? <ArrowDropUpIcon/> : <ArrowDropDownIcon/>)}
@@ -202,8 +203,10 @@ const SaveBtn = ({ID}) => {
               <Item value = {row.change7d}/>
 
               <Item value = {row.change30d}/>
-              <TableCell align= "center" sx ={cellValue}>${Number(row.marketCap).toLocaleString()}</TableCell>
-              <TableCell align= "center" sx ={cellValue}>${Number(row["24hVolume"]).toLocaleString()}</TableCell>
+              <TableCell align= "center" sx ={cellValue}>$
+              {size400 ? Number(row.marketCap).toLocaleString() : millify(row.marketCap)}  </TableCell>
+              <TableCell align= "center" sx ={cellValue}>$
+              {size400 ? Number(row["24hVolume"]).toLocaleString() : millify(row["24hVolume"])}</TableCell>
 
               
 
