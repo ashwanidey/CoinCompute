@@ -14,13 +14,15 @@ import { CryptoContext } from './context/CryptoContext'
 import { CryptoDetails } from './components/tracker/crypto-details/CryptoDetails'
 import { Home } from './components/home/Home'
 import { News } from './components/news/News'
+import { BottomNav } from './components/BottomNav'
+import { ScreenSizeContext } from './context/ScreenSize'
 
 
 
 
 function App() {
   
-  
+  const {size400} = useContext(ScreenSizeContext)
 
   return (
     <>
@@ -43,6 +45,8 @@ function App() {
       <Route path="/calculator/OpenPrice" element={<div class="flex sm:flex-row flex-col"><NavBar/><OpenPrice /></div>} />
      
       </Routes>
+
+      {!size400  &&<BottomNav/>}
 
  
       
