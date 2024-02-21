@@ -23,7 +23,8 @@ export const Header = () => {
         </div>
         </div>
         <div className='ml-4'>
-        <SaveBtn id={coinData.uuid}/>
+         
+        <SaveBtn ID={coinData.uuid}/>
         </div>
         </div>
         

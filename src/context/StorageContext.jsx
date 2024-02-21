@@ -9,7 +9,7 @@ export const StorageProvider  = ({children}) => {
 
   const [allCoins,setAllCoins] = useState([]);
   const [savedCoins,setSavedCoins] = useState([]);
-  console.log(allCoins)
+
  
 
 

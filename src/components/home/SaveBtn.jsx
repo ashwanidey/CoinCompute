@@ -5,6 +5,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
 export const SaveBtn = ({ID}) => {
+  console.log(ID);
   const {saveCoin,allCoins,removeCoin} = useContext(StorageContext);
   
 
