@@ -1,12 +1,15 @@
 import PnlForm from "./PnlForm";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Result from "./Result";
 import Widget from "../Widget";
+import { PriceScroller } from "../PriceScroller";
+
 
 
 export default function Pnl(){
 
   const [FormData, setFormData] = useState([]);
+  
 
   const handleResultData = (data) => {
     setFormData(data);
@@ -17,7 +20,8 @@ export default function Pnl(){
     <>
    <div class="container-pnl " id="pnl-toogle">
     
-      <Widget/>
+      {/* <Widget/> */}
+      <PriceScroller/>
       <span class="Heading">Futures Calulator</span>
       <span class="pnl-form-title">Profit and Loss</span>
       <div class="wrapper">

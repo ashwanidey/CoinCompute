@@ -19,7 +19,7 @@ export default function NavBar(){
   return (
     <>
     
-        <div className="hidden md:block m-2 lg:flex flex-col items-center min-w-[10%] w-full overflow-hidden text-[#242424] bg-[#B3BCCC] " style={{borderRadius: "20px 0px 0px 20px"}}>
+        <div className="hidden md:block m-2 lg:flex flex-col items-center min-w-[17%]  overflow-hidden text-[#242424] bg-[#B3BCCC] " style={{borderRadius: "20px 0px 0px 20px"}}>
             
             <div className="w-[100%] px-2">
                 <div className="flex flex-col items-center w-full mt-3 ">

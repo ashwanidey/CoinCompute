@@ -10,6 +10,8 @@ export const CryptoContext = createContext({});
 
 export const CryptoProvider = ({children}) => {
   const [cryptoData, setCryptoData] = useState([]);
+  const [scrollerData,setScrollerData] = useState([]);
+  const [scrollerLoading,setScrollerLoading] = useState();
   
   
   const [searched, setSearched] = useState([]);
@@ -61,6 +63,40 @@ export const CryptoProvider = ({children}) => {
   
   
  
+  const optionsScroller = {
+    method: 'GET',
+  url: 'https://coinranking1.p.rapidapi.com/coins',
+  params: {
+    referenceCurrencyUuid: 'yhjMzLPhuIDl',
+    timePeriod: '24h',
+    'tiers[0]': '1',
+    orderBy: 'marketCap',
+    orderDirection: 'desc',
+    limit: '50',
+    offset: '0'
+  },
+  headers: {
+    'X-RapidAPI-Key': 'fef93e0117msh2c96991107f59b4p1fb309jsn5804230510a6',
+    'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+  }
+  };
+
+  const getScrollerData = async() => {
+    setScrollerLoading(true);
+    try {
+      const response = await axios.request(optionsScroller);
+      setScrollerData(response.data.data.coins);
+      setScrollerLoading(false)
+    } catch (error) {
+      console.error(error);
+      setScrollerLoading(true);
+    }
+  }
+
+  useEffect(() => {
+    getScrollerData();
+  },[])
+
 
 
   const options24h = {
@@ -121,9 +157,6 @@ export const CryptoProvider = ({children}) => {
       'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
     }
   };
-
-
-  
 
   const options30d  = {
     method: 'GET',
@@ -219,7 +252,7 @@ export const CryptoProvider = ({children}) => {
   
   
   return (
-    <CryptoContext.Provider value = {{cryptoData,searched,searchVal,setSearchVal,limit,setLimit,orderBy,setOrderBy,order,setOrder,loading,coinId,setCoinId,coinData,loadingCoin,coinHistory,timePeriod,setTimePeriod,offset,setOffset,totalCoin}}>
+    <CryptoContext.Provider value = {{cryptoData,searched,searchVal,setSearchVal,limit,setLimit,orderBy,setOrderBy,order,setOrder,loading,coinId,setCoinId,coinData,loadingCoin,coinHistory,timePeriod,setTimePeriod,offset,setOffset,totalCoin,scrollerData,scrollerLoading}}>
       {children}
     </CryptoContext.Provider>
   )
