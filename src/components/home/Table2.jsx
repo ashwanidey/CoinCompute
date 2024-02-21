@@ -41,11 +41,12 @@ export const Table2 = ({tableHeight}) => {
             <tr>
               <th className='sticky-ticker' >Asset</th>
               <th>Price</th>
-              <th>Market Cap Change (24h)</th>
-              {size400 && <th align= "center">Chart</th> }
+              <th align='center'>24H</th>
+              
               
               <th>MarketCap</th>
               <th>Volume(24H)</th>
+              <th align= "center">Chart</th> 
             </tr>
           </thead>
           

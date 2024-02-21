@@ -78,9 +78,9 @@ export const TableRow = ({row,id}) => {
 
 
               <td align="left" style={cellValue} >${row.price ? Number(row.price).toFixed(2) : 0}</td>
-              {size400 && <Item value = {row.change} />}
+              <Item value = {row.change} />
 
-              <td  className="max-w-[150px] min-w-[150px]">
+              {/* <td  className="max-w-[150px] min-w-[150px]">
               {!size400 && <div  className='rounded-[8px] w-[75px] py-[1px] pr-[6px] h-[30px] font-[500] text-[14px] flex items-center' style={ Number(row.change) >= 0 ? (Number(row.change)!== 0 ? positive: zero) : negative}>
       
       {(Number(row.change) > 0 ? <ArrowDropUpIcon/> : <ArrowDropDownIcon/>)}
@@ -88,7 +88,7 @@ export const TableRow = ({row,id}) => {
       {row.change ? Math.abs(Number(row.change)).toFixed(2) : 0}%
       
       </div>}
-              <Chartify sparklineData = {row.sparkline} change={row.change}/></td>
+              <Chartify sparklineData = {row.sparkline} change={row.change}/></td> */}
 
               {/* <Item value={row.change3h}/>
               <Item value = {row.change7d}/>
@@ -96,8 +96,11 @@ export const TableRow = ({row,id}) => {
               <Item value = {row.change30d}/> */}
               <td  sx ={cellValue}>${Number(row.marketCap).toLocaleString()}</td>
               <td  sx ={cellValue}>${Number(row["24hVolume"]).toLocaleString()}</td>
-
+              <td className='max-w-[100px] min-w-[100px]'>
+                <Chartify sparklineData = {row.sparkline} change={row.change}/>
+                </td> 
                 </tr>
+                
                 </>
   )
 }

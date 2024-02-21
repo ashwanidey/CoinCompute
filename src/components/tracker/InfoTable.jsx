@@ -59,7 +59,7 @@ export default function InfoTable() {
   const {activeMenu,size400} = useContext(ScreenSizeContext);
   
 
-  const tableheads = ["Price","Market Cap Change (24h)","Chart","3H","7D","30D","MarketCap","Volume(24H)"];
+  const tableheads = ["Price","Market Cap Change (24h)","3H","7D","30D","MarketCap","Volume(24H)","Chart"];
 
   const [clickedDiv,setClickedDiv] = useState(0);
   
@@ -138,11 +138,11 @@ const SaveBtn = ({ID}) => {
           </div>
           {tableheads.map((data) => (
             
-            (!size400 && data === "Chart" ? "" :
+            // (!size400 && data === "Chart" ? "" :
             (!activeMenu && data === "Market Cap Change (24h)" ? 
             <TableCell align="center" sx={{fontWeight:800,fontSize:"1.1rem",color: "#272727"}}>24H </TableCell> :
             data === "Price" || data === "Asset" ? <TableCell align="left" sx={{fontWeight:800,fontSize:"1.1rem",color: "#272727"}}>{data}</TableCell> : <TableCell align="center" sx={{fontWeight:800,fontSize:"1.1rem",color: "#272727"}}>{data}</TableCell>)
-            )
+            
               
 
               
@@ -186,9 +186,9 @@ const SaveBtn = ({ID}) => {
               <TableCell align="left" sx={cellValue} >${row.price ? Number(row.price).toFixed(2) : 0}</TableCell>
               
              
-              {size400 && <Item value = {row.change} />}
+              <Item value = {row.change} />
               
-              <TableCell  className="max-w-[150px] min-w-[150px]" sx={{padding: "0px 10px 0px 10px"}}>
+              {/* <TableCell  className="max-w-[150px] min-w-[150px]" sx={{padding: "0px 10px 0px 10px"}}>
               {!size400 && <div  className='rounded-[8px] w-[75px] py-[1px] pr-[6px] h-[30px] font-[500] text-[14px] flex items-center' style={ Number(row.change) >= 0 ? (Number(row.change)!== 0 ? positive: zero) : negative}>
       
       {(Number(row.change) > 0 ? <ArrowDropUpIcon/> : <ArrowDropDownIcon/>)}
@@ -196,7 +196,10 @@ const SaveBtn = ({ID}) => {
       {row.change ? Math.abs(Number(row.change)).toFixed(2) : 0}%
       
       </div>}
-              <Chartify sparklineData = {row.sparkline} change={row.change}/></TableCell>
+
+              <Chartify sparklineData = {row.sparkline} change={row.change}/></TableCell> */}
+
+              
               
               
               <Item value={row.change3h}/>
@@ -207,6 +210,10 @@ const SaveBtn = ({ID}) => {
               {size400 ? Number(row.marketCap).toLocaleString() : millify(row.marketCap)}  </TableCell>
               <TableCell align= "center" sx ={cellValue}>$
               {size400 ? Number(row["24hVolume"]).toLocaleString() : millify(row["24hVolume"])}</TableCell>
+
+              <TableCell className='max-w-[100px] min-w-[100px] h-[30px]'>
+              <Chartify sparklineData = {row.sparkline} change={row.change}/>
+              </TableCell>
 
               
 
