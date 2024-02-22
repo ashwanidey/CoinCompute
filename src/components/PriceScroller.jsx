@@ -30,6 +30,7 @@ const Content = ({data}) => {
         <span className='whitespace-nowrap text-left'>{data.name}</span>
         <div className='flex flex-row mt-[5px]'>
           <span className='pr-[8px]' style={Number(data.change) > 0 ? positive : negative}>{Math.abs(Number(data.change))}</span>
+          
           <span >${Number(Number(data.price).toFixed(2)).toLocaleString()}</span>
         </div>
       </div>

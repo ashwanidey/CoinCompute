@@ -6,6 +6,8 @@ import { News } from '../news/News'
 import { TopCoins } from './TopCoins'
 import { NewsSlider } from '../news/NewsSlider'
 import Switcher4 from './ToggleSwitch'
+import { BlockPriceScroller } from './BlockPriceScroller'
+
 
 
 export const Home = () => {
@@ -14,15 +16,17 @@ export const Home = () => {
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked)
   }
+
   
   return (
     <>
     <div className='xl:mx-[70px] mx-0 mb-[5rem]'>
-      
+   
     <div className='m-[20px] '>
       <div className='w-full flex justify-center mb-3'>
     <div className='md:text-[2rem] font-[900] text-[1.2rem] uppercase '>Today's Cryptocurrency Prices </div>
     </div>
+    <BlockPriceScroller/>
     <div className='flex w-full justify-end '>
       <span className='font-[600] text-[1rem] mr-3 ' >Highlights</span>
     <Switcher4 handleCheckboxChange = {handleCheckboxChange} isChecked={isChecked} />
