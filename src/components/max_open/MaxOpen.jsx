@@ -2,6 +2,7 @@ import MaxOpenForm from "./MaxOpenForm";
 import { useState } from "react";
 import MaxOpenResult from "./MaxOpenResult";
 import Widget from "../Widget";
+import {PriceScroller} from "../PriceScroller"
 
 
 export default function Pnl(){
@@ -14,7 +15,7 @@ export default function Pnl(){
   return (
     <>
    <div class="container-pnl " id="pnl-toogle">
-    <Widget/>
+    <PriceScroller/>
       <span class="Heading">Futures Calulator</span>
       <span class="pnl-form-title">Max Open</span>
       <div class="wrapper">

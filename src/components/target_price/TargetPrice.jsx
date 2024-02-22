@@ -3,6 +3,7 @@ import { useState } from "react";
 import TargetForm from "./TargetForm";
 import TargetResult from "./TargetResult";
 import Widget from "../Widget";
+import {PriceScroller} from "../PriceScroller"
 
 export default function TargetPrice(){
   const [FormData, setFormData] = useState([]);
@@ -13,7 +14,7 @@ export default function TargetPrice(){
   return (
     <>
       <div class="container-pnl " id="pnl-toogle">
-        <Widget/>
+        <PriceScroller/>
       <span class="Heading">Futures Calulator</span>
       <span class="pnl-form-title">Target Price</span>
       <div class="wrapper">

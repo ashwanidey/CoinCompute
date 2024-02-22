@@ -2,6 +2,7 @@ import OpenPriceForm from "./OpenPriceForm";
 import OpenPriceResult from "./OpenPriceResult";
 import { useState,useEffect } from "react";
 import Widget from "../Widget";
+import {PriceScroller} from "../PriceScroller"
 import "./openPrice.css"
 import PositionButton from "../PositionButton";
 
@@ -53,7 +54,7 @@ export default function Pnl(){
   return (
     <>
    <div class="container-openprice" id="pnl-toogle">
-    <Widget/>
+   <PriceScroller/>
     
       <span class="Heading">Futures Calulator</span>
       <span class="pnl-form-title">Open Price</span>
