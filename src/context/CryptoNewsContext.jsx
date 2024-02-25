@@ -2,6 +2,7 @@ import { createContext, useEffect, useState ,useLayoutEffect} from "react";
 import axios from "axios";
 
 export const CryptoNewsContext = createContext({});
+const apiKey = '75acbbfe11msh9a549667cd39781p121f3ajsn1dc9cc6f1677';
 
 export const CryptoNewsProvider = ({children}) => {
 
@@ -11,7 +12,7 @@ export const CryptoNewsProvider = ({children}) => {
     method: 'GET',
     url: 'https://cryptocurrency-news2.p.rapidapi.com/v1/coindesk',
     headers: {
-      'X-RapidAPI-Key': '4454717dcbmshc71e62e0dabf928p1c1724jsnc8ee87fa81ac',
+      'X-RapidAPI-Key': apiKey,
     'X-RapidAPI-Host': 'cryptocurrency-news2.p.rapidapi.com'
     }
   };
