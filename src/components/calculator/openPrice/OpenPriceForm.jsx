@@ -1,11 +1,7 @@
-import PositionButton from "../PositionButton";
-
+import PositionButton from "../calculatorComponents/PositionButton";
 import { useState,useEffect  } from "react";
-import Leverage from "../Leverage";
 import InputDiv from "./InputDiv";
-import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-
 import AddIcon from '@mui/icons-material/Add';
 
 export default function OpenPriceForm({passInput}){

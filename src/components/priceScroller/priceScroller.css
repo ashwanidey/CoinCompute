@@ -1,7 +1,7 @@
 .wrapperPrice{
   z-index: 9999999; color: rgb(255, 255, 255); font-family: Roboto, Arial, Helvetica, sans-serif; user-select: none; position: static;
 }
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
   display: block;
   width: 5px;
   
@@ -11,13 +11,13 @@
 
 ::-webkit-scrollbar-thumb{
   background-color: black;
-}
+} */
 
 .values{
   width: 100%; border-radius: 29px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgb(27, 16, 145); padding: 20px; display: flex; font-size: 16px; font-weight: 300; font-stretch: normal; font-style: normal; line-height: normal; letter-spacing: normal;
 }
-@media(max-width: 400px) {
+/* @media(max-width: 400px) {
   ::-webkit-scrollbar{
     display: none;
   }
-}
+} */

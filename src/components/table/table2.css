@@ -217,12 +217,12 @@
 }
 
 
-.table-wrapper::-webkit-scrollbar {
+/* .table-wrapper::-webkit-scrollbar {
   height: 12px;
   display: block;
-}
+} */
 
-.table-wrapper::-webkit-scrollbar-track {
+/* .table-wrapper::-webkit-scrollbar-track {
   background: var(
       --gray-mid);
   border-radius: 6px;
@@ -239,7 +239,7 @@
   .table-wrapper::-webkit-scrollbar{
     display: none;
   }
-}
+} */
 
 @media (max-width: 600px) {
   .table-widget{

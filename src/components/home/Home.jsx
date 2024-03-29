@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { WatchList } from './WatchList'
-import { InvestWidget } from './InvestWidget'
+
 import { HomeHeader } from './Header'
-import { News } from '../news/News'
+
 import { TopCoins } from './TopCoins'
 import { NewsSlider } from '../news/NewsSlider'
 import Switcher4 from './ToggleSwitch'

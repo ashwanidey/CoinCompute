@@ -2,8 +2,8 @@
 import { useState } from "react";
 import TargetForm from "./TargetForm";
 import TargetResult from "./TargetResult";
-import Widget from "../Widget";
-import {PriceScroller} from "../PriceScroller"
+
+import {PriceScroller} from "../../priceScroller/PriceScroller"
 
 export default function TargetPrice(){
   const [FormData, setFormData] = useState([]);

@@ -1,9 +1,8 @@
 import React, { useContext } from 'react'
 import "./priceScroller.css"
-import { CryptoContext } from '../context/CryptoContext'
+import { CryptoContext } from '../../context/CryptoContext'
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import millify from 'millify';
 import { NavLink } from 'react-router-dom';
 import LinearProgress from '@mui/material/LinearProgress';
 

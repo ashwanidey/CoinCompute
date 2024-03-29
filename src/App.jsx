@@ -2,15 +2,13 @@ import { useContext, useState } from 'react'
 import './App.css'
 import NavBar from './components/navbars/NavBar'
 import { Route, Routes } from "react-router-dom"
-import Pnl from "./components/pnl/Pnl"
-import TargetPrice from "./components/target_price/TargetPrice"
-import Liquidation from './components/liquidation price/Liquidation'
-import MaxOpen from './components/max_open/MaxOpen'
-import OpenPrice from './components/open-price/OpenPrice'
+import Pnl from "./components/calculator/pnl/Pnl"
+import TargetPrice from "./components/calculator/targetPrice/TargetPrice"
+import Liquidation from './components/calculator/liquidationPrice/Liquidation'
+import MaxOpen from './components/calculator/maxOpen/MaxOpen'
+import OpenPrice from './components/calculator/openPrice/OpenPrice'
 import TopNavBar from './components/navbars/TopNavBar'
 import Tracker from './components/tracker/Tracker'
-
-import { CryptoContext } from './context/CryptoContext'
 import { CryptoDetails } from './components/tracker/crypto-details/CryptoDetails'
 import { Home } from './components/home/Home'
 import { News } from './components/news/News'

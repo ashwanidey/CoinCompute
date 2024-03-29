@@ -1,8 +1,7 @@
 import PnlForm from "./PnlForm";
 import { useContext, useState } from "react";
 import Result from "./Result";
-import Widget from "../Widget";
-import { PriceScroller } from "../PriceScroller";
+import { PriceScroller } from "../../priceScroller/PriceScroller";
 
 
 

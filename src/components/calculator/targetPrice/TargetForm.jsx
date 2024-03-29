@@ -1,13 +1,15 @@
-import PositionButton from "../PositionButton";
-import Input from "../Input";
-import { useState} from "react";
-import Leverage from "../Leverage";
+import PositionButton from "../calculatorComponents/PositionButton";
+import Input from "../calculatorComponents/Input";
+import Leverage from "../calculatorComponents/Leverage";
+import { useState } from "react";
 
-export default function MaxOpenForm({passInput}){
+export default function TargetForm({passInput}){
+
+
   const [props,setProps] = useState([
+    {Label:"Exit Price",Id:"sellingPrice",Placeholder:"Enter Selling or Exit price",Class:"input",inputVal : ""},
+    {Label:"ROE",Id:"roe",Placeholder:"Enter Buying or Entry Price",Class:"input",inputVal : ""},
     
-    {Label:"Entry Price",Id:"buyingPrice",Placeholder:"Enter Buying or Entry Price",Class:"input",inputVal : ""},
-    {Label:"Balance",Id:"balance",Placeholder:"Enter Balance",Class:"input",inputVal : ""},
   ]);
 
   const [lev,setLev] = useState(20);
@@ -15,10 +17,11 @@ export default function MaxOpenForm({passInput}){
   const [isLong,setIsLong] = useState(true);
 
   const handleInput = (id, value) => {
-    if(!isNaN(value) && value >= 0)
+    if(!isNaN(value) && value >= 0){
     setProps((prevProps) =>
       prevProps.map((prop) => (prop.Id === id ? { ...prop, inputVal: value } : prop))
     );
+    }
   };
 
   const handleSubmit = () => {
@@ -57,6 +60,8 @@ export default function MaxOpenForm({passInput}){
         </div>
         </div>
      </form>
+
+     
 
     </>
   )

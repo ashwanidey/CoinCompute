@@ -7,7 +7,7 @@ import { Chartify } from '../Chartify';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-import { SaveBtn } from './SaveBtn';
+import { SaveBtn } from '../home/SaveBtn';
 import { Item } from '../tracker/crypto-details/Item';
 
 export const TableRow = ({row,id}) => {

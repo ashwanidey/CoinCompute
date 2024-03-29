@@ -1,13 +1,13 @@
-import PositionButton from "../PositionButton";
-import Input from "../Input";
-import { useState } from "react";
-import Leverage from "../Leverage";
+import PositionButton from "../calculatorComponents/PositionButton";
+import Input from "../calculatorComponents/Input";
+import { useState} from "react";
+import Leverage from "../calculatorComponents/Leverage";
 
-export default function LiquidationForm({passInput}){
+export default function MaxOpenForm({passInput}){
   const [props,setProps] = useState([
-    {Label:"Entry Price",Id:"buyingPrice",Placeholder:"Enter Entry Price",Class:"input",inputVal : ""},
-    {Label:"Cost ( Margin )",Id:"amount",Placeholder:"Enter Cost or Margin",Class:"input",inputVal : ""},
-    // {Label:"Balance",Id:"Balance",Placeholder:"Enter Balance Available",Class:"input",inputVal : ""},
+    
+    {Label:"Entry Price",Id:"buyingPrice",Placeholder:"Enter Buying or Entry Price",Class:"input",inputVal : ""},
+    {Label:"Balance",Id:"balance",Placeholder:"Enter Balance",Class:"input",inputVal : ""},
   ]);
 
   const [lev,setLev] = useState(20);
@@ -22,14 +22,13 @@ export default function LiquidationForm({passInput}){
   };
 
   const handleSubmit = () => {
-    const valueArray = props.map((prop) => Number(prop.inputVal));
+    let valueArray = props.map((prop) => Number(prop.inputVal));
     setShowOutput(true);
-
-    const updatedValueArray = [...valueArray, lev, showOutput, isLong];
-  
-    
-    passInput(updatedValueArray);
-  };
+    valueArray.push(lev);
+    valueArray.push(showOutput);
+    valueArray.push(isLong)
+    passInput(valueArray);
+  }
 
   const handleLong = () => {
     setIsLong(true);

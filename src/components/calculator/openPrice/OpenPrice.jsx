@@ -1,10 +1,10 @@
 import OpenPriceForm from "./OpenPriceForm";
 import OpenPriceResult from "./OpenPriceResult";
 import { useState,useEffect } from "react";
-import Widget from "../Widget";
-import {PriceScroller} from "../PriceScroller"
+
+import {PriceScroller} from "../../priceScroller/PriceScroller"
 import "./openPrice.css"
-import PositionButton from "../PositionButton";
+import PositionButton from "../calculatorComponents/PositionButton";
 
 
 import InputDiv from "./InputDiv";

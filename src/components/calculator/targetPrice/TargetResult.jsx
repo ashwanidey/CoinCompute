@@ -1,6 +1,6 @@
-import Output from "../Output";
+import Output from "../calculatorComponents/Output";
 import { useState, useEffect } from "react";
-import { calculateTargetPrice } from "../../functions/calculator";
+import { calculateTargetPrice } from "../../../functions/calculator";
 export default function TargetResult({ valueArray }){
 
   const [props, setProps] = useState([

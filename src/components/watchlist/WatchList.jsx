@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table2 } from '../home/Table2'
+import { Table2 } from '../table/Table2'
 
 export const WatchList = () => {
   return (

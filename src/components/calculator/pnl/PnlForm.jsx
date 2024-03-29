@@ -1,7 +1,7 @@
-import PositionButton from "../PositionButton";
-import Input from "../Input";
-import { useState } from "react";
-import Leverage from "../Leverage";
+import PositionButton from "../calculatorComponents/PositionButton";
+import Input from "../calculatorComponents/Input";
+import { useState} from "react";
+import Leverage from "../calculatorComponents/Leverage";
 
 export default function PnlForm({passInput}){
 

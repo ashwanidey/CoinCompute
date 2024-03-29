@@ -1,8 +1,8 @@
-import MaxOpenForm from "./MaxOpenForm";
+import LiquidationForm from "./LiquidationForm";
 import { useState } from "react";
-import MaxOpenResult from "./MaxOpenResult";
-import Widget from "../Widget";
-import {PriceScroller} from "../PriceScroller"
+import LiquidationResult from "./LiquidationResult";
+
+import {PriceScroller} from "../../priceScroller/PriceScroller"
 
 
 export default function Pnl(){
@@ -17,11 +17,11 @@ export default function Pnl(){
    <div class="container-pnl " id="pnl-toogle">
     <PriceScroller/>
       <span class="Heading">Futures Calulator</span>
-      <span class="pnl-form-title">Max Open</span>
+      <span className="pnl-form-title ">Liquidation Price</span>
       <div class="wrapper">
       
-      <MaxOpenForm passInput={handleResultData}/>
-      <MaxOpenResult valueArray={FormData}/>
+      <LiquidationForm passInput={handleResultData}/>
+      <LiquidationResult valueArray={FormData}/>
       </div>
 
     </div>

@@ -1,24 +1,22 @@
-import { calculateAmount, calculateMaxOpen } from "../../functions/calculator";
-import Output from "../Output";
+import Output from "../calculatorComponents/Output";
 import { useState, useEffect } from "react";
+import { calculateLiquidationPrice } from "../../../functions/calculator";
 
-export default function MaxOpenResult({ valueArray }){
+export default function LiquidationResult({ valueArray }){
   const [props, setProps] = useState([
-    { Class: "output-box", Label: "Max Open :  ", Value: "-", Sign: "BTC", Id: "margin" },
-    { Class: "output-pnl-box", Label: "Max Open (USDT) : ", Value: "-", Sign: "USDT", Id: "pnl" },
-   
+    { Class: "output-box", Label: "Liquidation Price: ", Value: "-", Sign: "USDT", Id: "margin" },
+    
   ]);
-  // [ep,balance,lev,showoutput,isLOng]
+  // [ep,cost,lev,showoutput,isLOng]
   useEffect(() => {
     if(valueArray[3]){
       const ep = valueArray[0];
-      const balance = valueArray[1];
+      const cost = valueArray[1];
       const lev= valueArray[2];
       const isLong = valueArray[4];
-      const amt = calculateAmount(lev,balance);
-      const maxOpen = calculateMaxOpen(amt,lev,ep);
+      const liqPrice = calculateLiquidationPrice(ep,lev,cost,isLong);
       const updatedProps = props.map((prop, index) => {
-        return { ...prop, Value: index === 0 ?  maxOpen : amt};
+        return { ...prop, Value: liqPrice};
       });
       setProps(updatedProps);
     }

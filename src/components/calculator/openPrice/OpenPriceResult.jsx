@@ -1,5 +1,5 @@
-import { calculateOpenPRice } from "../../functions/calculator";
-import Output from "../Output";
+import { calculateOpenPRice } from "../../../functions/calculator";
+import Output from "../calculatorComponents/Output";
 import { useState, useEffect } from "react";
 
 
