@@ -1,5 +1,7 @@
 import { useContext, useState } from 'react'
 import './App.css'
+/* The following line can be included in your src/index.js or App.js file */
+import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from './components/navbars/NavBar'
 import { Route, Routes } from "react-router-dom"
 import Pnl from "./components/calculator/pnl/Pnl"
@@ -15,6 +17,8 @@ import { News } from './components/news/News'
 import { BottomNav } from './components/navbars/BottomNav'
 import { ScreenSizeContext } from './context/ScreenSize'
 import { WatchList } from './components/watchlist/WatchList'
+import DiscordBot from './components/discordBot/DiscordBot'
+import BotHome from './components/discordBot/BotHome';
 
 
 
@@ -26,17 +30,21 @@ function App() {
   return (
     <>
     
-      <TopNavBar/>
+      
       
       
       <Routes>
-      <Route path = "/" element = {<Home/>}></Route>
-      <Route path = "/home" element = {<Home/>}></Route>
-      <Route path = "/news" element = {<News/>}></Route>
-      <Route path = "/watchlist" element = {<WatchList/>}></Route>
-      <Route path = "/calculator" element={<div class="flex sm:flex-row flex-col mb-[5rem]"><NavBar/><Pnl/></div>}/>
-      <Route path="/tracker" element={<Tracker/>} />
-      <Route path="/tracker/:coinId" element={<CryptoDetails/>} />
+      <Route path = "/" element = {<div><TopNavBar/><Home/></div>}></Route>
+      <Route path = "/home" element = {<div><TopNavBar/><Home/></div>}></Route>
+      <Route path = "/news" element = {<div><TopNavBar/><News/></div>}></Route>
+      <Route path = "/watchlist" element = {<div><TopNavBar/><WatchList/></div>}></Route>
+      <Route path = "/calculator" element={<><TopNavBar/><div class="flex sm:flex-row flex-col mb-[5rem]"><NavBar/><Pnl/></div></>}/>
+      <Route path="/tracker" element={<div><TopNavBar/><Tracker/></div>} />
+      <Route path="/tracker/:coinId" element={<div><TopNavBar/><CryptoDetails/></div>} />
+      <Route path='/discordBot' element ={<div><DiscordBot/><BotHome/></div>}/>
+      <Route path='/discordBot/commands' element ={<DiscordBot/>}/>
+        
+
        
       <Route path="/calculator/pnl" element={<div class="flex sm:flex-row flex-col mb-[5rem] "><NavBar/><Pnl/></div>} />
       <Route path="/calculator/targetPrice" element={<div class="flex sm:flex-row flex-col mb-[5rem]"><NavBar/><TargetPrice /></div>} />

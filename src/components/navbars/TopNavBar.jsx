@@ -14,8 +14,8 @@ import MenuItem from '@mui/material/MenuItem';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-const pages = ['Home','Tracker','Watchlist', 'Calculator','News'];
-const paths = ["/home",'/tracker',"/watchlist","/calculator",'/news']
+const pages = ['Home','Tracker','Watchlist', 'Calculator','News','Discord Bot'];
+const paths = ["/home",'/tracker',"/watchlist","/calculator",'/news','/discordBot']
 const settings = [];
 
 function ResponsiveAppBar() {
