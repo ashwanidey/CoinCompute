@@ -17,8 +17,10 @@ import { News } from './components/news/News'
 import { BottomNav } from './components/navbars/BottomNav'
 import { ScreenSizeContext } from './context/ScreenSize'
 import { WatchList } from './components/watchlist/WatchList'
-import DiscordBot from './components/discordBot/DiscordBot'
+
 import BotHome from './components/discordBot/BotHome';
+import TopBar from './components/discordBot/TopBar';
+import Command from './components/discordBot/Command';
 
 
 
@@ -41,8 +43,8 @@ function App() {
       <Route path = "/calculator" element={<><TopNavBar/><div class="flex sm:flex-row flex-col mb-[5rem]"><NavBar/><Pnl/></div></>}/>
       <Route path="/tracker" element={<div><TopNavBar/><Tracker/></div>} />
       <Route path="/tracker/:coinId" element={<div><TopNavBar/><CryptoDetails/></div>} />
-      <Route path='/discordBot' element ={<div><DiscordBot/><BotHome/></div>}/>
-      <Route path='/discordBot/commands' element ={<DiscordBot/>}/>
+      <Route path='/discordBot' element ={<div><TopBar/><BotHome/></div>}/>
+      <Route path='/discordBot/commands' element ={<div><TopBar/><Command/></div>}/>
         
 
        

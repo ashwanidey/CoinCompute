@@ -20,15 +20,18 @@ const TopBar = () => {
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
       <div className='flex lg:flex-row flex-col lg:gap-11  lg:mr-10 ml-auto'> 
+        <NavLink to="/discordBot">
+          <div style={navLinkStyle}>Home</div>
+        </NavLink>
         <NavLink to="/discordBot/commands">
           <div style={navLinkStyle}>Commands</div>
         </NavLink>
-        <NavLink to="/discordBot/commands">
+        <a href="https://discord.com/oauth2/authorize?client_id=1217553379690025101&permissions=8&scope=bot+applications.commands">
           <div style={navLinkStyle}>Invite</div>
-        </NavLink>
-        <NavLink to="/discordBot/commands">
+          </a>
+        <a href="https://github.com/ashwanidey/CoinComputeBot">
           <div style={navLinkStyle}>Github</div>
-        </NavLink>
+          </a>
       </div>
     </Navbar.Collapse>
   </Container>

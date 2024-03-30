@@ -2,6 +2,7 @@ import React from 'react'
 import './bot.css'
 import tradeImage from "../../assets/Screenshot 2024-03-30 132602.png"
 import chartImage from "../../assets/chart.png"
+import { NavLink } from 'react-router-dom'
 
 
 const features = [
@@ -29,7 +30,10 @@ const BotHome = () => {
     <h1 className='font-[700] text-center ' style={{fontSize: "clamp(2.5rem, 4vw, 5rem)"}}>Ultimate Discord bot for accessing comprehensive cryptocurrency data.</h1>
 
     <p className='text-[20px] font-[400] text-center '>Stay updated with real-time price, volume, and market data.</p>
-    <a href="https://discord.com/oauth2/authorize?client_id=1217553379690025101&permissions=8&scope=bot+applications.commands" className='flex justify-center'><button class="button-27 max-w-[140px]  " role="button">Invite Bot</button></a>
+    <div className='flex flex-col md:flex-row md:justify-center items-center gap-3'>
+    <a href="https://discord.com/oauth2/authorize?client_id=1217553379690025101&permissions=8&scope=bot+applications.commands" className='flex'><button class="button-27 max-w-[140px]  " role="button">Invite Bot</button></a>
+    <NavLink to="/discordBot/commands"><div class="button-27 max-w-[140px]  ">Commands</div></NavLink>
+    </div>
     </div>
 
 
