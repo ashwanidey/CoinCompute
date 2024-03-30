@@ -24,12 +24,12 @@ const featureCard = [
 const BotHome = () => {
   return (
     <>
-    <div className='py-[10px] px-[5%]'>
+    <div className='py-[10px] px-[5%] '>
     <div className=' flex flex-col justify-center gap-4'>
-    <h1 className='font-[700] text-center lg:text-left whitespace-normal' style={{fontSize: "clamp(2rem, 4vw, 5rem)"}}>Ultimate Discord bot for accessing comprehensive cryptocurrency data.</h1>
+    <h1 className='font-[700] text-center ' style={{fontSize: "clamp(2.5rem, 4vw, 5rem)"}}>Ultimate Discord bot for accessing comprehensive cryptocurrency data.</h1>
 
-    <p className='text-[20px] font-[400] text-center lg:text-left '>Stay updated with real-time price, volume, and market data.</p>
-    <a href="https://discord.com/oauth2/authorize?client_id=1217553379690025101&permissions=8&scope=bot+applications.commands" className='flex lg:justify-start justify-center'><button class="button-27 max-w-[140px]  " role="button">Invite Bot</button></a>
+    <p className='text-[20px] font-[400] text-center '>Stay updated with real-time price, volume, and market data.</p>
+    <a href="https://discord.com/oauth2/authorize?client_id=1217553379690025101&permissions=8&scope=bot+applications.commands" className='flex justify-center'><button class="button-27 max-w-[140px]  " role="button">Invite Bot</button></a>
     </div>
 
 
@@ -40,7 +40,7 @@ const BotHome = () => {
       {features.map(feature => {
         return(
         <div className='flex flex-col gap-2'>
-        <h2 className='font-[700] text-center text-[1.8rem]' >{feature.heading}</h2>
+        <h2 className='font-[700] text-center text-[1.5rem] md:text-[1.8rem]' >{feature.heading}</h2>
         <p className='text-center font-[500]'>{feature.details}</p>
       </div>
         )
@@ -52,7 +52,7 @@ const BotHome = () => {
     
     </div>
     {/* Card */}
-    <section className='flex sm:flex-row flex-col gap-10 bg-[#f8fafd] px-[5%] py-[30px] justify-center sm:justify-evenly mt-10' >
+    <section className='flex sm:flex-row flex-col gap-10 bg-[#f8fafd] px-[5%] py-[30px] justify-center sm:justify-evenly mt-10  md:mb-[0px] mb-[100px]' >
       {featureCard.map(card => {
         return(
           <div className='bg-white p-[20px] rounded-[30px] sm:min-w-[40%] sm:max-w-[40%] flex flex-col gap-2'>

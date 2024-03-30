@@ -46,11 +46,11 @@ function App() {
         
 
        
-      <Route path="/calculator/pnl" element={<div class="flex sm:flex-row flex-col mb-[5rem] "><NavBar/><Pnl/></div>} />
-      <Route path="/calculator/targetPrice" element={<div class="flex sm:flex-row flex-col mb-[5rem]"><NavBar/><TargetPrice /></div>} />
-      <Route path="/calculator/liquidationPrice" element={<div class="flex sm:flex-row flex-col mb-[5rem] "><NavBar/><Liquidation /></div>} />
-      <Route path="/calculator/maxOpen" element={<div class="flex sm:flex-row flex-col mb-[5rem]"><NavBar/><MaxOpen /></div>} />
-      <Route path="/calculator/OpenPrice" element={<div class="flex sm:flex-row flex-col mb-[5rem]"><NavBar/><OpenPrice /></div>} />
+      <Route path="/calculator/pnl" element={<><TopNavBar/><div class="flex sm:flex-row flex-col mb-[5rem] "><NavBar/><Pnl/></div></>} />
+      <Route path="/calculator/targetPrice" element={<><TopNavBar/><div class="flex sm:flex-row flex-col mb-[5rem]"><NavBar/><TargetPrice /></div></>} />
+      <Route path="/calculator/liquidationPrice" element={<><TopNavBar/><div class="flex sm:flex-row flex-col mb-[5rem] "><NavBar/><Liquidation /></div></>} />
+      <Route path="/calculator/maxOpen" element={<><TopNavBar/><div class="flex sm:flex-row flex-col mb-[5rem]"><NavBar/><MaxOpen /></div></>} />
+      <Route path="/calculator/OpenPrice" element={<><TopNavBar/><div class="flex sm:flex-row flex-col mb-[5rem]"><NavBar/><OpenPrice /></div></>} />
      
       </Routes>
 
