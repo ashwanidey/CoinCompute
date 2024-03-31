@@ -22,7 +22,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </BrowserRouter>
     </CryptoNewsProvider>
     </GlobalDataProvider>
-
     </StorageProvider>
     </SizeProvider>
     </CryptoProvider>

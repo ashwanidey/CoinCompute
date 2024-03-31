@@ -14,8 +14,8 @@ import MenuItem from '@mui/material/MenuItem';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-const pages = ['Home','Tracker','Watchlist', 'Calculator','News','Discord Bot'];
-const paths = ["/home",'/tracker',"/watchlist","/calculator",'/news','/discordBot']
+const pages = ['Home','Community','Tracker','Watchlist', 'Calculator','Discord Bot'];
+const paths = ["/home",'https://coincomputecommunity.netlify.app','/tracker',"/watchlist","/calculator",'/discordBot']
 const settings = [];
 
 function ResponsiveAppBar() {
@@ -58,7 +58,7 @@ function ResponsiveAppBar() {
             
             sx={{
               mr: 6,
-              display: { xs: 'none', md: 'flex' },
+              display: { xs: 'none', lg: 'flex' },
               fontFamily: {'Rubik': ['Rubik', 'sans-serif']},
               fontWeight: 1000,
               fontSize : "1.5rem",
@@ -71,7 +71,7 @@ function ResponsiveAppBar() {
           </Typography>
           </NavLink>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', lg: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -98,7 +98,7 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', lg: 'none' },
               }}
             > 
               {pages.map((page,index) => (
@@ -127,7 +127,7 @@ function ResponsiveAppBar() {
             
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: 'flex', lg: 'none' },
               flexGrow: 1,
               fontFamily: {'Rubik': ['Rubik', 'sans-serif']},
               fontWeight: 1000,
@@ -140,7 +140,7 @@ function ResponsiveAppBar() {
           </Typography>
           
           {/* </NavLink> */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', lg: 'flex' } }}>
             {pages.map((page,index) => (
               <NavLink to={paths[index]}>
                 { page === "News" || page === "Watchlist"? <Button

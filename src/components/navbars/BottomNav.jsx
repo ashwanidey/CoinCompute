@@ -35,12 +35,13 @@ export const BottomNav = () => {
             <span class="text-[0.8rem] text-[#021E9A] group-hover:text-white ">Tracker</span>
         </button>
 
-
-        <button type="button" class="inline-flex flex-col items-center justify-center px-5 group rounded-xl p-1 m-1 hover:bg-[#021E9A]" onClick={() => handleClick("/watchlist")}>
+      <a href="https://coincomputecommunity.netlify.app/">
+        <button type="button" class="inline-flex flex-col items-center justify-center px-3 group rounded-xl p-1 m-1 hover:bg-[#021E9A]" >
            <FavoriteIcon  sx={{color:'#021E9A',fontSize:'25px'}}
             className='group-hover:text-white '/>
-            <span class="text-[0.8rem] text-[#021E9A] group-hover:text-white whitespace-nowrap ">Watchlist</span>
+            <span class="text-[0.8rem] text-[#021E9A] group-hover:text-white whitespace-nowrap ">Community</span>
         </button>
+        </a>
 
 
         

@@ -37,21 +37,6 @@ const TopBar = () => {
   </Container>
 </Navbar>
 
-    
-    {/* <div className='py-[10px] px-[20px] flex justify-between items-center'>
-    <div className='text-[1.3rem] font-[800]'>DISCORD BOT</div>
-    <div className='flex gap-11 mr-10'>
-      <NavLink to = "/discordBot/commands"> 
-      <div style={navLinkStyle}>Commands</div>
-      </NavLink>
-      <NavLink to = "/discordBot/commands"> 
-      <div style={navLinkStyle}>Invite</div>
-      </NavLink>
-      <NavLink to = "/discordBot/commands"> 
-      <div style={navLinkStyle}>Github</div>
-      </NavLink>
-    </div>
-    </div> */}
     </>
   )
 }

@@ -3,7 +3,7 @@ import './App.css'
 /* The following line can be included in your src/index.js or App.js file */
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from './components/navbars/NavBar'
-import { Route, Routes } from "react-router-dom"
+import { Route,Routes} from "react-router-dom"
 import Pnl from "./components/calculator/pnl/Pnl"
 import TargetPrice from "./components/calculator/targetPrice/TargetPrice"
 import Liquidation from './components/calculator/liquidationPrice/Liquidation'
